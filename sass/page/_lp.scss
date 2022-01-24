@@ -1,0 +1,865 @@
+.lp {
+    a {
+        word-break: break-all;
+    }
+    table {
+        td {
+            text-align: left;
+            &.date {
+                text-align: center;
+                color: #666;
+                @include screen('mobile') {
+                    text-align: left;
+                }
+            }
+            &.num {
+                text-align: center;
+                color: #666;
+                @include screen('mobile') {
+                    text-align: left;
+                }
+            }
+        }
+    }
+    .list {
+        ul,
+        ol {
+            list-style-type: none;
+            padding: 0;
+            border-top: 2px solid $primaryColor;
+            li {
+                padding: 1em 0;
+                border-bottom: 1px solid #DDD;
+                position: relative; // outline: 1px solid blue;
+                a {
+                    display: block;
+                    padding-left: 2em;
+                    position: relative;
+                    line-height: 1.45em;
+                    .num {
+                        width: 1.5em;
+                        text-align: right;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        &:after {
+                            content: ".";
+                            display: inline-block;
+                        }
+                    }
+                }
+                span.dept {
+                    display: inline-block;
+                    font-size: .938em;
+                    @include screen("mobile") {
+                        display: block;
+                    }
+                }
+                time {
+                    display: block;
+                    color: #AAA;
+                    font-size: .938em;
+                }
+            }
+        }
+    }
+    .album {
+        margin: 1em auto;
+        overflow: hidden;
+        text-align: left;
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            li {
+                @include make-xs-column(12); //576px  width:100%
+                @include make-sm-column(4); //768px  width:50%
+                @include make-md-column(4); //992px  width:33.3%
+                @include make-lg-column(4); //1400px width:33.3%
+                @include gutter(30px);
+                min-height: 450px;
+                @include screen('mobile') {
+                    min-height: auto;
+                    @include gutter(15px);
+                }
+                a {
+                    display: block;
+                    text-align: left;
+                }
+                .imgOuter {
+                    width: 100%;
+                    @include aspect-ratio(4, 3);
+                }
+            }
+        }
+    }
+    .video {
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            li {
+                @include make-xs-column(12);
+                @include make-sm-column(4);
+                @include make-md-column(4);
+                @include make-lg-column(4);
+                @include gutter();
+                margin-bottom: 30px;
+                height: 400px;
+                @include screen('tablet') {
+                    height: 320px;
+                }
+                @include screen('mobile') {
+                    height: auto;
+                    min-width: 300px;
+                    width: 80%;
+                    float: none;
+                    margin: 0 auto 30px;
+                }
+                .youtube {
+                    @include aspect-ratio(4, 3);
+                    margin-bottom: .5em;
+                    iframe {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                    }
+                }
+                h3 {
+                    margin-bottom: 1px;
+                    max-height: 2.7em;
+                    line-height: 1.45em;
+                    overflow: hidden;
+                    display: block;
+                    margin-top: 5px;
+                }
+                .info {
+                    color: #666;
+                    margin-bottom: 5px;
+                    font-size: .750em;
+                    padding: .4em .8em;
+                    background: #dedede;
+                    @include border-radius(4px);
+                    display: none;
+                }
+                p {
+                    font-size: .938em;
+                    color: #555;
+                    height: 4.5em;
+                    line-height: 1.5em;
+                    overflow: hidden;
+                    display: block;
+                }
+            }
+        }
+    }
+    .book {
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            li {
+                @include make-xs-column(6);
+                @include make-sm-column(4);
+                @include make-md-column(3);
+                @include make-lg-column(3);
+                @include gutter(50px);
+                text-align: center;
+                margin-bottom: 20px;
+                .bookOuter {
+                    @include aspect-ratio(7, 10);
+                    border: 1px solid #aaa;
+                    margin-bottom: .5em;
+                    img {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                    }
+                }
+                a {
+                    &:hover,
+                    &:focus {
+                        .bookOuter {
+                            border: 1px solid $primaryColor;
+                        }
+                        h3 {
+                            color: $primaryColor;
+                        }
+                    }
+                }
+                h3 {
+                    margin-bottom: 5px;
+                    height: 2.7em;
+                    line-height: 1.45em;
+                    overflow: hidden;
+                    display: block;
+                    margin-top: 5px;
+                }
+                .info {
+                    color: #666;
+                    margin-bottom: 5px;
+                    font-size: .750em;
+                    padding: .4em .8em;
+                    background: #dedede;
+                    @include border-radius(4px);
+                }
+            }
+        }
+    }
+}
+.service_station {
+    overflow: hidden;
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        li {
+            display: inline-block;
+            width: 24%;
+            vertical-align: top;
+            text-align: left;
+            @include box-sizing;
+            padding: .5em .5em 1.5em;
+            margin: 0 .5% 15px 0;
+            @include border-radius(4px);
+            border: 1px solid #DDD;
+            min-height: 380px;
+            li {
+                min-height: auto;
+            }
+            &:nth-child(4n) {
+                margin-right: 0;
+            }
+            @include screen('tablet') {
+                width: 31%;
+                margin: 0 1% 15px 0;
+                &:nth-child(4n) {
+                    margin: 0 1% 15px 0;
+                }
+                &:nth-child(3n) {
+                    margin-right: 0;
+                }
+            }
+            @include screen('mobile') {
+                width: 48%;
+                margin: 0 1% 15px 0;
+                &:nth-child(3n) {
+                    margin: 0 1% 15px 0;
+                }
+                &:nth-child(3n) {
+                    margin-right: 0;
+                }
+            }
+            @include screen('xs_mobile') {
+                width: 80%;
+                display: block;
+                float: none;
+                margin: 0 auto 15px;
+                &:nth-child(3n) {
+                    margin: 0 auto 15px;
+                }
+                &:nth-child(4n) {
+                    margin: 0 auto 15px;
+                }
+            }
+            ul {
+                width: 90%;
+                margin: 0 auto 30px;
+                min-height: 160px;
+                display: block;
+                li {
+                    display: block;
+                    width: 100%;
+                    float: none;
+                    padding: 0;
+                    margin-bottom: 5px;
+                    border: none;
+                    font-size: .813em;
+                    border-bottom: 1px dashed #DDD;
+                    position: relative;
+                    padding-left: 80px;
+                    a {
+                        margin-left: .5em;
+                    }
+                    span {
+                        width: 80px;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                    }
+                }
+            }
+            h3 {
+                margin: 0px 0px 15px;
+                position: relative;
+                display: block;
+                color: #000;
+                padding: .5em;
+                text-align: left;
+                height: 2.9em;
+                overflow: hidden;
+                line-height: 1.45em;
+                transition: .3s ease-out;
+                position: relative;
+                &:before {
+                    content: "";
+                    position: absolute;
+                    width: 100%;
+                    bottom: 0;
+                    height: 2px;
+                    left: 0;
+                    @include gradient(#2fcf14, #0494eb, horizontal);
+                }
+                img {
+                    position: absolute;
+                    top: 3px;
+                    right: 0;
+                    opacity: .3;
+                }
+                a {
+                    &:hover,
+                    &:focus {
+                        img {
+                            opacity: .8;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+%map_setting {
+    @include clearfix;
+    margin: 0px auto 1em;
+    position: relative;
+    @include border-radius(8px);
+    @include screen('mobile') {
+        display: none;
+    }
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        li {
+            a {
+                display: block;
+                text-indent: -9999px;
+                width: 120px;
+                height: 30px;
+                line-height: 30px;
+                position: absolute;
+                &:hover,
+                &:focus {
+                    background: RGBA(0, 0, 0, .1);
+                    @include border-radius(6px);
+                }
+            }
+        }
+    }
+}
+.asia_map {
+    @extend %map_setting;
+    background: url(../images/asia.png) no-repeat center center;
+    height: 518px;
+    width: 558px;
+    ul {
+        li {
+            a {
+                width: 80px;
+                &.tokyo {
+                    top: 105px;
+                    left: 452px;
+                }
+                &.seoul {
+                    top: 177px;
+                    left: 362px;
+                }
+                &.osaka {
+                    top: 167px;
+                    left: 435px;
+                }
+                &.newdwlhi {
+                    top: 267px;
+                    left: 57px;
+                }
+                &.hanoi {
+                    top: 232px;
+                    left: 233px;
+                }
+                &.hongkong {
+                    top: 245px;
+                    left: 355px;
+                }
+                &.macao {
+                    top: 278px;
+                    left: 317px;
+                }
+                &.yangon {
+                    top: 276px;
+                    left: 188px;
+                }
+                &.manila {
+                    top: 268px;
+                    left: 408px;
+                }
+                &.bangkok {
+                    top: 306px;
+                    left: 208px;
+                }
+                &.hochiminhcity {
+                    top: 338px;
+                    left: 338px;
+                }
+                &.kualalumpur {
+                    top: 350px;
+                    left: 213px;
+                    ;
+                }
+                &.singapore {
+                    top: 373px;
+                    left: 325px;
+                }
+                &.jakarta {
+                    top: 415px;
+                    left: 234px;
+                }
+            }
+        }
+    }
+}
+.america_map {
+    @extend %map_setting;
+    background: url(../images/america.png) no-repeat center center;
+    height: 524px;
+    width: 312px;
+    ul {
+        li {
+            a {
+                width: 80px;
+                &.vancouver {
+                    top: 62px;
+                    left: 0px;
+                }
+                &.toronto {
+                    top: 60px;
+                    left: 196px;
+                }
+                &.sanfrancisco {
+                    top: 110px;
+                    left: -10px;
+                }
+                &.newyork {
+                    top: 135px;
+                    left: 215px;
+                }
+                &.washington {
+                    top: 165px;
+                    left: 202px;
+                }
+                &.losangles {
+                    top: 180px;
+                    left: -4px;
+                }
+                &.miami {
+                    top: 198px;
+                    left: 195px;
+                }
+                &.asuncion {
+                    top: 380px;
+                    left: 127px;
+                }
+            }
+        }
+    }
+}
+.africa_map {
+    @extend %map_setting;
+    background: url(../images/africa.png) no-repeat center center;
+    height: 446px;
+    width: 352px;
+    ul {
+        li {
+            a {
+                width: 80px;
+                &.feijing {
+                    top: 383px;
+                    left: 263px;
+                }
+            }
+        }
+    }
+}
+.oceania_map {
+    @extend %map_setting;
+    background: url(../images/aceania.png) no-repeat center center;
+    height: 440px;
+    width: 490px;
+    ul {
+        li {
+            a {
+                width: 80px;
+                &.sydney {
+                    top: 298px;
+                    left: 250px;
+                }
+                &.auckland {
+                    top: 288px;
+                    left: 389px;
+                }
+            }
+        }
+    }
+}
+.europe_map {
+    @extend %map_setting;
+    background: url(../images/europe.png) no-repeat center center;
+    height: 340px;
+    width: 312px;
+    ul {
+        li {
+            a {
+                width: 80px;
+                &.london {
+                    top: 129px;
+                    left: 53px;
+                }
+                &.paris {
+                    top: 203px;
+                    left: -18px;
+                }
+                &.belgium {
+                    top: 136px;
+                    left: 200px;
+                    // background:#000;
+                    // outline:1px solid red;
+                }
+            }
+        }
+    }
+}
+.taiwan_map {
+    @extend %map_setting;
+    background: url(../images/taiwan_map.jpg) no-repeat center center;
+    height: 548px;
+    width: 654px;
+    ul {
+        li {
+            a {
+                &.lienchian {
+                    top: 105px;
+                    left: 0px;
+                }
+                &.kinmen {
+                    top: 265px;
+                    left: 0px;
+                }
+                &.penghu {
+                    top: 425px;
+                    left: 0px;
+                }
+                &.taipei {
+                    top: -8px;
+                    left: 400px;
+                }
+                &.taoyuan {
+                    top: 35px;
+                    left: 285px;
+                }
+                &.hsinchu_city {
+                    top: 75px;
+                    left: 260px;
+                }
+                &.miaoli {
+                    top: 110px;
+                    left: 235px;
+                }
+                &.taichung_1 {
+                    top: 150px;
+                    left: 192px;
+                    width: 140px;
+                }
+                &.taichung_2 {
+                    top: 190px;
+                    left: 170px;
+                    width: 140px;
+                }
+                &.changhwa {
+                    top: 232px;
+                    left: 165px;
+                }
+                &.chiayi_county {
+                    top: 276px;
+                    left: 151px;
+                }
+                &.tainan_2 {
+                    top: 323px;
+                    left: 135px;
+                    width: 140px;
+                }
+                &.tainan_1 {
+                    top: 365px;
+                    left: 135px;
+                    width: 140px;
+                }
+                &.kaoshiung_2 {
+                    top: 405px;
+                    left: 134px;
+                    width: 140px;
+                }
+                &.kaoshiung_1 {
+                    top: 442px;
+                    left: 134px;
+                    width: 140px;
+                }
+                &.keelung {
+                    top: 30px;
+                    left: 500px;
+                }
+                &.new_taipei {
+                    top: 82px;
+                    left: 550px;
+                }
+                &.hsinchu_county {
+                    top: 115px;
+                    left: 540px;
+                }
+                &.yilan {
+                    top: 155px;
+                    left: 540px;
+                }
+                &.hwualien {
+                    top: 205px;
+                    left: 520px;
+                }
+                &.nantou {
+                    top: 250px;
+                    left: 520px;
+                }
+                &.yunlin {
+                    top: 295px;
+                    left: 500px;
+                }
+                &.chiayi_city {
+                    top: 340px;
+                    left: 510px;
+                }
+                &.taitung {
+                    top: 389px;
+                    left: 480px;
+                }
+                &.pingtung {
+                    top: 438px;
+                    left: 451px;
+                }
+            }
+        }
+    }
+    @include screen('mobile') {
+        display: none;
+    }
+}
+.research {
+    margin: 1em auto;
+    @include clearfix;
+    td a {
+        text-align: center;
+        font-size: .813em;
+        color: $primaryColor;
+        img {
+            display: block;
+            margin: 0px auto 5px;
+            &+span {
+                white-space: nowrap;
+            }
+        }
+    }
+    time {
+        white-space: nowrap;
+    }
+}
+.item_choose {
+    text-align: right;
+    margin-top: -3em;
+    margin-bottom: .5em;
+    margin-left: auto;
+    position: relative;
+    width: 100%;
+    z-index: 0;
+    @include screen('tablet') {
+        margin-top: 0em;
+        text-align: left;
+        width: 100%;
+    }
+    label {
+        margin-right: 5px;
+        background: #DDD;
+        padding: .5em 30px .5em 10px;
+        @include border-radius(4px);
+        color: #333;
+        text-shadow: none;
+        &.active, &:focus, &:hover {
+            color: #FFF;
+            text-shadow: 1px 1px 2px #000;
+            background: darken($color-orange, 5);
+        }
+        input {
+            width: 16px;
+            height: 16px;
+            border: none;
+            box-shadow: none;
+            background: transparent;
+            border-radius: 0px;
+            &:checked {
+                background: url(../images/icon_checked.png) no-repeat center center;
+                background-size: cover;
+                border: none;
+                box-shadow: none !important;
+            }
+        }
+    }
+}
+%fuck_a {
+    // padding: .2em 0px .2em 65px;
+    padding: 0px;
+    position: relative;
+    height: auto;
+    line-height: 1.45em;
+    display: inline-block;
+    color: #666;
+    vertical-align: middle;
+    // text-indent: -99999px;
+    margin: 0px .5em;
+    min-width: 5em;
+    text-align: center;
+    // outline:1px solid red;
+    height: 24px;
+    @include text-overflow;
+    @include box-sizing;
+    margin-bottom: .1em;
+    border: 2px solid #999;
+    color: #666;
+    white-space: normal;
+    word-break: break-all;
+    &:hover,
+    &:focus {
+        border: 2px solid #666;
+        background: #666;
+        color: #FFF !important;
+    }
+}
+.table_list {
+    a {
+        // &[href$="doc"]:after {
+        //     background: url(../images/basic/icon_mia_word.jpg);
+        // }
+        // &[href$="docx"]:after {
+        //     background: url(../images/basic/icon_mia_word.jpg);
+        // }
+        // &[href$="odf"]:after {
+        //     background: url(../images/basic/icon_mia_odf.jpg);
+        // }
+        // &[href$="odt"]:after {
+        //     background: url(../images/basic/icon_mia_odt.jpg);
+        // }
+        // &[href$="ods"]:after {
+        //     background: url(../images/basic/icon_mia_ods.jpg);
+        // }
+        // &[href$="odp"]:after {
+        //     background: url(../images/basic/icon_mia_odp.jpg);
+        // }
+        // &[href$="pdf"]:after {
+        //     background: url(../images/basic/icon_mia_pdf.jpg);
+        // }
+        // &[href$="xls"]:after {
+        //     background: url(../images/basic/icon_mia_xls.jpg);
+        // }
+        // &[href$="ppt"]:after {
+        //     background: url(../images/basic/icon_mia_ppt.jpg);
+        // }
+        // &[href$="jpg"]:after {
+        //     background: url(../images/basic/icon_mia_jpg.jpg);
+        // }
+        // &[href$="mp3"]:after {
+        //     background: url(../images/basic/icon_mp3.jpg);
+        // }
+        // &[href$="mov"]:after {
+        //     background: url(../images/basic/icon_mov.jpg);
+        // }
+        // &[href$="txt"]:after {
+        //     background: url(../images/basic/icon_txt.jpg);
+        // }
+        // &[href$="dot"]:after {
+        //     background: url(../images/basic/icon_mia_word.jpg);
+        // }
+        // &[href$="zip"]:after {
+        //     background: url(../images/basic/icon_zip.jpg);
+        // }
+        &[href$="doc"],
+        &[href$="docx"],
+        &[href$="odt"] {
+            @extend %fuck_a;
+            background: #FFF;
+            @include border-radius(4px);
+            border: 2px solid #1d75d4;
+            color: #1d75d4;
+            &:hover,
+            &:focus {
+                background: #1d75d4;
+                border: 2px solid #1d75d4;
+                color: #FFF !important;
+            }
+        }
+        &[href$="pdf"] {
+            @extend %fuck_a;
+            background: #FFF;
+            @include border-radius(4px);
+            border: 2px solid red;
+            color: red;
+            &:hover,
+            &:focus {
+                background: red;
+                border: 2px solid red;
+                color: #FFF !important;
+            }
+        }
+        &[href$="xls"],
+        &[href$="csv"],
+        &[href$="ods"],
+        &[href$="xlsx"] {
+            @extend %fuck_a;
+            background: #FFF;
+            @include border-radius(4px);
+            border: 2px solid #61bc1e;
+            color: #61bc1e;
+            &:hover,
+            &:focus {
+                background: #61bc1e;
+                border: 2px solid #61bc1e;
+                color: #FFF !important;
+            }
+        }
+        &[href$="ppt"],
+        &[href$="odp"],
+        &[href$="pptx"] {
+            @extend %fuck_a;
+            background: #FFF;
+            @include border-radius(4px);
+            border: 2px solid #db4526;
+            color: #db4526;
+            &:hover,
+            &:focus {
+                background: #db4526;
+                border: 2px solid #db4526;
+                color: #FFF !important;
+            }
+        }
+    }
+}

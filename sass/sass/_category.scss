@@ -1,0 +1,37 @@
+.category {
+    text-align: left;
+    @include box-sizing;
+    margin: 2em auto;
+    ul {
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+        li {
+            margin: 0px 3px 3px 0px;
+            display: block;
+            float: left;
+        }
+    }
+    a {
+        background-color: rgb(247, 247, 247); // Old browsers
+        @include filter-gradient(#f7f7f7, #eaeaea, vertical); // IE6-9
+        @include background-image(linear-gradient(top, rgba(247, 247, 247, 1) 0%, rgba(234, 234, 234, 1) 100%));
+        border: #ccc solid 1px;
+        padding: .4em 1em;
+        display: block;
+        color: #444;
+        @include box-sizing();
+        @include border-radius(4px);
+        &:hover,
+        &:focus {
+            box-shadow: none;
+            background: $color-orange;
+            color: #FFF;
+        }
+        &.active {
+            border:1px solid $color-orange;
+            background: $color-orange;
+            color: #FFF;
+        }
+    }
+}

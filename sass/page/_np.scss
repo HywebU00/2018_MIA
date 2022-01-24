@@ -1,0 +1,261 @@
+// 自動產生編號：https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Lists_and_Counters/Using_CSS_counters
+.np {
+    ul,
+    ol {
+        overflow: hidden;
+        padding: 1em 0;
+        margin: 0;
+        overflow: hidden;
+    }
+    li {
+        display: block;
+        width: 49%;
+        margin: 0 1% 10px 0;
+        float: left;
+        @include box-sizing(border-box);
+        &:nth-child(even) {
+            width: 50%;
+            margin-right: 0px;
+        }
+        @include screen('mobile') {
+            float: none;
+            width: 96%;
+            margin: 0px auto 10px;
+            &:nth-child(even) {
+                width: 96%;
+                margin-right: auto;
+            }
+        }
+        a {
+            @include border-radius(4px);
+            border: 2px solid #DDD;
+            padding: 1em 1em 1em 2em;
+            display: block;
+            vertical-align: top;
+            @include text-overflow;
+            position: relative;
+            word-break: break-all;
+
+            .num {
+                position: absolute;
+                width: 1em;
+                top: 1em;
+                left: .5em;
+                text-align: right;
+                &:after {
+                    content: ".";
+                    display: inline-block;
+                }
+            }
+            &:hover,
+            &:focus {
+                border: 2px solid $primaryColor;
+            }
+        }
+    }
+}
+
+.np_pic {
+    ul,
+    ol {
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+    }
+    li {
+        width: 32%;
+        display: block;
+        float: left;
+        @include box-sizing;
+        padding: 1em;
+        border: 1px solid #ddd;
+        margin: 0 2% 20px 0;
+        &:nth-child(3n) {
+            width: 32%;
+            margin-right: 0;
+        }
+        @include screen('mobile') {
+            width: 80%;
+            float: none;
+            margin: 0px auto 20px;
+            &:nth-child(3n) {
+                width: 80%;
+                margin: 0px auto 20px;
+            }
+        }
+        h3 {
+            margin: .5em;
+            line-height: 1.45em;
+            height: 2.7em;
+            display: block;
+            overflow: hidden;
+        }
+        .img-container {
+            @include aspect-ratio(4, 3); //設定比例ex:4:3 or 16:9
+            height: auto;
+            overflow: hidden;
+            background: #E2E2E2;
+            img {
+                position: absolute;
+            }
+        }
+        img {
+            transition: .3s ease-out;
+        }
+        a:hover,
+        a:focus {
+            .img-container {
+                outline: none;
+                box-shadow: 0 0px 0px 1px $primaryColor inset;
+                img {
+                    transform: scale(1.2);
+                }
+            }
+        }
+    }
+}
+
+.np_book {
+    .head {
+        p {
+            line-height: 1.75em;
+            font-size: .938em;
+        }
+        @include screen('mobile') {
+            a.btn {
+                display: block;
+                margin: 0px auto 15px;
+            }
+        }
+        img.float_left {
+            max-width: 300px;
+            height: auto;
+            float: left;
+            display: block;
+            margin: 0px 15px 15px 0;
+            @include screen('mobile') {
+                float: none;
+                margin: 0px auto 15px;
+            }
+        }
+    }
+    .info {
+        font-size: 0.938em;
+        line-height: 1.5em;
+        list-style: none;
+        margin: 0 0 1em 0; // border-left: solid 5px $secondaryColor;
+        @include box-sizing;
+        padding: 0.6em 1em 0.4em;
+        background: #F2F2F2;
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        li {
+            width: 24%;
+            margin-bottom: .2em;
+            display: inline-block;
+            vertical-align: top;
+            @include screen('tablet') {
+                width: 48%;
+                margin-bottom: .2em;
+                font-size: 0.875em;
+            }
+            @include screen('mobile') {
+                width: 100%;
+                display: block;
+            }
+        }
+    }
+    ul.topic {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        @include clearfix;
+        li {
+            display: inline-block;
+            width: 24%;
+            min-height: 200px;
+            vertical-align: top;
+            padding: 0 1em;
+            margin-bottom: 30px;
+            border-right: 1px dotted #BBB;
+            &:nth-child(4n) {
+                border-right: none;
+            }
+            @include screen('tablet') {
+                width: 32%;
+                &:nth-child(4n) {
+                    border-right: 1px dotted #BBB;
+                }
+                &:nth-child(3n) {
+                    border-right: none;
+                }
+            }
+            @include screen('mobile') {
+                width: 100%;
+                display: block;
+                margin: 0px auto 30px !important;
+                border-right: none;
+                min-height: auto;
+                border-bottom: 1px dotted #BBB;
+                &:nth-child(3n) {
+                    border-right: none;
+                }
+                &:nth-child(2n) {
+                    border-right: none;
+                }
+            }
+
+            @include box-sizing;
+            a {
+                display: block;
+                padding: 0px 1em;
+                &:hover,
+                &:focus {
+                    h3 {
+                        color: $color-orange;
+                    }
+                }
+            }
+            p {
+                font-size: .938em;
+                height: 14em;
+                line-height: 1.45em;
+                display: block;
+                overflow: hidden;
+                color: #666;
+                @include screen('mobile') {
+                    height: auto;
+                    overflow: visible;
+                    padding-bottom: 2em;
+                }
+
+            }
+            h3 {
+                margin-top: 0;
+                padding: 0;
+                margin-bottom: .2em;
+                height: 2.9em;
+                display: block;
+                overflow: hidden;
+                line-height: 1.45em;
+                text-align: center;
+                color: #000;
+            }
+            .bookOuter {
+                @include aspect-ratio(4, 3);
+                margin-bottom: 10px;
+                img {
+                    width: auto;
+                    height: auto;
+                    max-width: 100%;
+                    max-height: 100%;
+                    text-align: center;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+}

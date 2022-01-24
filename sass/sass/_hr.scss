@@ -1,0 +1,37 @@
+// $hrColor from _variable.scss
+$hrColor:$color-default;
+%hr_setting{
+    margin: 1em 0px;
+    display:block;
+    border:none;
+    clear:both;
+}
+hr{
+    border-top: 1px solid $hrColor;
+    @extend %hr_setting;
+    &.hr1 {
+        border-top: 3px double $hrColor;
+    }
+    &.hr2 {
+        border-top: 1px dashed $hrColor;
+    }
+    &.hr3 {
+        border-top: 1px dotted $hrColor;
+    }
+    &.hr4 {
+        background-color: #fff;
+        border-top: 2px dashed $hrColor;
+    }
+    &.hr5 {
+        background-color: #fff;
+        border-top: 2px dotted $hrColor;
+    }
+    &.hr6 {
+        border-top: 1px solid $hrColor;
+        border-bottom: 1px solid #fff;
+    }
+    &.hr7 {
+        border-top: 1px solid $hrColor;
+        border-bottom: 1px solid #fff;
+    }
+}

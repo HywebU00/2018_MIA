@@ -1,0 +1,36 @@
+.breadcrumb {
+    background: none;
+    border-bottom: 1px solid #EEE;
+    padding: .1em 0em .1em;
+    font-size: .813em;
+    margin: 0px auto 5px;
+    ul {
+        padding: 0;
+        margin: 0;
+        li {
+            display: inline-block;
+            margin: 0px .1em .1em 0px;
+            position: relative;
+            &:before {
+                @extend %slash;
+            }
+            &:first-child{
+                padding-left: 12px;
+            }
+            &:first-child:before {
+                content: "";
+                position: absolute;
+                width: 0;
+                height: 0;
+                left: -5px;
+                top:7px;
+                border-style: solid;
+                border-width: 4px 0 4px 6px;
+                border-color: transparent transparent transparent #888;
+            }
+        }
+    }
+    a {
+        @include aSetting();
+    }
+}

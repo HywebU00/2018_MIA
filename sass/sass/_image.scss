@@ -1,0 +1,122 @@
+img {
+    &.img_rounded {
+        //導角，可自訂
+        @include border-radius($rounded-angle);
+    }
+    &.img_circle {
+        //圓形
+        @include border-radius(50%);
+    }
+}
+
+.pic_list {
+    @include make_img_outer(); //設定overflow-hidden，非必要
+    .imgOuter {
+        @include make_img_col(3, 2); //pc 3欄，mobile 2欄
+        @include aspect-ratio(4, 3); //設定比例ex:4:3 or 16:9
+    }
+}
+
+.single_setting {
+    .thumbnail {
+        @include make_img_col(3, 1);
+        text-align: center;
+    }
+    .thumbnail:nth-child(1) .imgOuter {
+        @include aspect-ratio(1, 1);
+    }
+    .thumbnail:nth-child(2) .imgOuter {
+        @include aspect-ratio(4, 3);
+    }
+    .thumbnail:nth-child(3) .imgOuter {
+        @include aspect-ratio(16, 9);
+    }
+}
+
+// 設定img 在IE9+ SAFARI FIREFOX CHROME 可以object-fit
+
+/*for IE */
+
+.img-container {
+    // height: 400px;
+    width: 100%;
+    position: relative; // @include aspect-ratio(10, 3);
+    @include screen('mobile') {
+        height: 280px;
+        width: 100%;
+    }
+    a{
+        display: block;
+        height: 100%;
+        width: 100%;
+        position: relative;
+        .caption{
+            position: absolute;
+            width: 100%;
+            height: 3em;
+            background: rgba(0, 0, 0, .45);
+            padding: 1em .5em .5em;
+            font-size: 1.125em;
+            color: #FFF;
+            margin: 0;
+            text-align: center; // left:35px;
+            bottom:0;
+            @include text-overflow;
+            @include box-sizing;
+            @include screen('mobile') {
+                height: 5em;
+                width: 100%;
+                left: 0;
+                padding: 1em 1em;
+                text-align: center;
+            }
+        }
+    }
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/*for IE */
+.ie-object-cover {
+  position: relative;
+  background-size: cover;
+  background-position: center center;
+}
+.ie-object-fill {
+  position: relative;
+  background-size: auto;
+  background-position: center center;
+}
+.ie-object-contain {
+  position: relative;
+  background-size: contain;
+  background-position: center center;
+}
+/* 圖檔變成透明 */
+.ie-object-cover,
+.ie-object-fill,
+.ie-object-contain{
+  background-repeat:no-repeat;
+}
+.ie-object-cover img,
+.ie-object-fill img,
+.ie-object-contain img {
+  opacity: 0;
+  width:0px;
+  height:0px;
+}
+
+.fill {
+  object-fit: fill;
+}
+.contain {
+  object-fit: contain;
+}
+.cover {
+  object-fit: cover;
+}
+.none {
+  object-fit: none;
+}

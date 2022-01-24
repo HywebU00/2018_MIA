@@ -1,0 +1,437 @@
+body {
+    -webkit-text-size-adjust: none;
+}
+* {
+    -webkit-overflow-scrolling: touch;
+}
+br {
+    font-family: unset !important;
+    font: unset !important;
+}
+a:focus {
+    // box-shadow:0px 0px 2px 0px $color-orange inset;
+    // outline:2px solid $color-orange;
+    // outline: 1px solid $primaryColor;
+    outline: none;
+    box-shadow: 0 0px 0px 1px $color-orange inset;
+}
+.lp,
+.cp,
+.np,
+.sp {
+    h3 {
+        color: $color-orange;
+        &.subtitle {
+            padding: .5em 1em;
+            background: $color-green;
+            color: #FFF;
+            // max-width:15em;
+        }
+    }
+}
+// 導盲磚
+.accesskey {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    z-index: 9;
+    color: #CCC;
+    font-size: $font-size;
+    @include screen("mobile") {
+        display: none;
+    }
+}
+// more按鈕
+a.more {
+    display: block;
+    width: 10em;
+    text-align: center;
+    height: 2.5em;
+    margin: .5em auto .5em;
+    line-height: 2.5;
+    color: #555;
+    border: 1px solid #AAA;
+    text-align: center;
+    overflow: hidden;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px transparent;
+    position: relative;
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    &:after {
+        content: "";
+        width: 12px;
+        height: 12px;
+        border: 2px solid #FFF;
+        transform: rotate(45deg);
+        position: absolute;
+        right: -10px;
+        top: 14px;
+        border-left: none;
+        border-bottom: none;
+        transition: .3s ease-out;
+    }
+    &:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: $color-orange;
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        -webkit-transform-origin: 0 50%;
+        transform-origin: 0 50%;
+        -webkit-transition-property: transform;
+        transition-property: transform;
+        -webkit-transition-duration: 0.3s;
+        transition-duration: 0.3s;
+        -webkit-transition-timing-function: ease-out;
+        transition-timing-function: ease-out;
+    }
+    &:hover,
+    &:focus,
+    &.active {
+        color: white;
+        border: 1px solid $color-orange;
+        &:before {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+        &:after {
+            right: 15px;
+        }
+    }
+}
+// scrollTop
+.scrollToTop {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: url(../images/basic/top.png) no-repeat center top rgba(0, 0, 0, 0.4);
+    text-align: center;
+    color: #FFF;
+    line-height: 50px;
+    text-decoration: none;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    transition: .3s ease-out;
+    display: none;
+    z-index: 99999999;
+    text-indent: -999999px;
+    &:hover {
+        background: url(../images/basic/top.png) no-repeat center top rgba(0, 0, 0, 0.8);
+    }
+    &:focus {
+        background: url(../images/basic/top.png) no-repeat center top $color-orange;
+    }
+}
+// img
+img.img-responsive {
+    @include img-responsive();
+}
+.necessary {
+    color: red;
+    margin: 0px .2em;
+}
+.tooltip {
+    text-align: center;
+    padding: 40px 0;
+    span {
+        display: inline-block;
+        background: #DEDEDE;
+        text-align: center;
+        padding: 10px;
+        width: 100px;
+        height: 20px;
+        line-height: 20px;
+        vertical-align: baseline;
+    }
+    p>em {
+        color: red;
+    }
+}
+.hr_block {
+    text-align: left;
+    span {
+        font-size: .75em;
+    }
+    hr {
+        margin: 10px 0 !important;
+        ;
+    }
+}
+/*檔案下載*/
+.file_download {
+    width: 100%;
+    margin: 0 auto;
+    @include clearfix();
+    h3 {
+        font-size: 1.5em;
+        padding: 12px 0px 15px 0px;
+        margin: 0.5em 0px 0.2em;
+        border-bottom: 1px solid $primaryColor;
+    }
+    ul {
+        counter-reset: counter;
+        list-style-type: none;
+        padding: 0;
+        margin-left: 1em;
+        @media screen and (max-width: 767px) {
+            margin-left: 0;
+        }
+    }
+    li {
+        position: relative;
+        margin-bottom: 10px;
+        padding-left: 1em;
+        border-bottom: 1px solid #EEE;
+        clear: both;
+        overflow: hidden;
+        padding-bottom: 1em;
+        &:before {
+            position: absolute; // outline: 1px solid red;
+            top: 12px;
+            left: 0px;
+            text-align: right;
+            width: 30px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: $color-orange;
+            content: "";
+            // counter-increment: counter;
+            // content: counters(counter, ".") " . ";
+            // display:none;
+        }
+        .update,
+        .file_view {
+            font-size: .813em;
+            color: #AAA;
+            width: 120px;
+            padding-left: 35px;
+            float: none;
+            margin-top: 5px;
+            @media screen and (max-width: 767px) {
+                display: inline-block;
+                float: none;
+                width: auto;
+                margin-top: 0;
+            }
+            @include screen('xs_mobile') {
+                display: none;
+            }
+        }
+        .update {
+            width: 150px;
+            @media screen and (max-width: 767px) {
+                margin-left: 5px;
+            }
+        }
+        a {
+            // padding: .2em 0px .2em 65px;
+            padding: 0px;
+            position: relative;
+            height: auto;
+            line-height: 20px;
+            display: inline-block;
+            color: #666;
+            vertical-align: middle;
+            // text-indent: -99999px;
+            margin: 0px .5em;
+            min-width: 5em;
+            text-align: center;
+            // outline:1px solid red;
+            height: 24px;
+            @include text-overflow;
+            @include box-sizing;
+            margin-bottom: .1em;
+            border: 2px solid #999;
+            color: #555;
+            @include screen('mobile') {
+                display: block;
+                max-width: 100px;
+                margin: 0px auto .5em 0px;
+            }
+            &:hover,
+            &:focus {
+                border: 2px solid #666;
+                background: #666;
+                color: #FFF !important;
+            }
+            // @media screen and (max-width: 767px) {
+            //     margin-right: 0px; // display: block;
+            //     width: 85%;
+            // }
+            .kb {
+                font-size: .75em;
+                color: #666;
+                display: inline-block;
+                margin: 0px .5em;
+            }
+            &:after {
+                content: "";
+                background: url(../images/basic/icon_folder.png);
+                width: 21px;
+                height: 24px;
+                position: absolute;
+                top: 0px;
+                left: 0;
+                text-align: right;
+                display: none;
+            }
+            // &[href$="doc"]:after {
+            //     background: url(../images/basic/icon_mia_word.jpg);
+            // }
+            // &[href$="docx"]:after {
+            //     background: url(../images/basic/icon_mia_word.jpg);
+            // }
+            // &[href$="odf"]:after {
+            //     background: url(../images/basic/icon_mia_odf.jpg);
+            // }
+            // &[href$="odt"]:after {
+            //     background: url(../images/basic/icon_mia_odt.jpg);
+            // }
+            // &[href$="ods"]:after {
+            //     background: url(../images/basic/icon_mia_ods.jpg);
+            // }
+            // &[href$="odp"]:after {
+            //     background: url(../images/basic/icon_mia_odp.jpg);
+            // }
+            // &[href$="pdf"]:after {
+            //     background: url(../images/basic/icon_mia_pdf.jpg);
+            // }
+            // &[href$="xls"]:after {
+            //     background: url(../images/basic/icon_mia_xls.jpg);
+            // }
+            // &[href$="ppt"]:after {
+            //     background: url(../images/basic/icon_mia_ppt.jpg);
+            // }
+            // &[href$="jpg"]:after {
+            //     background: url(../images/basic/icon_mia_jpg.jpg);
+            // }
+            // &[href$="mp3"]:after {
+            //     background: url(../images/basic/icon_mp3.jpg);
+            // }
+            // &[href$="mov"]:after {
+            //     background: url(../images/basic/icon_mov.jpg);
+            // }
+            // &[href$="txt"]:after {
+            //     background: url(../images/basic/icon_txt.jpg);
+            // }
+            // &[href$="dot"]:after {
+            //     background: url(../images/basic/icon_mia_word.jpg);
+            // }
+            // &[href$="zip"]:after {
+            //     background: url(../images/basic/icon_zip.jpg);
+            // }
+            &[href$="doc"],
+            &[href$="docx"],
+            &[href$="odt"] {
+                background: #FFF;
+                @include border-radius(4px);
+                border: 2px solid #1d75d4;
+                color: #1d75d4;
+                padding-bottom: .3em;
+                &:hover,
+                &:focus {
+                    background: #1d75d4;
+                    color: #FFF !important;
+                }
+            }
+            &[href$="pdf"] {
+                background: #FFF;
+                @include border-radius(4px);
+                border: 2px solid red;
+                color: red;
+                &:hover,
+                &:focus {
+                    background: red;
+                    color: #FFF !important;
+                }
+            }
+            &[href$="xls"],
+            &[href$="csv"],
+            &[href$="ods"],
+            &[href$="xlsx"] {
+                background: #FFF;
+                @include border-radius(4px);
+                border: 2px solid #61bc1e;
+                color: #61bc1e;
+                &:hover,
+                &:focus {
+                    background: #61bc1e;
+                    color: #FFF !important;
+                }
+            }
+            &[href$="ppt"],
+            &[href$="odp"],
+            &[href$="pptx"] {
+                background: #FFF;
+                @include border-radius(4px);
+                border: 2px solid #db4526;
+                color: #db4526;
+                &:hover,
+                &:focus {
+                    background: #db4526;
+                    color: #FFF !important;
+                }
+            }
+        }
+    }
+}
+// 外部連結
+.web_link {
+    width: 100%;
+    margin: 0 auto;
+    @include clearfix();
+    h3 {
+        font-size: 1.5em;
+        padding: 12px 0px 15px 0px;
+        margin: 0.5em 0px 0.2em;
+        border-bottom: 1px solid $primaryColor;
+    }
+    ol,
+    ul {
+        counter-reset: counter;
+        list-style-type: none;
+        padding: 0;
+        margin-left: 1em;
+        @media screen and (max-width: 767px) {
+            margin-left: 0;
+        }
+    }
+    li {
+        position: relative;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #EEE;
+        a {
+            padding: .2em 0px .2em 35px;
+            position: relative;
+            height: auto;
+            line-height: 1.45em;
+            display: block;
+            color: #555 !important;
+            &:hover,
+            &:focus {
+                color: $primaryColor;
+            }
+            &:before {
+                position: absolute; // outline: 1px solid red;
+                top: 5px;
+                left: 0px;
+                text-align: right;
+                width: 30px;
+                counter-increment: counter;
+                content: counters(counter, ".") " . ";
+            }
+        }
+    }
+}

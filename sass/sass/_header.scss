@@ -1,0 +1,400 @@
+//header
+.header {
+    position: relative;
+    z-index: 9999;
+    @include screen('mobile') {
+        @include clearfix;
+        position: fixed;
+        width: 100%;
+        background: #FFF;
+        @include box-shadow(0px 2px 5px RGBA(0, 0, 0, .3)); // 虛擬底色 - navigation
+    }
+    &:before {
+        content: "";
+        width: 100%;
+        height: 5px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        @include gradient(#2fcf14, #0494eb, horizontal);
+        @include screen('mobile') {
+            display: none;
+        }
+    }
+    // mobile btn
+    %mobileCtrlBtn {
+        width: 55px !important;
+        height: 55px !important;
+        position: absolute;
+        top: 0px;
+        display: block;
+        font-size: 0em;
+        padding: 15px;
+        margin: 0;
+        min-width: auto;
+        min-height: auto;
+        background: transparent;
+        border: none;
+        @include box-sizing;
+        @include screen('mobile') {
+            display: block !important;
+        }
+    }
+    >.container {
+        max-width: $container-max;
+        overflow: visible;
+        position: relative; // menu
+        @include gutter(30px);
+        .sidebarCtrl {
+            display: none;
+            left: 0px;
+            @extend %mobileCtrlBtn;
+            span {
+                background: $primaryColor;
+                width: 100%;
+                height: 3px;
+                margin: 5px 0 5px;
+                display: block;
+                &+span {
+                    margin: 2px 0 5px;
+                }
+            }
+        }
+        // search
+        .searchCtrl {
+            display: none;
+            right: 0px;
+            font-size: 0em;
+            @extend %mobileCtrlBtn;
+            &:before {
+                width: 40px;
+                height: 40px;
+                background: url(../images/basic/icon_search.png) no-repeat center center;
+                background-size: 26px;
+                opacity: .6;
+                content: "";
+                position: absolute;
+                top: 8px;
+                left: 10px;
+                display: block;
+            }
+        }
+    }
+    h1 {
+        float: left;
+        width: 400px;
+        height: 100px;
+        margin: 0;
+        padding: 0;
+        @include box-sizing;
+        a {
+            display: inline-block;
+        }
+        img {
+            display: block;
+            max-width: 400px;
+            max-height: 100px;
+        }
+        @include screen('tablet') {
+            width: 300px;
+            height: 75px;
+            img {
+                max-width: 300px;
+                max-height: 75px;
+            }
+        }
+        @include screen('mobile') {
+            padding: 2px 60px 5px;
+            width: 100%;
+            text-align: center;
+            height: 55px;
+            background: url(../images/m_logo.png) no-repeat center center;
+            background-size: contain;
+            img {
+                width: auto;
+                height: auto;
+                max-height: 54px;
+                opacity: 0;
+                margin: 0px auto;
+                transform: scale(.8);
+            }
+        }
+    }
+    // 導覽列
+    .navigation {
+        @include clearfix;
+        overflow: hidden;
+        width: 100%;
+        margin-bottom: .5em;
+        @include screen('mobile') {
+            display: none;
+        }
+        ul {
+            float: right;
+            padding: 0;
+            margin: 0;
+            font-size: .938em;
+            list-style: none;
+            &.left_nav {
+                float: left;
+                margin-left: 2em;
+            }
+        }
+        li {
+            float: left;
+            margin: 0 .2em;
+            a {
+                display: inline-block;
+                padding: .5em .1em;
+                font-size: .938em;
+                text-decoration: none;
+                &:after {
+                    content: "";
+                    width: 1px;
+                    height: 15px;
+                    display: inline-block;
+                    border-left: 1px solid #DDD;
+                    -webkit-transform: rotate(20deg);
+                    transform: rotate(20deg);
+                    margin-left: 10px;
+                    top: 2px;
+                    position: relative;
+                    @include screen('tablet') {
+                        margin-left: 10px;
+                    }
+                }
+                @include screen('tablet') {
+                    font-size: .813em;
+                    padding: .5em .2em;
+                }
+            }
+        }
+    }
+    //search
+}
+//search
+.search {
+    width: 30%;
+    @include screen('tablet') {
+        width: 40%;
+    }
+    // max-width: 50%;
+    float: right;
+    vertical-align: middle;
+    padding: 0em .3em 0em;
+    @include box-sizing;
+    @include screen('mobile') {
+        display: none;
+    }
+    label {
+        font-size: 0em;
+    }
+    .s_form_grp {
+        margin-bottom: 0;
+        // width:75%;
+        float: left;
+        position: relative;
+        padding: 0;
+        display: block;
+        margin-right: 0 !important;
+        input {
+            padding: .3em 35px .3em .5em;
+            box-shadow: none;
+            width: 100%;
+            &[type="submit"] {
+                font-size: 0em;
+                width: 30px !important;
+                height: 30px;
+                // max-width:none;
+                // min-width:none;
+                background: url(../images/basic/icon_search.png) no-repeat center center;
+                background-size: 20px;
+                border: none;
+                display: inline-block;
+                margin-left: -40px !important;
+                margin-top: 1px !important;
+                opacity: .5;
+                min-width: 0em !important;
+                @include box-sizing;
+                position:absolute;
+                &:hover,
+                &:focus {
+                    opacity: 1;
+                    box-shadow: none !important;
+                }
+                &:focus {
+                    outline: 2px solid $form-focus;
+                }
+            }
+        }
+    }
+    .s_btn_grp {
+        padding: .2em;
+        margin-bottom: 0;
+        display: block;
+        overflow: hidden;
+        input,
+        input[type="submit"] {
+            margin: 0;
+            padding: .3em 1em .3em !important;
+            font-size: .813em;
+            color: #000;
+            background:$form-focus;
+            border:1px solid $form-focus;
+            &:hover,
+            &:focus {
+                background: lighten($color-orange, 10);
+                box-shadow: none;
+                outline: none;
+            }
+        }
+    }
+    .keywordHot {
+        display: block;
+        vertical-align: middle;
+        margin-left: .5em;
+        padding: .1em 0 .3em;
+        width: 100%;
+        @include clearfix;
+        &:before {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        ul {
+            display: inline-block;
+            font-size: .813em;
+            line-height: 1.65em;
+            margin: 0;
+            padding: 0;
+            &:before {
+                display: inline-block;
+                content: "";
+                color: #999;
+                float: left;
+            }
+            li {
+                margin: 0 .6em 0 0;
+                padding: 0;
+                display: inline-block;
+            }
+            a {
+                @include aSetting_nocolor;
+            }
+        }
+    }
+    // m_search
+    &.m_search {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: auto;
+        padding: .2em .3em .5em;
+        display: block;
+        height: auto;
+        position: fixed;
+        top: 55px;
+        left: 0;
+        z-index: 98;
+        background: #333;
+        label {
+            font-size: 0em;
+            line-height: 0;
+        }
+        .s_form_grp {
+            width: 65%;
+            height: auto;
+            padding: 0 0 0 5% !important;
+            margin-top: -22px;
+            text-align: right;
+            float: left;
+            height: 50px;
+            position: relative;
+            @include box-sizing();
+            input {
+                width: 100%;
+                margin: -0.2em 0 0;
+                padding: .5em 45px .4em .5em;
+                &[type="submit"] {
+                    font-size: 0em;
+                    width: 36px !important;
+                    height: 36px;
+                    padding: 0;
+                    // max-width:none;
+                    // min-width:none;
+                    background: url(../images/basic/icon_search.png) no-repeat center center;
+                    background-size: 24px;
+                    border: none;
+                    display: inline-block;
+                    // margin-left: -50px !important;
+                    position: absolute;
+                    right: 5px;
+                    top: 20px;
+                    opacity: .8;
+                    // outline:1px solid red;
+                    &:hover,
+                    &:focus {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+        .s_btn_grp {
+            display: block;
+            padding: 0 .2em;
+            margin-bottom: 0;
+            width: 30%;
+            text-align: center;
+            margin-top: 20px;
+            padding-left: 5%;
+            overflow: hidden;
+            @include box-sizing();
+            input {
+                width: 100% !important;
+                padding: .6em .5em !important;
+                margin: 0;
+            }
+        }
+        .keywordHot {
+            padding-left: 5%;
+            margin-top: 10px;
+            display: block;
+            @include clearfix;
+            a {
+                color: #FFF;
+                &:hover,
+                &:focus {
+                    color: $primaryColor;
+                }
+            }
+        }
+    }
+}
+// header fix
+.header.fixed {
+    position: fixed;
+    width: 100%;
+    right: 0;
+    top: 0;
+    box-shadow: rgba(0, 0, 0, .5) 0 0 25px;
+    background: rgba(0, 0, 0, .75);
+    z-index: 99999999;
+    @include screen('mobile') {
+        background: #FFF;
+    }
+    .menu {
+        >ul {
+            >li {
+                >a {
+                    color: #FFF;
+                }
+                &:hover,
+                &:focus {
+                    // color: $lightColor;
+                    >a {
+                        color: $color-orange;
+                    }
+                }
+            }
+        }
+    }
+}

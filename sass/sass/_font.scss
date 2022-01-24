@@ -1,0 +1,37 @@
+@import "compass";
+@mixin fontSetting($FONT-SIZE:$font-size, $WEIGHT:normal) {
+    font-size: $FONT-SIZE;
+    font-weight: $WEIGHT;
+    color: $color-word;
+}
+
+@mixin aSetting($COLOR:$aColor, $NOLINE:none) {
+    color: $COLOR;
+    text-decoration: $NOLINE;
+    &:hover,
+    &:focus {
+        color: $aHover;
+        cursor: pointer;
+    }
+}
+@mixin aSetting_nocolor($COLOR:$color-word, $NOLINE:none) {
+    color: $COLOR;
+    text-decoration: $NOLINE;
+    &:hover,
+    &:focus {
+        color: $aHover;
+        cursor: pointer;
+    }
+}
+body {
+    @include fontSetting(1em);
+    line-height: 1.45em;
+    -webkit-text-size-adjust: none;
+    color: #333;
+    @media print {
+        font-size: .75em;
+    }
+}
+a {
+    @include aSetting();
+}

@@ -1,0 +1,25 @@
+.qp {
+    margin: 0em auto 1em;
+    @include box-sizing;
+    padding: .5em;
+    @include screen('mobile') {
+        padding: 1em 0;
+    }
+}
+
+.hire {
+    h3 {
+        display: block;
+        background: $color-yellow;
+        @include border-radius(6px);
+        padding: .5em;
+        small {
+            margin: 0px 15px;
+            @include screen('mobile') {
+                display: block;
+            }
+        }
+    } // input+p{
+    // 	display:inline-block;
+    // }
+}

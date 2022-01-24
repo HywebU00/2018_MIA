@@ -1,0 +1,62 @@
+$function_color:#555;
+//可自訂顏色，或是自帶既有變數，但請注意背景色與字的對比度
+//範例：$function_color:#000;
+//icon基本設定
+%function_before {
+    vertical-align: middle;
+    content: "";
+    width: 1.2em;
+    height: 1.2em;
+    margin-right: .2em;
+    display: inline-block;
+}
+.function {
+    margin: 0px;
+    overflow: hidden;
+    @include box-sizing();
+    ul {
+        padding: 0;
+        margin: 0;
+        li {
+            list-style: none;
+            display:inline-block;
+            margin:0 3px 3px 0;
+            button,
+            a {
+                font-size: .813em;
+                display: block;
+                padding: .2em 1em;
+                background: $function_color;
+                border-color: $function_color;
+                color:#FFF;
+                @include border-radius(4px);
+                &:hover,
+                &:focus {
+                    background: darken($function_color, 10);
+                    border-color: darken($function_color, 10);
+                }
+            } // 回上一頁
+            &.icon_back {
+                a:before {
+                    @extend %function_before;
+                    background: url(../images/basic/icon_back.svg) no-repeat center center;
+                    background-size: cover;
+                }
+            } // 友善列印
+            &.icon_print {
+                a:before {
+                    @extend %function_before;
+                    background: url(../images/basic/icon_print.svg) no-repeat center center;
+                    background-size: cover;
+                }
+            } // 轉寄友人
+            &.icon_forward {
+                a:before {
+                    @extend %function_before;
+                    background: url(../images/basic/icon_forward.svg) no-repeat center center;
+                    background-size: cover;
+                }
+            }
+        }
+    }
+}
