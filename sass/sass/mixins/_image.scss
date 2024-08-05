@@ -6,56 +6,55 @@
 }
 //https://css-tricks.com/snippets/sass/maintain-aspect-ratio-mixin/
 @mixin aspect-ratio($width, $height) {
-    position: relative;
-    overflow: hidden;
-    background: #DEDEDE;
-    &:before {
-        display: block;
-        content: "";
-        padding-top: ($height / $width) * 100%;
-    }
-    img {
-        display: block;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        margin: auto;
-    }
+  position: relative;
+  overflow: hidden;
+  background: #dedede;
+  &:before {
+    display: block;
+    content: '';
+    padding-top: calc(($height / $width) * 100%);
+  }
+  img {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+  }
 }
 // 圖片列表mixin
 @mixin make_img_outer() {
-    text-align: left;
-    overflow: hidden;
+  text-align: left;
+  overflow: hidden;
 }
-@mixin make_img_col($pic_length,$m_pic_length) {
+@mixin make_img_col($pic_length, $m_pic_length) {
+  $outer_W: 100%;
+  $pic_col: $pic_length;
+  $pic_Margin: 1%;
+  $pic_W: calc(($outer_W/$pic_col) - ($pic_Margin * 2));
+  position: relative;
+  margin: $pic_Margin;
+  display: block;
+  padding: 0;
+  float: left;
+  width: $pic_W;
+  overflow: hidden;
+  @include box-sizing(border-box);
+  @media (max-width: 767px) {
+    float: none;
+    display: inline-block;
     $outer_W: 100%;
-    $pic_col: $pic_length;
+    $pic_col: $m_pic_length;
     $pic_Margin: 1%;
-    $pic_W: ($outer_W/$pic_col)-($pic_Margin*2);
-    position: relative;
-    margin: $pic_Margin;
-    display: block;
-    padding: 0;
-    float: left;
+    $pic_W: calc(($outer_W/$pic_col) - ($pic_Margin * 2));
     width: $pic_W;
-    overflow: hidden;
-    @include box-sizing(border-box);
-    @media (max-width: 767px) {
-        float:none;
-        display: inline-block;
-        $outer_W: 100%;
-        $pic_col: $m_pic_length;
-        $pic_Margin: 1%;
-        $pic_W: ($outer_W/$pic_col)-($pic_Margin*2);
-        width: $pic_W;
-        margin:$pic_Margin auto;
-    }
-    img {
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
+    margin: $pic_Margin auto;
+  }
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 }
-

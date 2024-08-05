@@ -1,12 +1,25 @@
 @mixin clearfix {
-	clear: both;
-	&:before,
-	&:after {
-		content: "";
-		display: table;
-	}
-	&:after {
-		clear: both;
-	}
-	zoom: 1;
+  clear: both;
+  &:before,
+  &:after {
+    content: '';
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+  zoom: 1;
+}
+
+%clearfix {
+  clear: both;
+  zoom: 1;
+  &:before,
+  &:after {
+    content: '';
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
 }
