@@ -236,14 +236,14 @@ $(function () {
   //     }
   // }
   // //設定resize 計時器
-  var menuResize;
-  $(window).bind('load resize', function (event) {
-    clearTimeout(menuResize);
-    menuResize = setTimeout(function () {
-      colHeight();
-    }, 20);
-  });
-  colHeight();
+  // var menuResize;
+  // $(window).bind('load resize', function (event) {
+  //   clearTimeout(menuResize);
+  //   menuResize = setTimeout(function () {
+  //     colHeight();
+  //   }, 20);
+  // });
+  // colHeight();
   $('.lightbox_slider').find('.imgOuter').removeClass('imgOuter').addClass('imgOuter1');
   //不同語系
   var weblang = $('html').attr('lang');
