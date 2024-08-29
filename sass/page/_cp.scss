@@ -9,9 +9,9 @@
 //     url(http://fonts.gstatic.com/ea/cwtexming/v3/cwTeXMing-zhonly.woff) format('woff'),
 //     url(http://fonts.gstatic.com/ea/cwtexming/v3/cwTeXMing-zhonly.ttf) format('truetype');
 // }
-@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+// @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
 .cp {
-  font-family: 'Noto Sans TC', sans-serif;
+  font-family: "Noto Sans TC", sans-serif;
   font-weight: 400;
   font-size: 1em;
   h1,
@@ -28,7 +28,7 @@
   th,
   td,
   blockquote {
-    font-family: 'Noto Sans TC', sans-serif;
+    font-family: "Noto Sans TC", sans-serif;
     // font-weight: 400;
     // font-size: 1em;
   }
@@ -42,7 +42,7 @@
       max-width: 60%;
       margin: 0px auto 1em;
       display: block;
-      @include screen('tablet') {
+      @include screen("tablet") {
         float: none;
         max-width: 100%;
         margin: 0px auto 1em;
@@ -53,7 +53,7 @@
       max-width: 60%;
       margin: 0px auto 1em;
       display: block;
-      @include screen('tablet') {
+      @include screen("tablet") {
         float: none;
         max-width: 100%;
         margin: 0px auto 1em;
@@ -104,13 +104,13 @@
         }
       }
 
-      @include screen('tablet') {
+      @include screen("tablet") {
         width: 48%;
         flex: 0 1 48%;
         margin-bottom: 0.2em;
         font-size: 0.875em;
       }
-      @include screen('mobile') {
+      @include screen("mobile") {
         width: 100%;
         flex: 0 1 100%;
         display: block;
