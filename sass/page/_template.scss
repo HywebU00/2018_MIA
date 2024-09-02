@@ -273,7 +273,7 @@ body {
       background: #fefefe;
       @include box-shadow(2px 2px 3px RGBA(0, 0, 0, 0.45));
       transition: 0.3s ease-out;
-      min-height: 200px;
+      // min-height: 200px;
       //margin-bottom: 1em;
       &:hover,
       &:focus {
