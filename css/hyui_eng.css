@@ -5508,7 +5508,6 @@ s body.noscroll {
   box-shadow: 2px 2px 3px RGBA(0, 0, 0, 0.45);
   -webkit-transition: 0.3s ease-out;
   transition: 0.3s ease-out;
-  min-height: 200px;
 }
 .service .container .col:hover, .service .container .col:focus {
   -webkit-box-shadow: 4px 8px 10px RGBA(0, 0, 0, 0.15);
