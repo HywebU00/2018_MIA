@@ -6676,19 +6676,19 @@ s body.noscroll {
 .lp .list ul li,
 .lp .list ol li {
   padding: 1em 0;
-  border-bottom: 1px solid #DDD;
+  border-bottom: 1px solid #ddd;
   position: relative;
 }
 .lp .list ul li a,
 .lp .list ol li a {
   display: block;
-  padding-left: 2em;
+  padding-left: 3.5em;
   position: relative;
   line-height: 1.45em;
 }
 .lp .list ul li a .num,
 .lp .list ol li a .num {
-  width: 1.5em;
+  width: 3em;
   text-align: right;
   position: absolute;
   top: 0;
@@ -6713,7 +6713,7 @@ s body.noscroll {
 .lp .list ul li time,
 .lp .list ol li time {
   display: block;
-  color: #AAA;
+  color: #aaa;
   font-size: 0.938em;
 }
 .lp .album {
@@ -7002,7 +7002,7 @@ s body.noscroll {
   margin: 0 0.5% 15px 0;
   border-radius: 4px;
   background-clip: padding-box;
-  border: 1px solid #DDD;
+  border: 1px solid #ddd;
   min-height: 380px;
 }
 .service_station ul li li {
@@ -7063,7 +7063,7 @@ s body.noscroll {
   margin-bottom: 5px;
   border: none;
   font-size: 0.813em;
-  border-bottom: 1px dashed #DDD;
+  border-bottom: 1px dashed #ddd;
   position: relative;
   padding-left: 80px;
 }
@@ -7470,7 +7470,7 @@ s body.noscroll {
 }
 .item_choose label {
   margin-right: 5px;
-  background: #DDD;
+  background: #ddd;
   padding: 0.5em 30px 0.5em 10px;
   border-radius: 4px;
   background-clip: padding-box;
@@ -7478,7 +7478,7 @@ s body.noscroll {
   text-shadow: none;
 }
 .item_choose label.active, .item_choose label:focus, .item_choose label:hover {
-  color: #FFF;
+  color: #fff;
   text-shadow: 1px 1px 2px #000;
   background: #e66c08;
 }
@@ -7525,11 +7525,11 @@ s body.noscroll {
 .table_list a[href$=ppt]:hover, .table_list a[href$=odp]:hover, .table_list a[href$=pptx]:hover, .table_list a[href$=xls]:hover, .table_list a[href$=csv]:hover, .table_list a[href$=ods]:hover, .table_list a[href$=xlsx]:hover, .table_list a[href$=pdf]:hover, .table_list a[href$=doc]:hover, .table_list a[href$=docx]:hover, .table_list a[href$=odt]:hover, .table_list a[href$=ppt]:focus, .table_list a[href$=odp]:focus, .table_list a[href$=pptx]:focus, .table_list a[href$=xls]:focus, .table_list a[href$=csv]:focus, .table_list a[href$=ods]:focus, .table_list a[href$=xlsx]:focus, .table_list a[href$=pdf]:focus, .table_list a[href$=doc]:focus, .table_list a[href$=docx]:focus, .table_list a[href$=odt]:focus {
   border: 2px solid #666;
   background: #666;
-  color: #FFF !important;
+  color: #fff !important;
 }
 
 .table_list a[href$=doc], .table_list a[href$=docx], .table_list a[href$=odt] {
-  background: #FFF;
+  background: #fff;
   border-radius: 4px;
   background-clip: padding-box;
   border: 2px solid #1d75d4;
@@ -7538,10 +7538,10 @@ s body.noscroll {
 .table_list a[href$=doc]:hover, .table_list a[href$=doc]:focus, .table_list a[href$=docx]:hover, .table_list a[href$=docx]:focus, .table_list a[href$=odt]:hover, .table_list a[href$=odt]:focus {
   background: #1d75d4;
   border: 2px solid #1d75d4;
-  color: #FFF !important;
+  color: #fff !important;
 }
 .table_list a[href$=pdf] {
-  background: #FFF;
+  background: #fff;
   border-radius: 4px;
   background-clip: padding-box;
   border: 2px solid red;
@@ -7550,10 +7550,10 @@ s body.noscroll {
 .table_list a[href$=pdf]:hover, .table_list a[href$=pdf]:focus {
   background: red;
   border: 2px solid red;
-  color: #FFF !important;
+  color: #fff !important;
 }
 .table_list a[href$=xls], .table_list a[href$=csv], .table_list a[href$=ods], .table_list a[href$=xlsx] {
-  background: #FFF;
+  background: #fff;
   border-radius: 4px;
   background-clip: padding-box;
   border: 2px solid #61bc1e;
@@ -7562,10 +7562,10 @@ s body.noscroll {
 .table_list a[href$=xls]:hover, .table_list a[href$=xls]:focus, .table_list a[href$=csv]:hover, .table_list a[href$=csv]:focus, .table_list a[href$=ods]:hover, .table_list a[href$=ods]:focus, .table_list a[href$=xlsx]:hover, .table_list a[href$=xlsx]:focus {
   background: #61bc1e;
   border: 2px solid #61bc1e;
-  color: #FFF !important;
+  color: #fff !important;
 }
 .table_list a[href$=ppt], .table_list a[href$=odp], .table_list a[href$=pptx] {
-  background: #FFF;
+  background: #fff;
   border-radius: 4px;
   background-clip: padding-box;
   border: 2px solid #db4526;
@@ -7574,7 +7574,7 @@ s body.noscroll {
 .table_list a[href$=ppt]:hover, .table_list a[href$=ppt]:focus, .table_list a[href$=odp]:hover, .table_list a[href$=odp]:focus, .table_list a[href$=pptx]:hover, .table_list a[href$=pptx]:focus {
   background: #db4526;
   border: 2px solid #db4526;
-  color: #FFF !important;
+  color: #fff !important;
 }
 
 .np ul,
