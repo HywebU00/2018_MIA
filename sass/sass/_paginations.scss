@@ -6,8 +6,9 @@
     font-size: .938em;
     @include clearfix; // outline: 1px solid red;
     span {
-        color: $primaryColor;
-        margin: 0px .5em;
+        // color: $primaryColor;
+        color: #000; font-weight: bold;
+        margin: 0 .5em;
     }
     .page {
         margin: 10px 0;
@@ -18,7 +19,7 @@
             height: 40px;
             margin-bottom: 5px;
             list-style: none;
-            margin: 0px 2px 5px;
+            margin: 0 2px 5px;
             @include box-sizing();
             a {
                 border-radius: 5px;
@@ -29,20 +30,29 @@
                 font-size: 1em;
                 color: $color-word;
                 @include gradient (#F7F7F7, #EAEAEA, vertical);
-                border: #ccc solid 1px;
-                &:hover,
+                // border: #ccc solid 1px;
+                box-shadow: #ccc 0 0 0 1px inset;
+                outline: none;
+                transition: .2s;
+                &:hover{box-shadow: $aHover 0 0 0 1px inset; }
                 &:focus {
-                    background: $primaryColor;
-                    color: #fff !important;
-                    border: $primaryColor solid 1px;
-                    outline:none !important;
+                    // background: $primaryColor;
+                    // color: #fff !important;
+                    // border: $primaryColor solid 1px;
+                    // outline:none !important;
+                    box-shadow: transparent 0 0 0 1px inset, $aHover 0 0 0 2px;
                 }
             }
             &.active {
                 a {
-                    color: #fff !important;
-                    background: $primaryColor;
-                    border: darken($primaryColor, 5) solid 1px;
+                    color: #fff;
+                    // background: $primaryColor;
+                    // border: darken($primaryColor, 5) solid 1px;
+                    background: $aHover;
+                    box-shadow: $aHover 0 0 0 1px;
+                    &:hover{ box-shadow: $aHover 0 0 0 2px; }
+                    &:focus { box-shadow:#fff 0 0 0 1px, $aHover 0 0 0 3px;}
+
                 }
             }
             %arrow {
@@ -53,7 +63,7 @@
                 width: 6px;
                 height: 6px;
                 margin-top: -4px;
-                border: 2px solid #666;
+                border: 2px solid #333;
                 border-left: none;
                 border-bottom: none;
             }
@@ -65,11 +75,14 @@
                     text-indent: -9999px;
                     position: relative;
                     &:hover, &:focus {
-                        &:before, &:after {
-                            border: 2px solid #FFF;
-                            border-left: none;
-                            border-bottom: none;
-                        }
+                        // &:before, &:after {
+                        //     border: 2px solid #FFF;
+                        //     border-left: none;
+                        //     border-bottom: none;
+                        // }
+                    }
+                    &:focus{
+                        box-shadow: $aHover 0 0 0 2px;
                     }
                 }
             }
@@ -81,7 +94,7 @@
                 }
                 a:after {
                     @extend %arrow;
-                    margin-left: 0px;
+                    margin-left: 0;
                     transform: rotate(-135deg);
                 }
             }
@@ -117,32 +130,38 @@
         padding: .5em;
         color:#555;
         select {
-            margin: 0px .5em;
+            margin: 0 .5em;
+            cursor: pointer;
             @include screen('mobile') {
-                margin: 0px;
+                margin: 0;
             }
+            &:hover{border-color: $aHover; }
+            &:focus{box-shadow: $aHover 0 0 0 2px; border-color: #fff; }
         }
         input[type="button"] {
             @include gradient(#F7F7F7, #EAEAEA, vertical);
             border: 1px solid #CCC;
-            color: #222;
+            color: #333;
             padding: .4em 1em !important;
             min-width: 3em;
             display: inline-block;
             vertical-align: middle;
-            box-shadow: none;
-            &:hover, &:focus {
-                color: #fff !important;
-                background: $form-focus;
-                border: darken($form-focus, 5) solid 1px;
-                box-shadow: none !important;
-            }
+            outline: none;
+            // &:hover, &:focus {
+            //     color: #fff !important;
+            //     background: $form-focus;
+            //     border: darken($form-focus, 5) solid 1px;
+            //     box-shadow: none !important;
+            // }
+            &:hover{border-color: $aHover; }
+            &:focus {box-shadow: $aHover 0 0 0 2px; border-color: #fff; background: #fff;}
+
         }
     }
 }
 @include screen('mobile') {
     .pagination .total select.form-control {
-        margin: 0px 0px;
+        margin: 0;
         text-align: center;
     }
 }

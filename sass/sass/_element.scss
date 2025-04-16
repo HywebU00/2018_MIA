@@ -13,7 +13,8 @@ a:focus {
     // outline:2px solid $color-orange;
     // outline: 1px solid $primaryColor;
     outline: none;
-    box-shadow: 0 0px 0px 1px $color-orange inset;
+    // box-shadow: 0 0px 0px 1px $color-orange inset;
+    box-shadow: 0 0 0 1px #008091 inset;
 }
 .lp,
 .cp,
@@ -83,7 +84,8 @@ a.more {
         left: 0;
         right: 0;
         bottom: 0;
-        background: $color-orange;
+        // background: $color-orange;
+        background-color: #008091;
         -webkit-transform: scaleX(0);
         transform: scaleX(0);
         -webkit-transform-origin: 0 50%;
@@ -99,7 +101,8 @@ a.more {
     &:focus,
     &.active {
         color: white;
-        border: 1px solid $color-orange;
+        // border: 1px solid $color-orange;
+        border-color: #008091;
         &:before {
             -webkit-transform: scale(1);
             transform: scale(1);

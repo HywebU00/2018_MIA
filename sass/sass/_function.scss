@@ -1,4 +1,4 @@
-$function_color:#555;
+$function_color:#595959;
 //可自訂顏色，或是自帶既有變數，但請注意背景色與字的對比度
 //範例：$function_color:#000;
 //icon基本設定
@@ -15,7 +15,7 @@ $function_color:#555;
     overflow: hidden;
     @include box-sizing();
     ul {
-        padding: 0;
+        padding:4px;
         margin: 0;
         li {
             list-style: none;
@@ -27,13 +27,14 @@ $function_color:#555;
                 display: block;
                 padding: .2em 1em;
                 background: $function_color;
-                border-color: $function_color;
+                // border-color: $function_color;
                 color:#FFF;
                 @include border-radius(4px);
-                &:hover,
+                &:hover, &:focus {
+                    background-color: #333;
+                }
                 &:focus {
-                    background: darken($function_color, 10);
-                    border-color: darken($function_color, 10);
+                    box-shadow:#fff 0 0 0 1px, #333 0 0 0 3px;
                 }
             } // 回上一頁
             &.icon_back {

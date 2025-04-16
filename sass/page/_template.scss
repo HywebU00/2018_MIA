@@ -23,7 +23,7 @@ body {
 }
 .wrapper {
   max-width: 100%;
-  margin: 0px auto;
+  margin: 0 auto;
   position: relative;
   background: url(../images/wrap_bg.jpg) no-repeat center top #fff;
   @include screen("mobile") {
@@ -166,7 +166,7 @@ body {
     display: block;
     height: 100%;
     width: 90%;
-    margin: 0px auto;
+    margin: 0 auto;
     position: relative;
     @include screen("mobile") {
       width: 100%;
@@ -177,7 +177,7 @@ body {
         width: 100%;
         height: 100%;
         z-index: 1;
-        box-shadow: 0px 0px 0px 3px $color-orange inset;
+        box-shadow: 0 0 0 3px $color-orange inset;
         position: absolute;
         display: block;
       }
@@ -435,10 +435,10 @@ body {
       &:focus,
       &.active {
         color: white;
-        &:before {
-          // -webkit-transform: scale(1);
-          // transform: scale(1);
-        }
+        // &:before {
+        //   // -webkit-transform: scale(1);
+        //   // transform: scale(1);
+        // }
         &:after {
           right: 7px;
         }
@@ -553,7 +553,7 @@ body {
           overflow: hidden;
         }
         img {
-          margin-bottom: 0px;
+          margin-bottom: 0;
           max-height: 60px;
         }
       }
@@ -640,16 +640,18 @@ body {
           padding: 0.1em 0.5em;
           @include border-radius(6px);
           &.tag-orange {
-            background: $color-orange;
+            // background: $color-orange;
+            background-color: #c35202;
           }
           &.tag-blue {
-            background: #008091;
+            background: #008091;/* 20250416 */
           }
           &.tag-green {
             background: #588100;
           }
           &.tag-red {
-            background: $color-red;
+            // background: $color-red;
+            background-color: #cf2836;
           }
           &.tag-gray {
             background: $color-word;
@@ -684,7 +686,7 @@ body {
     iframe {
       min-height: 450px;
       width: auto;
-      margin: 0px auto;
+      margin: 0 auto;
     }
   }
 }
@@ -765,7 +767,7 @@ body {
               top: 0;
               left: 0;
               bottom: 0;
-              box-shadow: 0px 0px 0px 5px $color-orange inset;
+              box-shadow: 0 0 0 5px $color-orange inset;
               z-index: 99;
             }
           }
@@ -804,7 +806,7 @@ body {
           @include screen("mobile") {
             opacity: 0.7;
             height: 2.5em;
-            bottom: 0px;
+            bottom: 0;
             top: auto;
           }
         }
@@ -888,7 +890,7 @@ body {
     @include box-sizing; // border: 1px solid #ccc;
     width: 165px;
     height: 65px;
-    margin: 0px 10px;
+    margin: 0 10px;
     background: #fff;
     a {
       display: block;
@@ -902,12 +904,12 @@ body {
         position: absolute;
         top: 0;
         left: 0;
-        box-shadow: 0px 0px 0px 1px #ddd inset;
+        box-shadow: 0 0 0 1px #ddd inset;
         z-index: 99;
       }
       &:focus {
         &:after {
-          box-shadow: 0px 0px 0px 1px $color-orange inset;
+          box-shadow: 0 0 0 1px $color-orange inset;
         }
       }
       img {
@@ -970,7 +972,7 @@ body {
     @include box-sizing; // border: 1px solid #ccc;
     width: 100%;
     height: 340px;
-    margin: 0px 10px;
+    margin: 0 10px;
     background: #fff;
     a {
       display: block;
@@ -985,7 +987,7 @@ body {
           position: absolute;
           top: 0;
           left: 0;
-          box-shadow: 0px 0px 0px 2px $color-orange inset;
+          box-shadow: 0 0 0 2px $color-orange inset;
           z-index: 99;
         }
       }
@@ -1105,14 +1107,14 @@ body {
     .function {
       width: 100%;
       text-align: right;
-      margin: 0px 0 0 auto;
+      margin: 0 0 0 auto;
       position: relative;
       z-index: 9;
       a {
         img {
           width: 30px;
           height: 30px;
-          margin: 0px 5px;
+          margin: 0 5px;
         }
       }
       @include screen("mobile") {
@@ -1173,7 +1175,7 @@ body {
     width: 30%;
     float: left;
     height: auto;
-    margin: 0px 1em 0 0;
+    margin: 0 1em 0 0;
     @include screen("mobile") {
       width: 100%;
       float: none;
