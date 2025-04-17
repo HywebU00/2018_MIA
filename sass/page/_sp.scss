@@ -1,5 +1,5 @@
 .sp {
-  margin: 0em auto 1em;
+  margin: 0 auto 1em;
   @include box-sizing;
   padding: 0.5em;
   h3 {
@@ -39,11 +39,11 @@
 .statistics {
   padding: 1em;
   background: url(../images/statistics_bg.jpg) no-repeat right center;
-  table {
-    th,
-    td {
-    }
-  }
+  // table {
+  //   th,
+  //   td {
+  //   }
+  // }
   @include screen('mobile') {
     padding: 1em 0;
     background: none;
@@ -101,8 +101,8 @@
     }
   }
   a {
-    // padding: .2em 0px .2em 65px;
-    padding: 0px;
+    // padding: .2em 0 .2em 65px;
+    padding: 0;
     position: relative;
     height: auto;
     line-height: 1.45em;
@@ -110,7 +110,7 @@
     color: #666;
     vertical-align: middle;
     // text-indent: -99999px;
-    margin: 0px 0.5em;
+    margin: 0 0.5em;
     min-width: 5em;
     text-align: center;
     // outline:1px solid red;
@@ -127,14 +127,14 @@
       color: #fff !important;
     }
     @media screen and (max-width: 767px) {
-      margin-right: 0px; // display: block;
+      margin-right: 0; // display: block;
       width: 85%;
     }
     .kb {
       font-size: 0.75em;
       color: #666;
       display: inline-block;
-      margin: 0px 0.5em;
+      margin: 0 0.5em;
     }
     &:after {
       content: '';
@@ -142,7 +142,7 @@
       width: 21px;
       height: 24px;
       position: absolute;
-      top: 0px;
+      top: 0;
       left: 0;
       text-align: right;
       display: none;
@@ -249,131 +249,91 @@
 .publish_choose,
 .status {
   background: #f2f2f2;
-  padding: 2em;
+  padding: 2em;margin-bottom: 20px;
   ul {
-    @include clearfix;
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    list-style: none;padding: 0;margin: 0;
+    line-height: 1.8;
+    display: flex; flex-flow: row wrap; gap: 12px;
     li {
-      width: 32%;
-      display: block;
-      float: left;
-      margin: 0 2% 10px 0;
-      @include box-shadow(1px 1px 2px RGBA(0, 0, 0, 0.5));
-      &:nth-child(3n) {
-        margin-right: 0;
-      }
+      flex: 0 0 calc(33.33% - 8px);
+      width: calc(33.33% - 8px);
+      background: #fff;
+      @include box-shadow(1px 1px 3px rgb(0 0 0 / .3));
       @include screen('mobile') {
-        width: 90%;
-        display: block;
-        float: none;
-        margin: 0 auto 15px;
-        &:nth-child(3n) {
-          margin-right: auto;
-        }
+        flex-basis: 96%; width: 96%; margin: 0 auto;
       }
       a {
-        display: block;
-        background: #fff;
-        height: 40px;
-        padding: 0.5em 1em;
-        line-height: 40px;
-        @include text-overflow;
-        overflow: hidden;
-        vertical-align: middle;
-        -webkit-transform: perspective(1px) translateZ(0);
-        transform: perspective(1px) translateZ(0);
-        box-shadow: 0 0 1px transparent;
-        position: relative;
-        -webkit-transition-property: color;
-        transition-property: color;
-        -webkit-transition-duration: 0.3s;
-        transition-duration: 0.3s;
-        &:after {
+        display: block; position: relative; z-index: 1;
+        box-sizing: border-box;
+        height: 100%; min-height: 5em;
+        padding: .7em 34px .6em 1em; margin: 0;
+        transition: .3s;
+        &::after {
           content: '';
           width: 12px;
           height: 12px;
-          border: 2px solid #fff;
-          transform: rotate(45deg);
-          position: absolute;
-          right: -10px;
-          top: 20px;
+          border: 2px solid transparent;
           border-left: none;
           border-bottom: none;
-          transition: 0.3s ease-out;
-        }
-        &:before {
-          content: '';
+          transform: rotate(45deg);
           position: absolute;
+          right: 15px;top: calc(50% - 6px);
+        }
+        &::before {
+          content: '';
           z-index: -1;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: $color-orange;
-          -webkit-transform: scaleX(0);
-          transform: scaleX(0);
-          -webkit-transform-origin: 0 50%;
-          transform-origin: 0 50%;
-          -webkit-transition-property: transform;
-          transition-property: transform;
-          -webkit-transition-duration: 0.3s;
-          transition-duration: 0.3s;
-          -webkit-transition-timing-function: ease-out;
-          transition-timing-function: ease-out;
+          position: absolute;top: 0;left: 0;right: 100%;bottom: 0;
+          background: $color-orange-ok;
+          transition: .3s;
         }
-        &:hover,
-        &:focus,
-        &.active {
-          color: white;
-          border: none;
-          &:before {
-            -webkit-transform: scale(1);
-            transform: scale(1);
-          }
-          &:after {
-            right: 15px;
-          }
+        &:hover, &:focus, &.active{
+          color: #fff;
+          box-shadow: none;
+          &::before { right: 0;}
+          &::after { right: 15px; border-color: #fff;}
+        }
+        &.active:focus {
+          &::before {box-shadow: #fff 0 0 0 1px}
+          box-shadow: $color-orange-ok 0 0 0 4px;
         }
       }
     }
   }
 }
-.status {
-  margin-bottom: 20px;
-  ul {
-    li {
-      height: 80px;
-      a {
-        padding: 1em;
-        height: 80px;
-        @include box-sizing;
-        white-space: normal;
-        overflow: hidden;
-        line-height: 1.4em;
-        &:after {
-          top: 35px;
-        }
-      }
-      @include screen('tablet') {
-        height: 120px;
-        a {
-          height: 120px;
-        }
-      }
-      @include screen('mobile') {
-        height: auto;
-        min-height: 60px;
-        a {
-          height: auto;
-          padding-right: 35px;
-          min-height: 80px;
-        }
-      }
-    }
-  }
-}
+// .status {
+//   margin-bottom: 20px; 
+//   ul {
+//     li {
+//       height: 80px;
+//       a {
+//         padding: 1em;
+//         height: 80px;
+//         @include box-sizing;
+//         white-space: normal;
+//         overflow: hidden;
+//         line-height: 1.4em;
+//         &:after {
+//           top: 35px;
+//         }
+//       }
+//       @include screen('tablet') {
+//         height: 120px;
+//         a {
+//           height: 120px;
+//         }
+//       }
+//       @include screen('mobile') {
+//         height: auto;
+//         min-height: 60px;
+//         a {
+//           height: auto;
+//           padding-right: 35px;
+//           min-height: 80px;
+//         }
+//       }
+//     }
+//   }
+// }
 .question_level2 {
   a.more {
     padding-right: 25px;
@@ -394,7 +354,7 @@
       @include screen('mobile') {
         width: 100%;
         display: block;
-        margin: 0px auto 15px;
+        margin: 0 auto 15px;
       }
       ul {
         list-style: demical;
@@ -411,7 +371,7 @@
               content: '';
               position: absolute;
               top: 8px;
-              left: 0px;
+              left: 0;
               width: 0;
               height: 0;
               border-style: solid;
@@ -438,7 +398,7 @@
   display: block;
   @include box-sizing;
   padding: 0.5em 1em 1em 50%;
-  @include box-shadow(0px 0px 1px 1px RGBA(0, 0, 0, 0.2) inset);
+  @include box-shadow(0 0 1px 1px RGBA(0, 0, 0, 0.2) inset);
   @include screen('mobile') {
     padding: 1em;
     background: #fff;
@@ -521,7 +481,7 @@
       list-style: none;
       &:before {
         position: absolute; // outline: 1px solid red;
-        top: 0px;
+        top: 0;
         left: -35px;
         text-align: right;
         width: 30px;
@@ -597,7 +557,7 @@
       display: inline-block;
       vertical-align: top;
       text-align: center;
-      margin: 0px auto;
+      margin: 0 auto;
       @include gutter;
       a {
         h3 {
@@ -656,7 +616,7 @@
       display: inline-block;
       vertical-align: top;
       text-align: center;
-      margin: 0px auto;
+      margin: 0 auto;
       @include box-sizing;
       @include gutter;
       position: relative;
@@ -711,7 +671,7 @@
         display: block;
         padding: 0.5em 0.5em 0.5em 20px;
         position: relative;
-        &:before {
+        &::before {
           content: '';
           position: absolute;
           top: 16px;
@@ -721,6 +681,10 @@
           border-style: solid;
           border-width: 3px 0 3px 5px;
           border-color: transparent transparent transparent $color-word;
+          transition: .1s;
+        }
+        &:hover , &:focus {
+          &::before{ scale: 1.5;}
         }
       }
     }

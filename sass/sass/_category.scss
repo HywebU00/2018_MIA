@@ -16,11 +16,12 @@
     background-color: rgb(247, 247, 247); // Old browsers
     // background-image: linear-gradient(top, rgba(247, 247, 247, 1) 0%, rgba(234, 234, 234, 1) 100%);
     border: #ccc solid 1px;
-    padding: 0.4em 1em;
+    padding: 0.4em 1em .34em;
     display: block;
     color: #333;
     @include box-sizing();
     @include border-radius(4px);
+    transition: .2s;
     &:hover,
     &:focus {
       // box-shadow: none;

@@ -1076,6 +1076,7 @@ body {
           background-color: #444;
           transition: 0.2s;
           line-height: 1.45em;
+          &>img{ display: block;}
           &:hover, &:focus{ background-color: $aHover;}
           &:focus-visible {box-shadow: $aHover 0 0 0 3px inset, #fff 0 0 0 4px inset;}
         }
