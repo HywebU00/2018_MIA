@@ -438,3 +438,25 @@ img.img-responsive {
         }
     }
 }
+
+
+// slick 套件樣式補充
+.slick-slider {
+    .slick-arrow{
+        &:focus{
+            box-shadow: $color-orange 0 0 0 3px;
+        }
+    }
+    .slick-dots{
+        li{
+            button:focus::before{
+                box-shadow: $color-orange 0 0 0 2px, #fff 0 0 0 3px;
+                background-color: #fff;
+            }
+            &.slick-active button:focus::before{
+                box-shadow: $color-orange 0 0 0 2px, #fff 0 0 0 5px;
+                background-color:$color-orange;
+            }
+        }
+    }   
+}
