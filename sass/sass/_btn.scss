@@ -4,7 +4,7 @@ $btn-border: darken($color-default, 5);
 $btn-padding: 0.5em 2em;
 $btn-radius: 6px;
 
-$btn-primaryColor: darken($color-orange, 4);
+$btn-primaryColor: $color-orange-ok;
 // 按鈕外框
 .btn_grp {
   text-align: center;

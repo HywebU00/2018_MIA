@@ -17,7 +17,7 @@
     	top:.7em;
     	left:.5em;
     	display:block;
-    	vertical-align: middle;
+    	// vertical-align: middle;
     	width:15px;
     	height: 15px;
     	content:"";
@@ -29,15 +29,22 @@
     	position:absolute;
     	width:12px;
     	height: 12px;
-    	top:.4em;
-    	right:1em;
-    	@include opacity(.5);
-    	&:hover,&:focus{
-    		@include opacity(1);
+    	top:8px;
+    	right:8px;
+        padding: 4px;
+        border-radius: 2px;
+    	&:hover, &:focus{
+            // border: none;
+            // outline: 2px solid  $color-orange-ok;
+            // box-shadow: none;
+            background-color: #fff;
     	}
     	img{
+            display: block;
     		width: 12px;
     		height: 12px;
+            outline: none;
+            filter: brightness(.5);
     	}
     }
 }
