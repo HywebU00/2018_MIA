@@ -9,12 +9,8 @@ br {
     font: unset !important;
 }
 a:focus {
-    // box-shadow:0px 0px 2px 0px $color-orange inset;
-    // outline:2px solid $color-orange;
-    // outline: 1px solid $primaryColor;
     outline: none;
-    // box-shadow: 0 0px 0px 1px $color-orange inset;
-    box-shadow: 0 0 0 1px #008091 inset;
+    box-shadow: 0 0 0 2px #008091;
 }
 .lp,
 .cp,
@@ -142,7 +138,7 @@ img.img-responsive {
 }
 .necessary {
     color: red;
-    margin: 0px .2em;
+    margin: 0 .2em;
 }
 .tooltip {
     text-align: center;
@@ -178,8 +174,8 @@ img.img-responsive {
     @include clearfix();
     h3 {
         font-size: 1.5em;
-        padding: 12px 0px 15px 0px;
-        margin: 0.5em 0px 0.2em;
+        padding: 12px 0 15px 0;
+        margin: 0.5em 0 0.2em;
         border-bottom: 1px solid $primaryColor;
     }
     ul {
@@ -202,7 +198,7 @@ img.img-responsive {
         &:before {
             position: absolute; // outline: 1px solid red;
             top: 12px;
-            left: 0px;
+            left: 0;
             text-align: right;
             width: 30px;
             width: 6px;
@@ -239,8 +235,8 @@ img.img-responsive {
             }
         }
         a {
-            // padding: .2em 0px .2em 65px;
-            padding: 0px;
+            // padding: .2em 0 .2em 65px;
+            padding: 0;
             position: relative;
             height: auto;
             line-height: 20px;
@@ -248,7 +244,7 @@ img.img-responsive {
             color: #666;
             vertical-align: middle;
             // text-indent: -99999px;
-            margin: 0px .5em;
+            margin: 0 .5em;
             min-width: 5em;
             text-align: center;
             // outline:1px solid red;
@@ -261,7 +257,7 @@ img.img-responsive {
             @include screen('mobile') {
                 display: block;
                 max-width: 100px;
-                margin: 0px auto .5em 0px;
+                margin: 0 auto .5em 0;
             }
             &:hover,
             &:focus {
@@ -270,14 +266,14 @@ img.img-responsive {
                 color: #FFF !important;
             }
             // @media screen and (max-width: 767px) {
-            //     margin-right: 0px; // display: block;
+            //     margin-right: 0; // display: block;
             //     width: 85%;
             // }
             .kb {
                 font-size: .75em;
                 color: #666;
                 display: inline-block;
-                margin: 0px .5em;
+                margin: 0 .5em;
             }
             &:after {
                 content: "";
@@ -285,7 +281,7 @@ img.img-responsive {
                 width: 21px;
                 height: 24px;
                 position: absolute;
-                top: 0px;
+                top: 0;
                 left: 0;
                 text-align: right;
                 display: none;
@@ -340,23 +336,23 @@ img.img-responsive {
             &[href$="odt"] {
                 background: #FFF;
                 @include border-radius(4px);
-                border: 2px solid #1d75d4;
-                color: #1d75d4;
+                border: 2px solid #125fb2;
+                color: #125fb2;
                 padding-bottom: .3em;
                 &:hover,
                 &:focus {
-                    background: #1d75d4;
+                    background: #125fb2;
                     color: #FFF !important;
                 }
             }
             &[href$="pdf"] {
                 background: #FFF;
                 @include border-radius(4px);
-                border: 2px solid red;
-                color: red;
+                border: 2px solid #d00;
+                color: #d00;
                 &:hover,
                 &:focus {
-                    background: red;
+                    background: #d00;
                     color: #FFF !important;
                 }
             }
@@ -366,11 +362,11 @@ img.img-responsive {
             &[href$="xlsx"] {
                 background: #FFF;
                 @include border-radius(4px);
-                border: 2px solid #61bc1e;
-                color: #61bc1e;
+                border: 2px solid #087f2b;
+                color: #087f2b;
                 &:hover,
                 &:focus {
-                    background: #61bc1e;
+                    background: #087f2b;
                     color: #FFF !important;
                 }
             }
@@ -379,11 +375,11 @@ img.img-responsive {
             &[href$="pptx"] {
                 background: #FFF;
                 @include border-radius(4px);
-                border: 2px solid #db4526;
-                color: #db4526;
+                border: 2px solid #c35400;
+                color: #c35400;
                 &:hover,
                 &:focus {
-                    background: #db4526;
+                    background: #c35400;
                     color: #FFF !important;
                 }
             }
@@ -397,8 +393,8 @@ img.img-responsive {
     @include clearfix();
     h3 {
         font-size: 1.5em;
-        padding: 12px 0px 15px 0px;
-        margin: 0.5em 0px 0.2em;
+        padding: 12px 0 15px 0;
+        margin: 0.5em 0 0.2em;
         border-bottom: 1px solid $primaryColor;
     }
     ol,
@@ -414,22 +410,25 @@ img.img-responsive {
     li {
         position: relative;
         margin-bottom: 10px;
-        border-bottom: 1px solid #EEE;
         a {
-            padding: .2em 0px .2em 35px;
+            padding: .2em 0 .2em 35px;
+            border-bottom: 1px solid #EEE;
             position: relative;
             height: auto;
             line-height: 1.45em;
             display: block;
-            color: #555 !important;
-            &:hover,
+            color: #222;
+            &:hover {
+                color: $aHover;
+                border-bottom-color: $aHover;
+            }
             &:focus {
-                color: $primaryColor;
+                border-bottom-color:transparent;
             }
             &:before {
                 position: absolute; // outline: 1px solid red;
                 top: 5px;
-                left: 0px;
+                left: 0;
                 text-align: right;
                 width: 30px;
                 counter-increment: counter;
@@ -443,8 +442,9 @@ img.img-responsive {
 // slick 套件樣式補充
 .slick-slider {
     .slick-arrow{
+        top: 50%; margin: 0;
         &:focus{
-            box-shadow: $color-orange 0 0 0 3px;
+            box-shadow: $aHover 0 0 0 3px;
         }
     }
     .slick-dots{

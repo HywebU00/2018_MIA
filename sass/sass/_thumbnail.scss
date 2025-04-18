@@ -5,13 +5,18 @@
 	@include make-lg-column(4);
 	@include gutter();
 	margin-bottom: 15px;
-	a{
+	&>a{
 		display:block;
 		@include border-radius(5px);
 		border:1px solid #DDD;
 		padding:.5em;
-		&:hover,&:focus{
-			border:1px solid $primaryColor;
+		&:hover{
+			// border:1px solid $primaryColor;
+			border-color: #999
+		}
+		&:focus{
+			border-color: #fff;
+			box-shadow: $aHover 0 0 0 3px;
 		}
 	}
 	.imgOuter{
@@ -19,7 +24,7 @@
 	}
 	.caption{
 		max-width: 90%;
-		margin: 0px auto;
+		margin: 0 auto;
 		h3{
 			line-height:1.5em;
 			height:3em;

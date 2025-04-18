@@ -33,41 +33,46 @@
     // font-size: 1em;
   }
   br {
-    letter-spacing: 0em;
+    letter-spacing: 0;
   }
   img {
     max-width: 600px;
     &.float_left {
       float: none;
       max-width: 60%;
-      margin: 0px auto 1em;
+      margin: 0 auto 1em;
       display: block;
       @include screen("tablet") {
         float: none;
         max-width: 100%;
-        margin: 0px auto 1em;
+        margin: 0 auto 1em;
       }
     }
     &.float_right {
       float: none;
       max-width: 60%;
-      margin: 0px auto 1em;
+      margin: 0 auto 1em;
       display: block;
       @include screen("tablet") {
         float: none;
         max-width: 100%;
-        margin: 0px auto 1em;
+        margin: 0 auto 1em;
       }
     }
   }
   a {
-    @include aSetting($color-green);
+    // @include aSetting($color-green);
     word-break: break-all;
+    color: $aHover;
+    &:hover{ text-decoration: underline;}
+    &:focus {
+      outline: 2px solid $aHover;
+    }
   }
   h2 {
     overflow: hidden;
     border: none;
-    padding-left: 0em !important;
+    padding-left: 0 !important;
     &:before,
     &:after {
       display: none;
@@ -119,7 +124,7 @@
   }
   .cp_youtube {
     max-width: 600px;
-    margin: 0px auto 0.5em;
+    margin: 0 auto 0.5em;
     .info {
       margin-top: 10px;
       background: none;

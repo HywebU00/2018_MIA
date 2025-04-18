@@ -35,11 +35,13 @@ $(function() {
     /*-----------------------------------*/
     var _menu = $('.menu');
     _menu.find('li').has('ul').addClass('hasChild');
-    var liHasChild = _menu.find('li.hasChild'),
-        liHasChild_level1 = $('.menu ul').children('li.hasChild');
-    liHasChild_level2 = $('.menu ul ul').children('li.hasChild');
-    liHasChild_level3 = $('.menu ul ul ul').children('li.hasChild');
-    subMenuWidth = liHasChild.first().children('ul').outerWidth();
+    var liHasChild = _menu.find('li.hasChild');
+    var liHasChild_level1 = $('.menu ul').children('li.hasChild');
+    var liHasChild_level2 = $('.menu ul ul').children('li.hasChild');
+    var liHasChild_level3 = $('.menu ul ul ul').children('li.hasChild');
+    var subMenuWidth = liHasChild.first().children('ul').outerWidth();
+
+    liHasChild.children('a').attr('role', 'button'); // 2025 無障礙修改
     /*-----------------------------------*/
     ////////////// 行動版選單切換////////////
     /*-----------------------------------*/
@@ -81,7 +83,7 @@ $(function() {
     // 打開選單動作
     _sidebarCtrl.click(function(e) {
         showSidebar();
-        e.preventDefault();
+        // e.preventDefault();
     });
     // 關閉動作
     _overlay.add(_sidebarClose).off().click(function() {
@@ -124,6 +126,7 @@ $(function() {
             _overlay.hide();
             _nav.prependTo(_mArea);
             _menu.prependTo(_mArea);
+            _sidebarClose.prependTo(_mArea);
             _search.prependTo(_body);
             _search.addClass('m_search');
             _mArea.css({

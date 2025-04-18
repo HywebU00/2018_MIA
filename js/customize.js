@@ -8,7 +8,16 @@ $(function () {
     autoplay: true,
     fade: true,
     cssEase: 'ease',
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          dots: false
+        }
+      }
+    ]
   });
+
   $('.adSlider').slick({
     dots: false,
     infinite: true,

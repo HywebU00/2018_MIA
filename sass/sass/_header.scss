@@ -7,9 +7,9 @@
         position: fixed;
         width: 100%;
         background: #FFF;
-        @include box-shadow(0px 2px 5px RGBA(0, 0, 0, .3)); // 虛擬底色 - navigation
+        @include box-shadow(0 2px 5px RGBA(0, 0, 0, .3)); // 虛擬底色 - navigation
     }
-    &:before {
+    &::before {
         content: "";
         width: 100%;
         height: 5px;
@@ -26,11 +26,12 @@
         width: 55px !important;
         height: 55px !important;
         position: absolute;
-        top: 0px;
+        top: 0;
         display: block;
-        font-size: 0em;
+        font-size: 0;
         padding: 15px;
         margin: 0;
+        border-radius: 0;
         min-width: auto;
         min-height: auto;
         background: transparent;
@@ -47,10 +48,11 @@
         @include gutter(30px);
         .sidebarCtrl {
             display: none;
-            left: 0px;
+            left: 0;
             @extend %mobileCtrlBtn;
+            outline: none;
             span {
-                background: $primaryColor;
+                background: $color-green-ok;
                 width: 100%;
                 height: 3px;
                 margin: 5px 0 5px;
@@ -59,14 +61,19 @@
                     margin: 2px 0 5px;
                 }
             }
+            &:focus{
+                outline: 2px solid $aHover;
+                outline-offset: -2px;
+            }
         }
         // search
         .searchCtrl {
             display: none;
-            right: 0px;
-            font-size: 0em;
+            right: 0;
+            font-size: 0;
             @extend %mobileCtrlBtn;
-            &:before {
+            outline: none;
+            &::before {
                 width: 40px;
                 height: 40px;
                 background: url(../images/basic/icon_search.png) no-repeat center center;
@@ -77,6 +84,10 @@
                 top: 8px;
                 left: 10px;
                 display: block;
+            }
+            &:focus{
+                outline: 2px solid $aHover;
+                outline-offset: -2px;
             }
         }
     }
@@ -89,6 +100,7 @@
         @include box-sizing;
         a {
             display: inline-block;
+            &:focus { box-shadow: $aHover 0 0 0 2px;}
         }
         img {
             display: block;
@@ -104,19 +116,19 @@
             }
         }
         @include screen('mobile') {
-            padding: 2px 60px 5px;
-            width: 100%;
-            text-align: center;
-            height: 55px;
+            float: none;
+            width: auto;height: 55px; margin: 0 60px; padding: 0;
+            text-align: center; 
             background: url(../images/m_logo.png) no-repeat center center;
             background-size: contain;
+            a{ 
+                display: block; 
+                &:focus{box-shadow: $aHover 0 0 0 2px inset;}
+            }
             img {
-                width: auto;
-                height: auto;
-                max-height: 54px;
+                display: block;margin: 0 auto;
+                width: auto;height: auto;max-height: 54px;
                 opacity: 0;
-                margin: 0px auto;
-                transform: scale(.8);
             }
         }
     }
@@ -125,7 +137,7 @@
         @include clearfix;
         overflow: hidden;
         width: 100%;
-        margin-bottom: .5em;
+        margin-bottom: .5em; margin-top: 3px;
         @include screen('mobile') {
             display: none;
         }
@@ -135,6 +147,7 @@
             margin: 0;
             font-size: .938em;
             list-style: none;
+            line-height: 1.1;
             &.left_nav {
                 float: left;
                 margin-left: 2em;
@@ -142,27 +155,27 @@
         }
         li {
             float: left;
-            margin: 0 .2em;
+            margin: 4px .2em; padding-right: .8em;
+            position: relative;
+            &::after {
+                position: absolute;content: "";
+                width: 1px;height: 15px;
+                -webkit-transform: rotate(20deg);
+                transform: rotate(20deg);
+                position: absolute;top: 4px; right: 3px;
+                background-color: #ddd;
+                @include screen('tablet') {
+                    margin-left: 10px;
+                }
+            }
+
             a {
-                display: inline-block;
-                padding: .5em .1em;
+                display: block;
+                padding: .3em .1em .2em;
                 font-size: .938em;
                 text-decoration: none;
-                &:after {
-                    content: "";
-                    width: 1px;
-                    height: 15px;
-                    display: inline-block;
-                    border-left: 1px solid #DDD;
-                    -webkit-transform: rotate(20deg);
-                    transform: rotate(20deg);
-                    margin-left: 10px;
-                    top: 2px;
-                    position: relative;
-                    @include screen('tablet') {
-                        margin-left: 10px;
-                    }
-                }
+                &:hover{ text-decoration: underline;}
+                &:focus-visible { box-shadow: $aHover 0 0 0 2px;}
                 @include screen('tablet') {
                     font-size: .813em;
                     padding: .5em .2em;
@@ -170,109 +183,108 @@
             }
         }
     }
-    //search
 }
-//search
+
+//search 查詢區
 .search {
     width: 30%;
+    font-size: .92em;
+    box-sizing: border-box;
     @include screen('tablet') {
         width: 40%;
     }
     // max-width: 50%;
     float: right;
-    vertical-align: middle;
-    padding: 0em .3em 0em;
+    // vertical-align: middle;
+    padding: 0 .3em 0;
     @include box-sizing;
     @include screen('mobile') {
         display: none;
     }
     label {
-        font-size: 0em;
+        position: absolute;
+        font-size: 0;
     }
+
+    // form class="form_inline"
+    .form_inline{
+        padding: 4px;
+        overflow: hidden;
+        display: flex; flex-flow: row nowrap;
+    }
+    input {
+        @include box-sizing;
+        margin: 0; padding: 0;
+        font-size:inherit;
+    }    
     .s_form_grp {
-        margin-bottom: 0;
-        // width:75%;
-        float: left;
         position: relative;
-        padding: 0;
-        display: block;
-        margin-right: 0 !important;
-        input {
-            padding: .3em 35px .3em .5em;
-            box-shadow: none;
-            width: 100%;
-            &[type="submit"] {
-                font-size: 0em;
-                width: 30px !important;
-                height: 30px;
-                // max-width:none;
-                // min-width:none;
-                background: url(../images/basic/icon_search.png) no-repeat center center;
-                background-size: 20px;
-                border: none;
-                display: inline-block;
-                margin-left: -40px !important;
-                margin-top: 1px !important;
-                opacity: .5;
-                min-width: 0em !important;
-                @include box-sizing;
-                position:absolute;
-                &:hover,
-                &:focus {
-                    opacity: 1;
-                    box-shadow: none !important;
-                }
-                &:focus {
-                    outline: 2px solid $form-focus;
-                }
+        flex: 1 1 80%;
+        margin: 0 5px;
+        input[type="text"]{
+            height: 2.4em; width: 100%; 
+            padding: 0 35px 0 .5em;
+            background-color: transparent;
+            &:hover{ border-color:  $color-orange; }
+            &:focus {
+                box-shadow: $color-orange 0 0 0 2px;
+                border-color: transparent;
+            }
+        }
+        input[type="submit"] {
+            position: absolute; right: 2px; top: 2px; z-index: 2;
+            background:#fff url(../images/basic/icon_search.png) no-repeat center center;
+            background-size: 20px;
+            border: none;
+            min-width: calc(2.4em - 4px);width: calc(2.4em - 4px); height:calc(2.4em - 4px); 
+            padding: 0; margin: 0;
+            border-radius: 4px;
+            text-indent: -10em; overflow: hidden;
+            opacity: .5;
+            &:hover {opacity: .8;}
+            &:focus {
+                opacity: 1;
+                background-color: $color-orange;
+                box-shadow: none;outline: none;
             }
         }
     }
     .s_btn_grp {
-        padding: .2em;
-        margin-bottom: 0;
-        display: block;
-        overflow: hidden;
-        input,
-        input[type="submit"] {
-            margin: 0;
-            padding: .3em 1em .3em !important;
-            font-size: .813em;
-            color: #000;
-            background:$form-focus;
-            border:1px solid $form-focus;
-            &:hover,
-            &:focus {
-                background: lighten($color-orange, 10);
-                box-shadow: none;
-                outline: none;
+        flex: 1 1 auto; min-width: 4em; max-width: 6em;
+        margin-right: 5px;
+        input, input[type="submit"] {
+            padding: 0 .5em;margin: 0;
+            width: 100%; height: 100%;
+            background:$form-focus;color: #000;
+            border: none;border-radius: 4px;
+            &:hover, &:focus {
+                background-color:$color-orange;
+                box-shadow: none;outline: none;
             }
         }
     }
     .keywordHot {
         display: block;
-        vertical-align: middle;
-        margin-left: .5em;
+        // vertical-align: middle;
+        margin:0 auto;
         padding: .1em 0 .3em;
-        width: 100%;
-        @include clearfix;
+        // width: 100%;
+        // @include clearfix;
         &:before {
             content: "";
             display: block;
             clear: both;
         }
         ul {
-            display: inline-block;
-            font-size: .813em;
-            line-height: 1.65em;
-            margin: 0;
-            padding: 0;
-            &:before {
-                display: inline-block;
-                content: "";
-                color: #999;
-                float: left;
-            }
+            // display: inline-block;
+            line-height: 1.5em;
+            margin: 0 12px; padding: 0;
+            // &:before {
+            //     display: inline-block;
+            //     content: "";
+            //     color: #999;
+            //     float: left;
+            // }
             li {
                 margin: 0 .6em 0 0;
                 padding: 0;
@@ -280,90 +292,49 @@
             }
             a {
                 @include aSetting_nocolor;
+                &::hover{text-decoration: underline;}
             }
         }
     }
-    // m_search
+
+    // m_search 行動版查詢
     &.m_search {
-        width: 100% !important;
-        max-width: 100% !important;
-        min-width: auto;
-        padding: .2em .3em .5em;
-        display: block;
-        height: auto;
-        position: fixed;
-        top: 55px;
-        left: 0;
+        font-size: 1em;
+        padding: 12px 0; width: auto;
+        position: fixed;top: 55px;left: 0;right: 0;
         z-index: 98;
-        background: #333;
-        label {
-            font-size: 0em;
-            line-height: 0;
+        background: rgb(0 0 0 / .85);
+        .form_inline{
+            margin: 0 auto;
+            width: 96%;
         }
         .s_form_grp {
-            width: 65%;
-            height: auto;
-            padding: 0 0 0 5% !important;
-            margin-top: -22px;
-            text-align: right;
-            float: left;
-            height: 50px;
-            position: relative;
-            @include box-sizing();
-            input {
-                width: 100%;
-                margin: -0.2em 0 0;
-                padding: .5em 45px .4em .5em;
-                &[type="submit"] {
-                    font-size: 0em;
-                    width: 36px !important;
-                    height: 36px;
-                    padding: 0;
-                    // max-width:none;
-                    // min-width:none;
-                    background: url(../images/basic/icon_search.png) no-repeat center center;
-                    background-size: 24px;
-                    border: none;
-                    display: inline-block;
-                    // margin-left: -50px !important;
-                    position: absolute;
-                    right: 5px;
-                    top: 20px;
-                    opacity: .8;
-                    // outline:1px solid red;
-                    &:hover,
-                    &:focus {
-                        opacity: 1;
-                    }
+            input[type="text"] {
+                background-color: #fff;border: none;
+                &:focus {
+                    box-shadow: #fff 0 0 0 1px, $color-orange 0 0 0 4px;
                 }
             }
         }
         .s_btn_grp {
-            display: block;
-            padding: 0 .2em;
-            margin-bottom: 0;
-            width: 30%;
-            text-align: center;
-            margin-top: 20px;
-            padding-left: 5%;
-            overflow: hidden;
-            @include box-sizing();
-            input {
-                width: 100% !important;
-                padding: .6em .5em !important;
-                margin: 0;
+            input{
+                &:focus {
+                    box-shadow: #fff 0 0 0 1px inset, $color-orange 0 0 0 3px;
+                }
             }
         }
         .keywordHot {
-            padding-left: 5%;
-            margin-top: 10px;
-            display: block;
-            @include clearfix;
+            width: 96%;margin: 8px auto 5px; padding: 0;
+            ul{ margin: 0 8px; width: auto;}
             a {
                 color: #FFF;
-                &:hover,
+                &:hover {
+                    color: #fff; text-decoration: underline;
+                }
                 &:focus {
-                    color: $primaryColor;
+                    color: #fff;
+                    box-shadow: $color-yellow 0 0 0 2px;
+                    text-decoration: none;
                 }
             }
         }
@@ -382,15 +353,15 @@
         background: #FFF;
     }
     .menu {
-        >ul {
-            >li {
-                >a {
+        &>ul {
+            &>li {
+                &>a {
                     color: #FFF;
                 }
                 &:hover,
                 &:focus {
                     // color: $lightColor;
-                    >a {
+                    &>a {
                         color: $color-orange;
                     }
                 }

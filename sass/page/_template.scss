@@ -17,7 +17,7 @@ body {
 }
 // 最外圍預設為100%
 .no_egg {
-  &:before {
+  &::before {
     display: none;
   }
 }
@@ -47,7 +47,7 @@ body {
   // .accesskey{
   //     padding-top: 2em;
   // }
-  &:before {
+  &::before {
     content: "";
     background: url(../images/bg_bubble.png) no-repeat center center;
     width: 80%;
@@ -108,7 +108,8 @@ body {
   padding: 0 0 1.5em;
   text-align: center;
   h2 {
-    color: darken($primaryColor, 9);
+    // color: darken($primaryColor, 9);
+    color: $color-green-ok;
     text-shadow: none;
     small {
       color: $color-yellow;
@@ -137,11 +138,6 @@ body {
       #24b509,
       horizontal
     ); // IE6-9 fallback on horizontal gradient
-  }
-  .slick-dots {
-    @include screen("mobile") {
-      opacity: 0;
-    }
   }
 }
 .singleSlider {
@@ -172,7 +168,7 @@ body {
       width: 100%;
     }
     &:focus {
-      &:before {
+      &::before {
         content: "";
         width: 100%;
         height: 100%;
@@ -206,7 +202,7 @@ body {
     }
   }
 }
-// service
+// service 受理對象
 @keyframes airplane_ani {
   0% {
     transform: translate(5%, 5%);
@@ -239,7 +235,7 @@ body {
     @include screen("mobile") {
       overflow: hidden;
     }
-    &:before {
+    &::before {
       content: "";
       width: 250px;
       height: 150px;
@@ -253,7 +249,7 @@ body {
         display: none;
       }
     }
-    &:after {
+    &::after {
       content: "";
       width: 142px;
       height: 160px;
@@ -278,9 +274,9 @@ body {
       &:hover,
       &:focus {
         @include box-shadow(4px 8px 10px RGBA(0, 0, 0, 0.15));
-        h3 {
-          color: $primaryColor;
-        }
+        // h3 {
+        //   color: $primaryColor;
+        // }
       }
       @include screen("mobile") {
         flex-basis: calc(50% - 15px);
@@ -307,7 +303,7 @@ body {
     color: #fff;
     text-shadow: 2px 2px 3px RGBA(0, 0, 0, 0.8);
     margin-bottom: 0.5rem;
-    &:before {
+    &::before {
       content: "";
       width: 40px;
       height: 40px;
@@ -319,7 +315,7 @@ body {
     }
     @include screen("tablet") {
       text-align: center;
-      &:before {
+      &::before {
         display: none;
       }
     }
@@ -349,7 +345,7 @@ body {
       font-weight: bold;
       position: relative;
       color: #000;
-      &:before {
+      &::before {
         content: "";
         width: 100%;
         height: 4px;
@@ -358,7 +354,7 @@ body {
         position: absolute;
         background: #ccc;
       }
-      &:after {
+      &::after {
         content: "";
         width: 60%;
         height: 4px;
@@ -378,12 +374,29 @@ body {
         list-style: none;
         display: inline-block;
         margin-bottom: 0.3em;
+        padding-left: .8em;
+        position: relative;
+        &::before {
+          content: "";
+          position: absolute;
+          width: 1px;
+          height: 14px;
+          display: inline-block;
+          background-color: #ddd;
+          -webkit-transform: rotate(20deg);
+          transform: rotate(20deg);
+          top: 7px; 
+          left: 4px;
+          // position: relative;
+        }
         &:first-child {
-          a {
-            &:before {
-              display: none;
-            }
-          }
+          padding-left: 0;
+          &::before { display: none; }
+          // a {
+          //   &::before {
+          //     display: none;
+          //   }
+          // }
         }
         a {
           display: block;
@@ -391,18 +404,19 @@ body {
           font-size: 1em;
           font-weight: bold;
           text-decoration: none;
-          &:before {
-            content: "";
-            width: 1px;
-            height: 15px;
-            display: inline-block;
-            border-left: 1px solid #ddd;
-            -webkit-transform: rotate(20deg);
-            transform: rotate(20deg);
-            margin-right: 10px;
-            top: 2px;
-            position: relative;
-          }
+          // &::before {
+          //   content: "";
+          //   width: 1px;
+          //   height: 15px;
+          //   display: inline-block;
+          //   border-left: 1px solid #ddd;
+          //   -webkit-transform: rotate(20deg);
+          //   transform: rotate(20deg);
+          //   margin-right: 10px;
+          //   top: 2px;
+          //   position: relative;
+          // }
+          &:focus-visible{box-shadow: $aHover 0 0 0 2px inset;}
         }
       }
     }
@@ -418,7 +432,7 @@ body {
       background: rgba(0, 0, 0, 0.6);
       border: none;
       margin: 0;
-      &:after {
+      &::after {
         content: "";
         width: 6px;
         height: 6px;
@@ -435,11 +449,11 @@ body {
       &:focus,
       &.active {
         color: white;
-        // &:before {
+        // &::before {
         //   // -webkit-transform: scale(1);
         //   // transform: scale(1);
         // }
-        &:after {
+        &::after {
           right: 7px;
         }
       }
@@ -468,7 +482,7 @@ body {
     color: #fff;
     text-shadow: 2px 2px 3px RGBA(0, 0, 0, 0.5);
     text-align: center;
-    &:before {
+    &::before {
       content: "";
       width: 40px;
       height: 40px;
@@ -485,24 +499,29 @@ body {
       line-height: 60px;
       @include clearfix;
       text-align: center;
-      color: $primaryColor;
+      // color: $primaryColor;
       text-shadow: none;
-      &:before {
+      &::before {
         display: none;
       }
       small {
         display: none;
       }
     }
+    @include screen("mobile"){
+      color: $color-green-ok;
+    }
   }
   ul {
     list-style: none;
-    padding: 0 15px 0 0;
-    margin: 0;
+    padding: 0;
+    margin: 0 20px 15px 0;
     overflow: hidden;
+    border-radius: 4px;
+    box-shadow: rgb(0 0 0 / 0.45) 2px 2px 3px;
     @include screen("tablet") {
-      padding: 15px 15px 15px 15px;
-      @include border-radius(4px);
+      margin:0 15px 15px;
+      box-shadow: rgb(0 0 0 / .35) 0 0 12px;
     }
     li {
       float: left;
@@ -510,41 +529,25 @@ body {
       display: block;
       position: relative;
       height: 150px;
-      padding: 1em;
-      margin-bottom: 10px;
-      box-shadow: 2px 2px 4px RGBA(0, 0, 0, 0.45);
+      padding: 1em; margin: 0; padding: 0;
       box-sizing: border-box;
-      border-right: 1px solid #ddd;
-      border-left: 1px solid #aaa;
+      border-left: 1px solid #bbb;
       background-color: rgb(255, 255, 255);
-      background-image: linear-gradient(
-        top,
-        rgba(255, 255, 255, 1) 0%,
-        rgba(237, 237, 237, 1) 100%
-      );
+      &:first-child {border-left: none;}
       @include screen("mobile") {
         width: 50%;
-        margin-bottom: 0;
-      }
-      &:hover,
-      &:focus {
-        background-color: rgb(255, 255, 255);
-        background-image: linear-gradient(
-          top,
-          rgba(255, 255, 255, 1) 0%,
-          rgba(229, 229, 229, 1) 100%
-        );
-      }
-      @include screen("mobile") {
-        border-left: 1px solid #ccc;
-        @include box-shadow(2px 2px 4px RGBA(0, 0, 0, 0.35));
+        border: none;
+        &:nth-child(1),&:nth-child(2) {border-bottom: 1px solid #bbb;}
+        &:nth-child(odd) {border-right: 1px solid #bbb;}
       }
       a {
         display: block;
         position: relative;
-        width: 100%;
+        // width: 100%;
         height: 100%;
+        padding: 1em;
         text-align: center;
+        box-sizing: border-box;
         h3 {
           display: block;
           line-height: 1.45em;
@@ -556,6 +559,11 @@ body {
           margin-bottom: 0;
           max-height: 60px;
         }
+        &:hover {
+          background-image: linear-gradient(180deg, #fff 20%,  #eee);
+        }
+        &:focus{box-shadow:none;}
+        &:focus-visible {box-shadow: #fff 0 0 0 6px inset, $aHover 0 0 0 8px inset;}
       }
       &:first-child {
         @include border-radius(4px 0 0 4px);
@@ -571,7 +579,13 @@ body {
       }
     }
   }
+
+  @include screen("mobile"){
+    background-image: linear-gradient(180deg, #f9f9f9 20%,  #ddd);
+    margin-bottom: 0; padding-bottom: 1.5em;
+  }
 }
+
 // 資訊FB
 .information {
   @include screen("mobile") {
@@ -583,7 +597,7 @@ body {
     }
   }
   h2 {
-    &:before {
+    &::before {
       content: "";
       width: 40px;
       height: 40px;
@@ -595,7 +609,7 @@ body {
     }
     @include screen("mobile") {
       text-align: center;
-      &:before {
+      &::before {
         display: none;
       }
     }
@@ -627,17 +641,19 @@ body {
           display: inline-block;
           color: #555;
           margin-right: 10px;
-          font-size: 0.813em;
+          font-size: 0.92em;
         }
         a {
           display: block;
+          &:focus{box-shadow:none;}
+          &:focus-visible {box-shadow: $aHover 0 0 0 2px;}  
         }
         .tag {
           display: inline-block;
           background: #999;
           color: #fff;
           font-size: 0.813em;
-          padding: 0.1em 0.5em;
+          padding: 0.1em 0.5em .05em;
           @include border-radius(6px);
           &.tag-orange {
             // background: $color-orange;
@@ -699,7 +715,7 @@ body {
   h2 {
     text-align: left;
     margin: 0.2em 0;
-    &:before {
+    &::before {
       content: "";
       width: 40px;
       height: 40px;
@@ -713,7 +729,7 @@ body {
     @include screen("mobile") {
       text-align: center;
       margin: 1em 0;
-      &:before {
+      &::before {
         display: none;
       }
     }
@@ -759,7 +775,7 @@ body {
         position: relative;
         &:focus {
           .img-container {
-            &:after {
+            &::after {
               content: "";
               width: 100%;
               height: 100%;
@@ -772,7 +788,7 @@ body {
             }
           }
         }
-        &:after {
+        &::after {
           content: "";
           left: 50%;
           width: 0;
@@ -792,7 +808,7 @@ body {
             background: rgba(0, 0, 0, 0.8);
           }
         }
-        &:before {
+        &::before {
           content: "";
           left: 0%;
           top: 0%;
@@ -844,7 +860,7 @@ body {
             opacity: 1;
             transform: scale(1.2);
           }
-          &:before {
+          &::before {
             opacity: 0;
           }
         }
@@ -887,44 +903,28 @@ body {
     }
   }
   .img-container {
-    @include box-sizing; // border: 1px solid #ccc;
-    width: 165px;
-    height: 65px;
-    margin: 0 10px;
+    @include box-sizing;
+    width: 165px;height: 65px; margin: 4px 10px;
     background: #fff;
     a {
-      display: block;
-      width: 100%;
-      height: 100%;
-      position: relative;
-      &:after {
-        content: "";
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        box-shadow: 0 0 0 1px #ddd inset;
-        z-index: 99;
+      display: block; height: 100%;
+      transition:box-shadow .2s;
+      &:hover, &:focus {
+        outline: none;
+        box-shadow:#fff 0 0 0 1px, $aHover 0 0 0 4px;
       }
-      &:focus {
-        &:after {
-          box-shadow: 0 0 0 1px $color-orange inset;
-        }
-      }
-      img {
-        width: 100%;
-        height: 100%;
-      }
+      img {display: block;width: 100%; height: 100%;}
     }
   }
 }
+
+// 首頁：資訊圖像化
 .infographic {
   margin-bottom: 2em;
   h2 {
     margin: 0.2em 0;
     text-align: left;
-    &:before {
+    &::before {
       content: "";
       width: 40px;
       height: 40px;
@@ -938,7 +938,7 @@ body {
     @include screen("mobile") {
       text-align: center;
       margin: 1em 0;
-      &:before {
+      &::before {
         display: none;
       }
     }
@@ -950,6 +950,7 @@ body {
   @include screen("mobile") {
     @include gutter();
   }
+  margin: 15px 0;
   .slick-prev {
     background: url(../vendor/slick/icon_arrow_left_inverse.png) no-repeat
       center right;
@@ -969,32 +970,29 @@ body {
     }
   }
   .img-container {
-    @include box-sizing; // border: 1px solid #ccc;
+    @include box-sizing; 
     width: 100%;
     height: 340px;
-    margin: 0 10px;
+    margin: 5px 10px;
     background: #fff;
     a {
-      display: block;
-      width: 100%;
-      height: 100%;
-      position: relative;
-      &:focus {
-        &:after {
-          content: "";
-          width: 100%;
-          height: 100%;
-          position: absolute;
-          top: 0;
-          left: 0;
-          box-shadow: 0 0 0 2px $color-orange inset;
-          z-index: 99;
-        }
+      display: block;height: 100%;
+      transition:box-shadow .2s;
+      &:hover {
+        box-shadow: #fff 0 0 0 0, $aHover 0 0 0 2px;
+        // &::after {
+        //   content: "";
+        //   width: 100%;
+        //   height: 100%;
+        //   position: absolute;
+        //   top: 0;
+        //   left: 0;
+        //   box-shadow: 0 0 0 2px $color-orange inset;
+        //   z-index: 99;
+        // }
       }
-      img {
-        width: 100%;
-        height: 100%;
-      }
+      &:focus { box-shadow: #fff 0 0 0 1px, $aHover 0 0 0 4px; }
+      img { display: block; width: 100%;height: 100%;}
     }
   }
 }
@@ -1007,7 +1005,7 @@ body {
   // background-size:contain;
   background: #f2f2f2;
   position: relative;
-  &:before {
+  &::before {
     content: "";
     top: 0;
     position: absolute;
@@ -1132,7 +1130,7 @@ body {
       @include screen("mobile") {
         padding-right: 0.8em;
       }
-      &:before {
+      &::before {
         content: "";
         width: 5px;
         height: 30px;
@@ -1141,7 +1139,7 @@ body {
         left: 0;
         background: #0494eb;
       }
-      &:after {
+      &::after {
         content: "";
         width: 5px;
         height: 15px;

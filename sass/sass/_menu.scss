@@ -1,4 +1,5 @@
-.menu {
+// 寬螢幕版選單
+.header .menu {
     @include box-sizing;
     margin: 0 auto;
     min-height: 2.5em;
@@ -9,22 +10,28 @@
         display: none;
     }
 
-    >ul {
+    &>ul {
         text-align: left;
         margin: 0;
         padding: 0; // 第一層選單樣式
-        >li {
+        &>li {
             display: inline-block;
             vertical-align: top;
             min-width: 7em;
-            >a {
+            &>a {
                 display: block;
                 padding: 0 1em;
                 height: 2.5em;
                 font-weight: bold;
                 line-height: 2.5em;
+                &:focus{
+                    background-color: rgb(0 0 0 / .8); color: #fff;
+                    box-shadow: none;
+                }
             }
         }
+        
+        // 第二層選單位置
         ul {
             display: none;
             overflow: visible;
@@ -38,18 +45,19 @@
             list-style: none;
             text-align: left;
             ul {
-                top: 0;
-                left: 170px;
+                top: 0;left: 200px;
             }
         }
-    } // 預設選單 li
+    } 
+    // 預設選單 li
     li {
         position: relative;
         a {
             display: block;
             outline: none;
             text-decoration: none;
-        } // 第二層選單樣式
+        } 
+        // 第二層選單樣式
         li {
             float: none;
             a {
@@ -58,25 +66,22 @@
                 color: #FFF;
                 &:hover,
                 &:focus {
-                    background: $color-orange;
+                    background: $color-yellow; color: #000;
                 }
+                &:focus{ box-shadow: $color-yellow 0 0 0 3px;}
             }
         }
         li.hasChild {
-            >ul {
+            &>ul {
                 z-index: 999;
             }
-            >a {
+            &>a {
                 padding-right: 2em;
-                &:hover,
-                &:focus {
-                    background: $color-orange;
-                }
-                &:after {
+                &::after {
                     content: '';
                     position: absolute;
-                    right: 10px;
-                    top: 1.3em;
+                    right: 12px;
+                    top: 1em;
                     width: 6px;
                     height: 6px;
                     border: 2px solid #FFF;
@@ -84,13 +89,16 @@
                     border-bottom: none;
                     border-left: none;
                 }
+                &:hover, &:focus{
+                    &::after {border-color: #000;}
+                }
             }
         }
     }
 }
 
 ////////////////////////////////////////////////////// 行動版選單
-// 行動版選單
+// 行動版側欄
 .sidebar {
     position: fixed;
     top: 0;
@@ -104,7 +112,7 @@
     -webkit-overflow-scrolling: touch;
     -webkit-transform: translate3d(0, 0, 0);
     @include box-sizing;
-    >.menu_overlay {
+    &>.menu_overlay {
         background: RGBA(0, 0, 0, .5);
         position: fixed;
         top: 0;
@@ -129,7 +137,6 @@
             color: #FFF;
             width: 100%;
             height: 3em;
-            background: $primaryColor;
             padding: 0 1em;
             line-height: 3em;
             @include box-sizing;
@@ -141,89 +148,89 @@
         left: 0;
         padding-bottom: 3em;
         height: 100%;
-        background: $primaryColor;
+        background: #008091;
         overflow:hidden;
         overflow-y: auto;
         z-index: 9999;
-        -webkit-overflow-scrolling: touch;
-        -webkit-transform: translate3d(0, 0, 0);
+
+        display: block !important;
+        // -webkit-overflow-scrolling: touch;
+        // -webkit-transform: translate3d(0, 0, 0);
         @include box-sizing;
     }
-    .m_area {
-        .menu {
-            width: 100%;
-            @include box-shadow(0px 0px 4px RGBA(0, 0, 0, .4));
-            margin-bottom: 1em;
-            background: #CCC;
-            display: block;
-            li {
-                display: block;
-                float: none;
-                width: 100%;
-                ul {
-                    background: #FFF;
-                }
-                >a {
-                    padding: .5em 1em;
-                    background: #FFF;
-                    border-bottom: 1px solid #CCC;
-                }
-                &.hasChild {
-                    >a {
-                        padding: .5em 1em !important;
-                        color: #222;
-                        background: #FFF;
-                        padding-right: 36px;
-                        position: relative; // text-shadow: 1px 1px 2px RGBA(0, 0, 0, .7);
-                        &:after {
-                            content: '';
-                            position: absolute;
-                            right: 16px;
-                            top: 1.5em;
-                            width: 5px;
-                            line-height: 1.25em;
-                            height: 5px;
-                            border: 2px solid #222;
-                            transform: rotate(45deg);
-                            border-top: none;
-                            border-left: none;
-                            transition: .3s;
-                        }
-                    }
-                }
-                li {
-                    background: #FFF;
-                    a {
-                        padding: 1em 1em 1em 2em !important;
-                        background: rgba(0, 0, 0, .05);
 
-                        &:hover,
-                        &:focus {
-                            color: #000;
-                            background: rgba(0, 0, 0, .15);
-                        }
-                        &:after {
-                            display: none;
-                        }
+    // 行動版選單
+    .menu {
+        width: 100%;
+        // @include box-shadow(0px 0px 4px RGBA(0, 0, 0, .4));
+        margin-bottom: 1em;
+        background: #CCC;
+        background-color: #fff;
+        display: block;
+        ul { list-style: none; margin: 0;padding: 0;}
+        li{ 
+            margin: 0;padding: 0; line-height: 1.4;
+            a{ display: block;color: #222;
+                &:focus { box-shadow: none;}
+            }
+            &.hasChild{
+                &>a{
+                    position: relative; padding-right: 32px;
+                    &::after {
+                        content: '';
+                        position: absolute;right: 16px;top: 1.3em;
+                        width: 6px;
+                        height: 6px;
+                        line-height: 1.25em;
+                        border: 2px solid #222;
+                        border-top: none;
+                        border-left: none;
+                        transform: rotate(45deg);
                     }
-                    &.hasChild {
-                        a {
-                            background: rgba(0, 0, 0, .05);
-                            padding: 1em 1em 1em 2em !important;
-                            &:hover,
-                            &:focus {
-                                background: rgba(0, 0, 0, .15);
+                    &:hover, &:focus{
+                        &::after { border-color: #fff;}
+                    }
+                }
+                // ul{ display: none;}
+            }
+        }
+
+        &>ul{
+            &>li{
+                &>a{
+                    padding: 1em 12px .85em;
+                    border-bottom: 1px solid #CCC;
+                    &:hover, &:focus {
+                        background: #000; color: #fff;
+                    }
+                }
+                &.hasChild{
+                    a{padding-right: 40px;}
+                }
+
+                // ------------------
+                ul{
+                    display: none;
+                    border-bottom: 1px solid #ccc;
+                    background: #eee;
+                    li{
+                        margin-left: 12px; 
+                        border-left: 3px solid #bbb;
+                        a{
+                            padding: .7em 12px;
+                            border-bottom: 1px solid #bbb;
+                            &:hover, &:focus{
+                                background: #444; color: #fff;
                             }
                         }
+                        &:last-child>a{ border-bottom: none;}
+                        &.hasChild{
+                            &>a{ padding-right: 32px;}
+                        }
                     }
                 }
             }
-            a {
-                display: block;
-                color: #333;
-                text-decoration: none;
-                transition: .4s;
-            }
+
         }
     }
 }
@@ -233,21 +240,21 @@
 
 
 
-.sidebar .menu ul ul {
-    display: none;
-    width: 100%;
-    margin: 0;
-    background: rgba(0, 0, 0, .09);
-    font-size: .938em;
-    position: relative;
-    a {
-        padding-left: 2em;
-    }
-}
+// .sidebar .menu ul ul {
+//     display: none;
+//     // width: 100%;
+//     margin: 0;
+//     // background: rgba(0, 0, 0, .09);
+//     font-size: .938em;
+//     position: relative;
+//     a {
+//         padding-left: 2em;
+//     }
+// }
 
-.sidebar .menu ul ul ul {
-    display: none;
-}
+// .sidebar .menu ul ul ul {
+//     display: none;
+// }
 
 // nav
 .sidebar .navigation {
@@ -298,35 +305,41 @@
     }
     &:hover,
     &:focus {
-        background: darken($primaryColor, 20);
+        background-color: rgb(0 0 0 / .5);
     }
 }
 
 .sidebar button.sidebarClose {
     position: absolute;
+    top: 0;
+    right: 0;
     display: block;
     width: 3em !important;
     height: 3em !important;
     padding: 0;
     min-width: auto;
-    top: 0px;
-    right: 0px;
     margin: 0;
     text-indent: -9999px;
     border: none;
     background: none;
     border: none;
-    &:before {
+    border-radius: 0;
+    &::before {
         position: absolute;
         width: 15px;
         height: 15px;
-        border: 3px solid #eee;
+        border: 3px solid #fff;
         content: "";
         top: 15px;
         right: 10px;
         transform: rotate(45deg);
         border-right: none;
         border-top: none;
+    }
+    &:hover, &:focus{
+        outline: 2px solid #fff;
+        outline-offset: -2px;
+        background-color: rgb(0 0 0 / .5);
     }
 }
 
@@ -337,6 +350,6 @@
         left: 20px;
     }
     100% {
-        left: 0px;
+        left: 0;
     }
 }

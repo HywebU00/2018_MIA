@@ -14,12 +14,12 @@
         @include box-sizing(border-box);
         &:nth-child(even) {
         	width: 50%;
-            margin-right: 0px;
+            margin-right: 0;
         }
         @include screen('mobile') {
             float:none;
             width: 96%;
-            margin:0px auto 10px;
+            margin:0 auto 10px;
              &:nth-child(even){
                 width: 96%;
                 margin-right: auto;
@@ -30,7 +30,6 @@
             border: 2px solid #DDD;
             padding: 1em;
             display: block;
-            vertical-align: top;
             @include text-overflow;
             &:hover,
             &:focus {
