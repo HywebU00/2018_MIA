@@ -66,61 +66,58 @@
 }
 
 .np_pic {
+    *{box-sizing: border-box;}
     ul,
     ol {
-        overflow: hidden;
         margin: 0;
         padding: 0;
+        list-style: none;
+        display: flex; flex-flow: row wrap; justify-content: space-between;
+        gap: 18px;
     }
     li {
-        width: 32%;
-        display: block;
-        float: left;
-        @include box-sizing;
-        padding: 1em;
+        flex: 0 0 calc(33.33% - 12px); width: calc(33.33% - 12px);
         border: 1px solid #ddd;
-        margin: 0 2% 20px 0;
-        &:nth-child(3n) {
-            width: 32%;
-            margin-right: 0;
-        }
-        @include screen('mobile') {
-            width: 80%;
-            float: none;
-            margin: 0 auto 20px;
-            &:nth-child(3n) {
-                width: 80%;
-                margin: 0 auto 20px;
+        margin: 0; padding: 0;
+        &:hover{ border-color: $aHover;
+            img {
+                transform: scale(1.2);
             }
+
         }
         h3 {
-            margin: .5em;
+            margin: .6em 0 0;
             line-height: 1.45em;
-            height: 2.7em;
-            display: block;
-            overflow: hidden;
         }
         .img-container {
             @include aspect-ratio(4, 3); //設定比例ex:4:3 or 16:9
-            height: auto;
-            overflow: hidden;
+            width: 100%; height: auto;
             background: #E2E2E2;
-            img {
-                position: absolute;
-            }
+            outline: none;
         }
         img {
             transition: .3s ease-out;
         }
-        a:hover,
-        a:focus {
-            .img-container {
-                outline: none;
-                box-shadow: 0 0 0 1px $primaryColor inset;
+        a{
+            display: block; height: 100%; padding: 15px;
+            &:focus {
+                border-color: transparent;
+                box-shadow: 0 0 0 3px $aHover;
                 img {
                     transform: scale(1.2);
                 }
             }
+        }
+    }
+    @include screen('tablet') {
+        li {
+            flex-basis: calc(50% - 9px); width: calc(50% - 9px);
+        }    
+    }
+    @include screen('mobile') {
+        li{
+            flex-basis: 80%; width: 80%;
+             margin: 0 auto;
         }
     }
 }

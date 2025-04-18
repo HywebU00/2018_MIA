@@ -1,77 +1,94 @@
- /* sitemap */
- .sitemap {
-    margin: 0em auto 1em;
-     color: #666;
-     @include border-radius(8px);
-     @include clearfix;
-     .accesskeyDefine {
-         padding: 1em 2em;
-           background: #EEE;
-         @include border-radius(6px);
-     }
- }
- .cascading {
-     margin: 0;
-     padding: 0;
-     border-top: 1px solid #CCC;
-     @include box-sizing;
-     li {
-         margin: 0 1% 1em;
-         line-height: 1.5em;
-         font-size: 1em;
-         list-style: none;
-         width: 30%;
-         display: inline-block;
-         vertical-align: top;
-         a {
-             margin: 10px 0px;
-             color: #333;
-             padding: .5em;
-             display: block;
-             font-size: 1.25em;
-             font-weight: bold;
-             border-bottom: 2px solid $primaryColor;
-             word-break: break-all;
-             &:hover,
-             &:focus {
-                 color: $primaryColor !important;
-                 text-decoration: none;
-             }
-         }
-         ul {
-             margin-left: 0px;
-             padding-left: 0%;
-             li {
-                 width: 100%;
-                 display: block !important;
-                 margin-bottom: 0;
-                 a {
-                     margin-top: 0px;
-                     margin-bottom: 0px;
-                     display: block;
-                     font-size: 1em;
-                     border-bottom: 1px solid #BBB;
-                     background-color: transparent;
-                     font-weight: normal;
-                     color: #666;
-                     font-weight: normal;
-                 }
-             }
-              ul{
+/* sitemap */
+.sitemap {
+    margin: 0 auto 1em;
+    color: #666;
+    @include border-radius(8px);
+    @include clearfix;
+    .accesskeyDefine {
+        padding: 1em 2em;
+        background: #EEE;
+        @include border-radius(6px);
+    }
+}
+.cascading {
+    margin: 40px auto 0;
+    padding: 20px 0 0;
+    border-top: 1px solid #CCC;
+    li {
+        line-height: 1.5em;font-size: 1em;list-style: none;
+        a {
+            display: block;
+            padding: .5em 4px 8px;
+            //  border-bottom: 2px solid $primaryColor;
+            word-break: break-all;
+        }
+        ul {
+            li {
+                margin-bottom: 0;
+                a {
+                    margin: 0;
+                    font-size: 1em;
+                    border-bottom: 1px solid #ccc;
+                    color: #444;
+                    &:hover{ 
+                        border-bottom-color: $aHover;
+                    }
+                    &:focus {
+                        border-bottom-color: transparent;
+                        color: #000;
+                    }
+                }
+            }
+            ul {
                 padding-left: 2em;
-                li{
-                    a{
+                li {
+                    a {
                         border-bottom: 1px dotted #ccc;
                     }
                 }
-             }
-         }
-     }
-     @include screen('mobile') {
-         width: 95%;
-         margin: 0px auto;
-         li {
-             width: 100%;
-         }
-     }
- }
+            }
+        }
+    }
+
+    // 202504
+    box-sizing: border-box;
+    *{box-sizing: border-box;}
+
+    display: flex; flex-flow: row wrap; gap: 24px;
+
+    //  第一層
+    &>li {
+        flex: 0 0 calc(33.33% - 16px);
+        margin: 0 0 30px; padding: 0;
+        &>a {
+            position: relative;
+            margin: 8px 0;
+            font-size: 1.25em;font-weight: bold;
+            color: #222;
+            &::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                height: 2px;
+                background-color: $primaryColor;
+                transition: .1s;
+            }
+            &:hover, &:focus { color: #222; }
+            &:hover {
+                &::after {height: 4px;}
+            }
+        }
+        &>ul{
+            margin: 0; padding: 0;
+        }
+    }
+    @include screen('mobile') {
+        width: 95%;
+        margin: 0 auto;
+        &>li {
+            flex-basis: 100%;
+        }
+    }
+}
