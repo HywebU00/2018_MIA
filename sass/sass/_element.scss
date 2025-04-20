@@ -460,3 +460,45 @@ img.img-responsive {
         }
     }   
 }
+
+
+
+// 202504 ////////////////////////////////////////////////////////////
+// 輪播暫停按鈕
+button.playPause {
+    position: absolute; z-index: 9;
+    width: 44px; height: 44px; border-radius: 50%;
+    margin: 0; 
+    background-color:#eee;
+    transition:all .2s, right 0s, left 0s;
+    &:hover, &:focus{ opacity: 1; box-shadow:#fff 0 0 0 1px, $primaryColor 0 0 0 4px;}
+    &::before, &::after {content: '';position: absolute;}
+    &::before {
+      width: 4px; height: 12px; top: 16px; left: 16px;
+      border-radius: 1px;
+      background-color: #fff;
+      box-shadow: #fff 8px 0 0;
+    }
+    &::after {
+      display: none;
+      width: 0;height: 0; top: 15px; left: 20px;
+      border-style: solid; border-width: 7px 0 7px 9px;
+      border-color: transparent transparent transparent #fff;
+    }
+  
+    &.paused {
+      background-color: $color-orange;
+      &::before {display: none;}
+      &::after {display: block;}
+    }
+
+    &:hover {
+        background-color: $color-orange;
+        box-shadow:none;
+    }
+    &:focus{
+        background-color: $color-orange;
+        box-shadow: #fff 0 0 0 1px, $color-orange 0 0 0 4px;
+    }
+}
+  

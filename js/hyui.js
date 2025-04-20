@@ -582,4 +582,31 @@ $(function() {
             $('html, body').stop(true, true).animate({ scrollTop: $('.main').find('.accesskey').offset().top }, 800, 'easeOutExpo');
         }
     });
+
+
+
+    /////////////////////////////////////////////////////////////////
+    // 2025 2025 2025 2025 2025 2025 2025 2025 2025 2025 2025 2025 //
+    /////////////////////////////////////////////////////////////////
+
+    // 補暫停 button
+    $('.mp_banner').find('.container').before('<button class="playPause" aria-label="停止輪播" data-altLabel="繼續輪播"></button>');
+    $('.ad').find('.adSlider').before('<button class="playPause" aria-label="停止輪播" data-altLabel="繼續輪播"></button>');
+
+    // 輪播暫停按鈕
+    var _playPause = $('.playPause');
+    _playPause.each( function(){
+        let _thisPP = $(this);
+        const buttonText0 = _thisPP.attr('aria-label');
+        const buttonText1 = _thisPP.attr('data-altLabel');
+        _thisPP.on('click', function(){
+            if ( _thisPP.hasClass('paused') ){
+                _thisPP.removeClass('paused').attr('aria-label', buttonText0);
+                _thisPP.next().slick('slickPlay');
+            } else {
+                _thisPP.addClass('paused').attr('aria-label', buttonText1);
+                _thisPP.next().slick('slickPause');
+            }
+        })
+    })
 });

@@ -124,6 +124,7 @@ body {
 .mp_banner {
   padding-bottom: 0.5em;
   width: 100%;
+  position: relative;
   .img-container {
     img {
       @include border-radius(6px);
@@ -139,6 +140,20 @@ body {
       horizontal
     ); // IE6-9 fallback on horizontal gradient
   }
+
+  .container{outline: 1px solid #f008;
+  outline-offset: -1px;}
+
+  // 2025
+  .playPause {
+    left: calc(50% - $container-max/2 + 20px);
+    top: 12px; z-index: 9;
+  }
+
+  @media screen and (max-width: $container-max){
+    .playPause { left: 20px;}
+  }
+
 }
 .singleSlider {
   width: 100%;
@@ -873,10 +888,15 @@ body {
   a.more {
     margin: 1.5em auto 0.5em; // @include clearfix;
   }
+
+  .playPause{ left: 70px; bottom: 8px;}
+
   @include screen("mobile") {
     background: #fff;
     padding-top: 2em;
+    .playPause{ left: 20px; }
   }
+
 }
 .adSlider {
   @include gutter(70px);

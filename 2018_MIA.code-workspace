@@ -1,0 +1,22 @@
+{
+  "folders": [
+		{
+			"path": "../2018_MIA"
+		}
+	],
+	"settings": {
+		"liveSassCompile.settings.formats": [
+			{
+				"format": "compressed",
+				"extensionName": ".css",
+				"savePath": "/css"
+			}
+		],
+		"liveSassCompile.settings.includeItems": [
+			"/sass/hyui.scss"
+		],
+		"liveSassCompile.settings.showOutputWindowOn": "Warning",
+		"liveSassCompile.settings.autoprefix": [],
+		"liveServer.settings.AdvanceCustomBrowserCmdLine": "",
+	}
+}
