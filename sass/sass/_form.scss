@@ -327,12 +327,19 @@ form {
             border-radius: 4px;
             cursor: pointer;
             &:hover{outline: 1px solid $aHover;}
+            &:has(input:focus){outline: 1px solid $aHover;}
         } // radio與check個別行內設定
         &.form_inline {
             label {
                 display: inline-block;
                 margin: .2em .5em 0 0;
             }
+        }
+    }
+    .check_grp{
+        label > input:focus {
+            box-shadow: $aHover 0 0 0 2px;
+            outline: none;
         }
     }
     .form_grp,
@@ -377,8 +384,6 @@ form {
             display: inline-block;
             margin-right: .5em;
         }
-        // .check_grp,
-        // .radio_grp {}
 
         .btn_grp {
             .btn,
@@ -401,7 +406,7 @@ form {
     label{
         color:#333;
     }
-    color:#999;
+    // color:#999;
     input[type="text"] {
         display: inline-block;
         width: auto;

@@ -3,7 +3,7 @@
   @include box-sizing;
   padding: 0.5em;
   h3 {
-    color: $color-orange;
+    color: $color-orange-ok;
   }
   .info {
     font-size: 0.938em;
@@ -58,7 +58,15 @@
   }
   border-bottom: 2px solid #ddd;
   h3 {
-    color: $color-orange;
+    color: $color-orange-ok;
+  }
+  button.btn{
+    &:hover{ border-color: $color-green-ok;box-shadow: $color-green-ok 0 0 0 1px;}
+    &:focus {border-color: transparent; box-shadow: $color-green-ok 0 0 0 3px;}
+    &.active{
+      border-color: $color-green-ok;background-color: $color-green-ok;
+      &:focus {border-color: #fff;box-shadow: $color-green-ok 0 0 0 3px;}
+    }
   }
   .btn_grp {
     margin: 0.2em 0;
@@ -584,11 +592,19 @@
       margin: 0 auto;
       @include gutter;
       a {
-        h3 {
-          &:hover,
-          &:focus {
-            color: $primaryColor;
-          }
+        display: block;
+        box-shadow:none;
+        
+        &:hover, &:focus {
+          h3{color: $aHover;}
+        }
+        &:hover{
+          .bookOuter {border-color: $aHover;}
+        
+        }
+        &:focus{
+          box-shadow:none;
+          .bookOuter {box-shadow: $aHover 0 0 0 3px; border-color: #fff;}
         }
       }
       h3 {
@@ -603,7 +619,9 @@
         @include aspect-ratio(7, 10);
         border: 1px solid #ddd;
         position: relative;
+        transition: .2s;
         img {
+          display: block;
           width: 100%;
           height: 100%;
           top: 0;
@@ -627,14 +645,7 @@
     @include screen('tablet') {
       text-align: left;
     }
-    a {
-      h3 {
-        &:hover,
-        &:focus {
-          color: $primaryColor;
-        }
-      }
-    }
+
     li {
       width: 19.5%;
       display: inline-block;
@@ -650,19 +661,35 @@
       @include screen('mobile') {
         width: 48%;
       }
-      h3 {
-        font-size: 0.938em;
-        color: $color-word;
-        &:hover,
+      h3{font-size: 0.938em;color: $color-word;}
+      a {
+        display: block;
+        box-shadow: none;
+        &:hover, &:focus {
+          h3 {color: $aHover;}
+        }
+        &:hover{ 
+          .bookOuter{ border-color: $aHover;}
+        }
         &:focus {
-          color: $primaryColor;
+          .bookOuter {box-shadow: $aHover 0 0 0 3px; border-color: #fff;}
         }
       }
+      // h3 {
+      //   font-size: 0.938em;
+      //   color: $color-word;
+      //   &:hover,
+      //   &:focus {
+      //     color: $primaryColor;
+      //   }
+      // }
       .bookOuter {
         @include aspect-ratio(7, 10);
         border: 1px solid #ddd;
         position: relative;
+        transition: .2s;
         img {
+          display: block;
           width: 100%;
           height: 100%;
           top: 0;
