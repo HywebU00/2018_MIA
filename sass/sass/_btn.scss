@@ -72,7 +72,7 @@ $btn-primaryColor: $color-orange-ok;
 
 .btn-blue {
   @extend %btn;
-  @include btn_setting($color-blue, #fff);
+  @include btn_setting($color-blue-ok, #fff);
 }
 
 .btn-yellow {

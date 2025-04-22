@@ -199,15 +199,11 @@
           }
         }
         a {
-          &:hover,
-          &:focus {
-            .bookOuter {
-              border: 1px solid $primaryColor;
-            }
-            h3 {
-              color: $primaryColor;
-            }
+          &:hover {
+            .bookOuter {border: 1px solid $aHover;}
+            h3 {color: $aHover;}
           }
+          &:focus .bookOuter { border-color: #fff; box-shadow: $aHover 0 0 0 3px;}
         }
         h3 {
           margin-bottom: 5px;
