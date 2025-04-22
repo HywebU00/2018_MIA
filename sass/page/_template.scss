@@ -130,6 +130,29 @@ body {
       @include border-radius(6px);
     }
   }
+
+  .slick-dots{
+    position: static;
+    margin: 5px auto 0;
+    li{
+      &.slick-active>button{
+        box-shadow: #fff 0 0 4px 1px;
+      }
+    }
+  }
+
+
+  // 2025 ////////////////////////////////////
+  .playPause {
+    left: calc(50% - $container-max/2 + 30px);
+    top: 40px; z-index: 9;
+  }
+  @media screen and (max-width: $container-max){
+    .playPause { left: 30px;}
+  }
+  // 2025 end ////////////////////////////////////
+
+
   @include screen("mobile") {
     // display: none;
     background: #ddd;
@@ -139,20 +162,12 @@ body {
       #24b509,
       horizontal
     ); // IE6-9 fallback on horizontal gradient
+    .playPause{
+      top: 10px;
+      background-color:rgb(255 255 255 / .2);
+    }
   }
 
-  .container{outline: 1px solid #f008;
-  outline-offset: -1px;}
-
-  // 2025
-  .playPause {
-    left: calc(50% - $container-max/2 + 20px);
-    top: 12px; z-index: 9;
-  }
-
-  @media screen and (max-width: $container-max){
-    .playPause { left: 20px;}
-  }
 
 }
 .singleSlider {
@@ -179,6 +194,7 @@ body {
     width: 90%;
     margin: 0 auto;
     position: relative;
+    box-shadow: none;
     @include screen("mobile") {
       width: 100%;
     }
@@ -889,12 +905,12 @@ body {
     margin: 1.5em auto 0.5em; // @include clearfix;
   }
 
-  .playPause{ left: 70px; bottom: 8px;}
+  .playPause{ left: 70px; bottom: 16px;}
 
   @include screen("mobile") {
     background: #fff;
     padding-top: 2em;
-    .playPause{ left: 20px; }
+    .playPause{ left: 20px; bottom: 8px; }
   }
 
 }

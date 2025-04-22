@@ -448,16 +448,47 @@ img.img-responsive {
         }
     }
     .slick-dots{
-        li{
-            button:focus::before{
-                box-shadow: $color-orange 0 0 0 2px, #fff 0 0 0 3px;
-                background-color: #fff;
+        margin: 0 auto; padding: 0;
+        text-align: center;
+        li{ 
+            display: inline-block;
+            // margin: 5px;
+            margin: 0 8px 4px;
+            &>button{
+                display: block;
+                width: 15px; height: 15px; border-radius: 50%;
+                margin: 0; padding: 0;
+                background: #fff9;
+                font-size: 0 !important; color: transparent;
+                opacity: 1;
+                &::before {display: none;}
+
+                &:hover{ background: #fff; box-shadow: none;}
+                &:focus {
+                    background: #fff;
+                    box-shadow: $color-orange 0 0 0 2px, #fff 0 0 0 3px;
+                }
             }
-            &.slick-active button:focus::before{
-                box-shadow: $color-orange 0 0 0 2px, #fff 0 0 0 5px;
-                background-color:$color-orange;
+
+            &.slick-active{
+                &>button{ 
+                    background-color: $color-orange;
+                    &:focus{
+                        box-shadow: $color-orange 0 0 0 1px, #fff 0 0 0 4px;
+                    }
+                }
             }
         }
+        // li{
+        //     button:focus::before{
+        //         box-shadow: $color-orange 0 0 0 2px, #fff 0 0 0 3px;
+        //         background-color: #fff;
+        //     }
+        //     &.slick-active button:focus::before{
+        //         box-shadow: $color-orange 0 0 0 2px, #fff 0 0 0 5px;
+        //         background-color:$color-orange;
+        //     }
+        // }
     }   
 }
 
@@ -469,7 +500,7 @@ button.playPause {
     position: absolute; z-index: 9;
     width: 44px; height: 44px; border-radius: 50%;
     margin: 0; 
-    background-color:#eee;
+    background-color:rgb(0 0 0 / .15);
     transition:all .2s, right 0s, left 0s;
     &:hover, &:focus{ opacity: 1; box-shadow:#fff 0 0 0 1px, $primaryColor 0 0 0 4px;}
     &::before, &::after {content: '';position: absolute;}
