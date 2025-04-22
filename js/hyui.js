@@ -236,15 +236,34 @@ $(function() {
     //////////// Accordion設定 ////////////
     /*-----------------------------------*/
     $('.accordion').each(function() {
-        $(this).find('.accordion-content').hide();
-        var _accordionItem = $(this).children('ul').children('li').children('a');
-        _accordionItem.each(function() {
-            $(this).click(function(e) {
-                $(this).parent('li').siblings().children('.accordion-content').slideUp();
-                $(this).next('.accordion-content').slideToggle();
-                e.preventDefault();
-            });
-        });
+        // $(this).find('.accordion-content').hide();
+        let _accordionCcontent = $(this).find('.accordion-content');
+        let _accordionItem = _accordionCcontent.prev('a');
+        _accordionCcontent.hide();
+        _accordionItem.attr('role', 'button').attr('aria-expanded', false); // 2025
+
+        _accordionItem.on('click', function(e){
+            let _this = $(this);
+            let _thisContent = _this.next('.accordion-content');
+            e.preventDefault();
+            if (_thisContent.is(':visible')) {
+                _thisContent.slideUp();
+                _this.attr('aria-expanded', false);
+            } else {
+                _accordionCcontent.not(_thisContent).slideUp();
+                _accordionItem.attr('aria-expanded', false);
+                _thisContent.slideDown();
+                _this.attr('aria-expanded', true)
+            }
+        })
+
+        // _accordionItem.each(function() {
+        //     $(this).click(function(e) {
+        //         $(this).parent('li').siblings().children('.accordion-content').slideUp();
+        //         $(this).next('.accordion-content').slideToggle();
+        //         e.preventDefault();
+        //     });
+        // });
     });
     /*-----------------------------------*/
     /////////////fatfooter開關/////////////

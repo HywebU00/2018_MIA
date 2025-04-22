@@ -446,15 +446,14 @@
   margin-bottom: 1.5em;
   .accordion-content {
     padding: 0.5em 1.5em 1.5em;
-    background: #f2f2f2;
+    background: #f6f6f6;
     @include border-radius(4px);
     .info {
       padding: 0.6em 0 0.4em;
-      font-size: 0.813em;
-
+      font-size: 0.85em;
+      color: #666; background-color: transparent;
       ul {
-        padding: 0;
-        margin: 0;
+        padding: 0; margin: 0;
         li {
           width: auto;
           margin-right: 1.5em;
@@ -462,7 +461,7 @@
           list-style: none;
           time,
           span {
-            color: $color-orange;
+            color: #333;
           }
         }
       }
@@ -478,27 +477,38 @@
     > li {
       border-bottom: 1px dashed #ddd;
       position: relative;
-      list-style: none;
-      &:before {
-        position: absolute; // outline: 1px solid red;
-        top: 0;
-        left: -35px;
+      list-style: none; padding-left: 2.5em;
+      &::before {
+        position: absolute;
+        top: .6em; left: 0;
         text-align: right;
-        width: 30px;
+        min-width: 2.2em;
         color: #222;
         font-weight: bold;
         counter-increment: counter;
-        content: counters(counter, '.') ' . ';
+        content: counters(counter, '.') '. ';
       }
       > a {
-        display: block;
+        display: block; position: relative;
         font-size: 1.125em;
-        margin: 1em 0;
+        margin: .5em 0; padding: .5em 40px .5em 0;
         font-weight: bold;
+        &::after {
+          content: ''; position: absolute; right: 10px; top: .8em;
+          width: 8px;height: 8px;
+          border: 2px solid #333; border-left: none; border-top: none;
+          rotate: 45deg;
+          transition: .4s;
+        }
+        &:hover{
+          &::after {border-color: $aHover;}
+        }
         &:focus {
           text-decoration: none;
           box-shadow: none;
         }
+        &:focus-visible { box-shadow: $aHover 0 0 0 2px}
+        &[aria-expanded="true"]::after{rotate: 225deg;border-color: $aHover;}
       }
     }
   }
