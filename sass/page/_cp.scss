@@ -62,11 +62,14 @@
   }
   a {
     // @include aSetting($color-green);
+    display: inline-block;
     word-break: break-all;
     color: $aHover;
+    text-decoration: underline;
     &:hover{ text-decoration: underline;}
     &:focus {
-      outline: 2px solid $aHover;
+      outline: none;
+      text-decoration: none;
     }
   }
   h2 {

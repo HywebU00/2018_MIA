@@ -164,7 +164,6 @@
         width: 100%;
         // @include box-shadow(0px 0px 4px RGBA(0, 0, 0, .4));
         margin-bottom: 1em;
-        background: #CCC;
         background-color: #fff;
         display: block;
         ul { list-style: none; margin: 0;padding: 0;}
@@ -212,13 +211,13 @@
                 ul{
                     display: none;
                     border-bottom: 1px solid #ccc;
-                    background: #eee;
+                    background: #f6f6f6;
                     li{
                         margin-left: 12px; 
-                        border-left: 3px solid #bbb;
+                        border-left: 1px solid #ccc;
                         a{
                             padding: .7em 12px;
-                            border-bottom: 1px solid #bbb;
+                            border-bottom: 1px solid #ccc;
                             &:hover, &:focus{
                                 background: #444; color: #fff;
                             }

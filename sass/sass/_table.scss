@@ -3,40 +3,50 @@ table {
     width: 100%;
     border-collapse: collapse;
     @include screen('xs_mobile') {
-      width:100%;
-      position:relative;
-  }
-  th,
-  td {
-    padding: .5em;
-    text-align:left;
-}
-td {
-    border: #ddd 1px solid;
-    word-break:break-all;
-    a{
-       word-break:break-all;
-   }
-}
-th {
-    background-color: #F3F3F3;
-    color: #333;
-    border: #DDD 1px solid;
-    text-align: center;
-    white-space: nowrap;
-}
-&.table_hover{
-    tr:hover{
-        background:#FCFCFC;
+        width: 100%;
+        position: relative;
     }
-}
-&.table_sprite{
-    tr:nth-child(even){
-        background:#FCFCFC;
+    th,
+    td {
+        padding: .5em;
+        text-align: left;
     }
-}
-&.table_list {
-    @include screen('xs_mobile') {
+    td {
+        border: #ddd 1px solid;
+        word-break: break-all;
+        a {
+            word-break: break-all;
+        }
+    }
+    th {
+        background-color: #F3F3F3;
+        color: #333;
+        border: #DDD 1px solid;
+        text-align: center;
+        white-space: nowrap;
+    }
+    &.table_hover {
+        tr:hover {
+            background: #FCFCFC;
+        }
+    }
+    &.table_sprite {
+        tr:nth-child(even) {
+            background: #FCFCFC;
+        }
+    }
+    &.table_list {
+        tbody td[data-title="下載"] {
+            text-align: center;
+            a {
+                display: inline-block;min-width: 3em;padding: 0 4px;
+                white-space: nowrap;
+                font-size: .9em;color: $aHover;
+                &:hover{ outline: 1px solid $aHover;}
+                &:focus{ outline-width: 2px; }
+            }
+        }
+        @include screen('xs_mobile') {
             background-color: transparent !important; //Force table to not be like tables anymore
             thead,
             tbody,
@@ -79,6 +89,7 @@ th {
                     color: #000;
                 }
             }
+            tbody td[data-title="下載"]{text-align: left;}
         }
     }
 }

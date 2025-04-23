@@ -36,9 +36,9 @@ select::-ms-expand {
         @include make-md-column(9);
         @include make-lg-column(9);
         @include gutter();
-        color:#999;
+        color:#666;
         label,input{
-            color:#333;
+            color:#000;
         }
     }
 }
@@ -280,34 +280,48 @@ input[disable] {
         background: transparent;
         color: #666;
     }
+    input[readonly]:hover{
+        border-color: #888;
+    }
+    input[readonly]:focus{ 
+        border-color: $aHover;
+        box-shadow: #ddd 0 0 0 3px;
+    }
     .upload_btn {
         position: absolute;
         overflow: hidden;
-        top: 1px;
+        top: 3px;
         right: 3px;
-        @extend %btn;
-        @include btn_setting(lighten($color-word,20), #FFF);
-        padding: .2em 1em !important;
-        @include border-radius(4px);
-        &:hover,
-        &:focus {
-            cursor: pointer !important;
-             @include btn_setting(lighten($btn-primaryColor,10), #FFF);
+        padding: 0 1.2em; margin: 0;
+        // @extend %btn;
+        // @include btn_setting(lighten($color-word,20), #FFF);
+        // padding: .2em 1em !important;
+        // @include border-radius(4px);
+        background-color: $color-orange-ok; color: #fff;
+        border-radius: 4px;
+        height: 2.1em; line-height: 2.1;
+        cursor: pointer;
+        transition: .2s;
+
+        &>span{display: block;}
+
+        input[type="file"] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 0;
+            padding: 0;
+            cursor: pointer;
+            opacity: 0;
+            filter: alpha(opacity=0);
+        }
+        &:has(input:hover) { box-shadow: $color-orange-ok 0 0 0 1px;}
+        &:has(input:focus){
+            box-shadow: #fff 0 0 0 1px, $color-orange-ok 0 0 0 4px;
         }
     }
 }
 
-input[type="file"] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 0;
-    padding: 0;
-    font-size: 1.25em;
-    cursor: pointer;
-    opacity: 0;
-    filter: alpha(opacity=0);
-}
 
 
 //---------------------------------------------form setting--------//
@@ -457,24 +471,30 @@ abbr[title] {
 
 // 客製
 .datepick {
-    padding: 0;
+    position: relative;
+    padding: 0; margin: 0;
     border: none;
     background: none;
     font-size: 0;
-    min-width:40px;
-    width: 2em !important;
+    // min-width:40px;
+    // width: 2em !important;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
     &:hover,
     &:focus {
-        background: none;
-        border: none;
+        // background: none;
+        // border: none;
     }
-    &:before {
-        content: "";
-        margin: 0;
-        text-indent: 999px;
-        display: inline-block;
+    &::before {
+        content: ""; display: block;
         width: 32px;
         height: 32px;
+        // margin: 0;
+        // text-indent: 999px;
+        // display: inline-block;
         background: url(../images/icon_calendar.png) no-repeat center center;
         background-size: cover;
     }
@@ -483,23 +503,30 @@ abbr[title] {
     padding: 0;
     border: none;
     background: none;
-    font-size: 0;
-    min-width:40px;
-    vertical-align:middle;
-    width: 2em !important;
-    &:hover,
-    &:focus {
-        background: none;
-        border: none;
-    }
-    &:before {
-        content: "";
-        margin: 0;
-        text-indent: 999px;
-        display: inline-block;
+    font-size: 0; height: auto;
+    padding: 5px;
+    background-color: #fff;
+    // min-width:40px;
+    // vertical-align:middle;
+    // width: 2em !important;
+    // &:hover,
+    // &:focus {
+    //     background: none;
+    //     border: none;
+    // }
+    &::before {
+        content: ""; display: block;
+        // margin: 0;
+        // text-indent: 999px;
+        // display: inline-block;
         width: 24px;
         height: 24px;
         background: url(../images/icon_reload.png) no-repeat center center;
         background-size: cover;
+        transition: .5s;
+    }
+    &:hover, &:focus {
+        background-color: #fff;
+        &::before {rotate: 210deg;}
     }
 }
