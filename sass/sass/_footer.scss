@@ -1,7 +1,7 @@
 footer {
     @include box-sizing(border-box);
     text-align: left;
-    font-size: 0.813em;
+    font-size: 0.9em;
     padding-top: 1em;
     background: #FFF;
     position:relative;
@@ -50,9 +50,9 @@ footer {
         border-bottom: 1px solid #DDD;
         margin-bottom: 1em;
         display: block;
-        @include screen('mobile') {
-            margin-bottom: 0;
-        }
+        // @include screen('mobile') {
+        //     margin-bottom: 0;
+        // }
         ul {
             @include li-reset();
             @include clearfix();
@@ -88,9 +88,9 @@ footer {
                     // background: RGBA(0, 0, 0, .05);
                 }
                 &:focus-visible{ box-shadow: $aHover 0 0 0 1px inset;}
-                @include screen('mobile') {
-                    background: RGBA(0, 0, 0, .03);
-                }
+                // @include screen('mobile') {
+                //     background: RGBA(0, 0, 0, .03);
+                // }
             }
         }
     }

@@ -302,18 +302,34 @@ $(function() {
     /*-----------------------------------*/
     /////////////fatfooter開關/////////////
     /*-----------------------------------*/
-    $('.btn-fatfooter').click(function(e) {
-        $(this).parent('.container').find('nav>ul>li>ul').stop(true, true).slideToggle(function() {
-            if ($(this).is(':visible')) {
-                $('.btn-fatfooter').html("收合");
-                $('.btn-fatfooter').attr('name', '收合選單');
-            } else {
-                $('.btn-fatfooter').html("展開");
-                $('.btn-fatfooter').attr('name', '展開選單');
-            }
-        });
-        $(this).stop(true, true).toggleClass('close');
-    });
+    // 2025 removed
+    // $('.btn-fatfooter').click(function(e) {
+    //     $(this).parent('.container').find('nav>ul>li>ul').stop(true, true).slideToggle(function() {
+    //         if ($(this).is(':visible')) {
+    //             $('.btn-fatfooter').html("收合");
+    //             $('.btn-fatfooter').attr('name', '收合選單');
+    //         } else {
+    //             $('.btn-fatfooter').html("展開");
+    //             $('.btn-fatfooter').attr('name', '展開選單');
+    //         }
+    //     });
+    //     $(this).stop(true, true).toggleClass('close');
+    // });
+
+    // 2025 new
+    var _fatfooterBtn = $('.fatfooter').find('.btn-fatfooter');
+    var _fatFooterNav = _fatfooterBtn.next('nav').children('ul').children('li').children('ul');
+    _fatfooterBtn.attr('aria-expanded', true).removeAttr('name');
+    _fatfooterBtn.on('click', function(){
+        if( _fatFooterNav.is(':visible')) {
+            _fatFooterNav.slideUp();
+            _fatfooterBtn.addClass('close').attr('aria-expanded', false).text('展開');
+        } else {
+            _fatFooterNav.slideDown();
+            _fatfooterBtn.removeClass('close').attr('aria-expanded', true).text('收合');
+        }
+    })
+
     /*-----------------------------------*/
     ////////img objectfix cover////////////
     /*-----------------------------------*/
