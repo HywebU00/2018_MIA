@@ -336,9 +336,10 @@
         border-top: none;
     }
     &:hover, &:focus{
-        outline: 2px solid #fff;
-        outline-offset: -2px;
         background-color: rgb(0 0 0 / .5);
+    }
+    &:focus{
+        box-shadow:$color-yellow 0 0 0 2px inset
     }
 }
 

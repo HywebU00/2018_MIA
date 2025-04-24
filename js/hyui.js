@@ -17,6 +17,9 @@ $(function() {
         wwxs = 576,
         _body = $('body'),
         bodyW = _body.innerWidth();
+
+    // 2025
+    var _header = $('header.header');
     /*-----------------------------------*/
     //////////// nojs 先移除////////////////
     /*-----------------------------------*/
@@ -25,7 +28,7 @@ $(function() {
     //////////// nav如果有兩個選單///////////
     /*-----------------------------------*/
     var _navLength = $('.navigation ul').length;
-    $(window).bind('load', function(e) {
+    $(window).on('load', function(e) {
         if (_navLength > 1) {
             $('.navigation ul:nth-child(1)').addClass('left_nav');
         }
@@ -50,12 +53,24 @@ $(function() {
     var menu_status = false;
     var _sidebar = $('.sidebar'),
         _search = $('.search'),
-        _nav = $('.navigation'),
+        // _nav = $('.navigation'),
         _sidebarClose = $('.sidebarClose'),
         _sidebarCtrl = $('.sidebarCtrl'),
         _overlay = $('.menu_overlay');
-    _mArea = $('.m_area');
+    var _mArea = _sidebar.find('.m_area');
+    var _searchCtrl = $('.searchCtrl');
+
     _sidebarCtrl.append('<span></span><span></span><span></span>');
+
+    // 2025 行動版側欄內容準備
+    _header.find('.menu').clone().appendTo(_mArea);
+    _header.find('.navigation').clone().appendTo(_mArea);
+    var _mobileMenu = _sidebar.find('.menu');
+
+
+
+
+
     var search_mode = false;
     // 打開選單 function
     function showSidebar() {
@@ -69,21 +84,23 @@ $(function() {
         $('.m_search').hide();
         search_mode = false;
         _overlay.off("touchmove");
+
+        _sidebarClose.trigger('focus');
     }
     // 縮合選單 function
     function hideSidebar() {
         _mArea.animate({ 'margin-left': _mArea.width() * -1 + 'px' }, 500, 'easeOutQuint', function() {
             _sidebar.fadeOut(200);
             _mArea.hide();
+            _sidebarCtrl.trigger('focus');
         });
         $('body').removeClass('noscroll');
         _overlay.fadeOut();
         liHasChild.children('ul').hide();
     }
     // 打開選單動作
-    _sidebarCtrl.click(function(e) {
+    _sidebarCtrl.click(function() {
         showSidebar();
-        // e.preventDefault();
     });
     // 關閉動作
     _overlay.add(_sidebarClose).off().click(function() {
@@ -124,11 +141,12 @@ $(function() {
             menu_status = false;
             _sidebar.hide();
             _overlay.hide();
-            _nav.prependTo(_mArea);
-            _menu.prependTo(_mArea);
-            _sidebarClose.prependTo(_mArea);
-            _search.prependTo(_body);
-            _search.addClass('m_search');
+            _search.removeAttr('style');
+            // 2025 _nav.prependTo(_mArea);
+            // 2025 _menu.prependTo(_mArea);
+            // 2025 _sidebarClose.prependTo(_mArea);
+            // 2025 _search.prependTo(_body);
+            // 2025 _search.addClass('m_search');
             _mArea.css({
                 'margin-left': _mArea.width() * -1 + 'px'
             });
@@ -165,34 +183,20 @@ $(function() {
                 e.preventDefault();
             });
             _body.off('touchmove');
-            // 行動版查詢
-            var _searchCtrl = $('.searchCtrl');
-            $('.m_search').hide();
-            _searchCtrl.off().on('click', function(e) {
-                if (!search_mode) {
-                    $('.m_search').stop(true, false).slideDown('400', 'easeOutQuint');
-                    search_mode = true;
-                } else {
-                    $('.m_search').hide();
-                    search_mode = false;
-                }
-            });
+
             // 如果點在外面
-            $('.main').off().on('click touchend', function(e) {
-                $('.m_search').hide();
-                search_mode = false;
-            });
+            // $('.main').off().on('click touchend', function(e) {
+            //     $('.m_search').hide();
+            //     search_mode = false;
+            // });
         } else {
             /*-----------------------------------*/
             /////////////// PC版設定 /////////////
             /*-----------------------------------*/
             hideSidebar();
             _body.removeClass('noscroll');
-            _nav.prependTo('.header .container');
-            _search.appendTo('.header .container');
-            _menu.appendTo('.header .container');
-            _search.removeClass('m_search');
-            _search.show();
+            _search.removeAttr('style');
+            // _search.show();
             // 如果點在外面
             $(document).on('touchend click', function(e) {
                 var target = e.target;
@@ -202,19 +206,57 @@ $(function() {
             });
         }
     }
+
+    // 離開最後一個可 focus 元件，焦點回到 _sidebarClose
+    var _sidebarLastA = _sidebar.find('.navigation').find('a').last();
+    _sidebarLastA.on('keydown', function(e){ 
+        e.preventDefault();
+        if ( e.code=='Tab' && !e.shiftKey){
+            _sidebarClose.trigger('focus');
+        }
+    })
+
+
+    // 行動版查詢
+    _searchCtrl.on('click', function() {
+        if ( _search.is(':visible')) {
+            _search.stop(true, false).slideUp(300);
+        } else {
+            _search.stop(true, false).slideDown(300, function(){
+                _search.find('input[type="text"]').trigger('focus');
+            });
+        }
+    });
+    // 行動版查詢: 離開最後一個可 focus 元件
+    _search.find('a', 'input', 'button').last().on('keydown', function(e){ 
+        if ( _searchCtrl.is(':visible')) {
+            e.preventDefault();
+            if ( e.code=='Tab' && !e.shiftKey){
+                _search.stop(true, false).slideUp(300);
+                _searchCtrl.trigger('focus');
+            }
+        }
+    })
+    _search.find('input[type="text"]').on('focus', function(){
+        if ( _searchCtrl.is(':hidden')) {
+            $('html, body').animate({ scrollTop: 0 }, 200);
+        }
+    })
+
+
     //設定resize 計時器
     var resizeTimer;
-    _window.bind("load resize", function(event) {
+    _window.on("load resize", function(event) {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(function() {
             mobileMenu();
         }, 100);
     });
     // 固定版頭
-    var hh = $('.header').outerHeight(true),
-        menuH = _menu.outerHeight(),
-        navH = $('.navbar').height();
-    $(window).bind("scroll resize", function(e) {
+    var hh = $('.header').outerHeight(true);
+        // menuH = _menu.outerHeight(),
+        // navH = $('.navbar').height();
+    $(window).on("scroll resize", function(e) {
         ww = _window.width();
         if (ww >= wwMedium && $(this).scrollTop() > 185 - 40) {
             $('.header').addClass('fixed');
@@ -256,14 +298,6 @@ $(function() {
                 _this.attr('aria-expanded', true)
             }
         })
-
-        // _accordionItem.each(function() {
-        //     $(this).click(function(e) {
-        //         $(this).parent('li').siblings().children('.accordion-content').slideUp();
-        //         $(this).next('.accordion-content').slideToggle();
-        //         e.preventDefault();
-        //     });
-        // });
     });
     /*-----------------------------------*/
     /////////////fatfooter開關/////////////
@@ -305,7 +339,8 @@ $(function() {
         });
     });
     /*-----------------------------------*/
-    //////////////相簿縮圖+燈箱//////////////
+
+
     /*-----------------------------------*/
     //縮圖，same as thumbnail模組
     $(window).on('resize load', function(e) {
@@ -329,95 +364,6 @@ $(function() {
             $(this).find('img').removeClass('img-responsive');
         });
     });
-    //相簿JQ設定
-    // $('.gallery').append('<div class="lightbox"><a href="#" class="light_close">關閉</a><a href="#" class="light_prev">上一張</a><a href="#" class="light_next">下一張</a><img src="" alt=""><div class="galler_overlay"></div></div>')
-    // $('.gallery .lightbox').hide(); // lightbox先隱藏
-    // $('.light_close').click(function(event) {
-    //     $('.gallery .lightbox').hide(); // 如果點到close，lightbox隱藏
-    //     $('body').removeClass('noscroll');
-    //     $('.gallery .lightbox .caption').html('');
-    // });
-    // $('.gallery .lightbox .galler_overlay').click(function(event) {
-    //     $('.gallery .lightbox').hide(); // 如果點到overlay，lightbox隱藏
-    //     $('body').removeClass('noscroll');
-    //     $('.gallery .lightbox .caption').html('');
-    // });
-    // var PIC_SRC = $('.gallery .lightbox img').attr('src');
-    // // var THUMB_PIC = $(this).attr('src');
-    // var PIC_INDEX = 0;
-    // $('.gallery a').click(function(e) {
-    //     e.preventDefault();
-    // });
-    // $('.gallery .thumbnail img').each(function(index) {
-    //     $(this).click(function(e) {
-    //         var THUMB_H3 = $(this).attr('alt');
-    //         $('body').addClass('noscroll');
-    //         $('.gallery .lightbox').append('<div class="caption">' + THUMB_H3 + '<div>');
-    //         THUMB_PIC = $(this).attr('src');
-    //         $('.gallery .lightbox img').attr('src', THUMB_PIC);
-    //         $('.gallery .lightbox').fadeIn();
-    //         $('.gallery .lightbox .galler_overlay').fadeIn();
-    //         PIC_INDEX = index;
-    //         e.preventDefault();
-    //     });
-    // });
-    // //計算當頁縮圖數量
-    // var PIC_NUM = $('.gallery .thumbnail').length;
-    // // 下一張 function
-    // function NEXT_MOV() {
-    //     //pic_index+1 如果小於 圖片數量
-    //     if ((PIC_INDEX + 1) < PIC_NUM) {
-    //         //PIC_INDEX = (PIC_INDEX + 1) % PIC_NUM;//取餘數
-    //         PIC_INDEX++; //pic_index ++
-    //         //if(PIC_INDEX >= PIC_NUM){PIC_INDEX=0;}
-    //     } else {
-    //         PIC_INDEX = 0 //如果等於或大於圖片數量 pic_index =0 ，跳到第一張
-    //     }
-    //     THUMB_PIC = $('.gallery .thumbnail img').eq(PIC_INDEX).attr('src');
-    //     THUMB_H3 = $('.gallery .thumbnail img').eq(PIC_INDEX).attr('alt');
-    //     $('.gallery .lightbox .caption').html(THUMB_H3);
-    //     $('.gallery .lightbox img').hide();
-    //     $('.gallery .lightbox img').fadeIn();
-    //     $('.gallery .lightbox img').attr('src', THUMB_PIC);
-    //     //放入燈箱 img src
-    //     e.preventDefault();
-    // }
-    // $('.gallery .light_next').click(function(e) {
-    //     NEXT_MOV();
-    //     e.preventDefault();
-    // });
-    // // 上一張 function
-    // function PREV_MOV() {
-    //     if ((PIC_INDEX + 1) > 1) { //pic_index+1  如果大於 1
-    //         //PIC_INDEX = (PIC_INDEX + 1) % PIC_NUM;//取餘數
-    //         PIC_INDEX--; //pic_index --
-    //         //if(PIC_INDEX >= PIC_NUM){PIC_INDEX=0;}
-    //     } else {
-    //         PIC_INDEX = PIC_NUM - 1; //如果等於或小於圖片數量 pic_index =圖片數量-1 ，跳到最後一張
-    //     }
-    //     //取縮圖 img src
-    //     THUMB_PIC = $('.gallery .thumbnail img').eq(PIC_INDEX).attr('src');
-    //     THUMB_H3 = $('.gallery .thumbnail img').eq(PIC_INDEX).attr('alt');
-    //     $('.gallery .lightbox .caption').html(THUMB_H3);
-    //     $('.gallery .lightbox img').hide();
-    //     $('.gallery .lightbox img').fadeIn();
-    //     $('.gallery .lightbox img').attr('src', THUMB_PIC);
-    //     //放入燈箱 img src
-    // }
-    // $('.gallery .light_prev').click(function(e) {
-    //     PREV_MOV();
-    //     e.preventDefault();
-    // });
-    // // 左右按鍵移動
-    // $('body').keydown(function(e) {
-    //     if (e.keyCode == 37) {
-    //         PREV_MOV();
-    //     } else if (e.keyCode == 39) {
-    //         NEXT_MOV();
-    //     } else if (e.keyCode == 27) {
-    //         $('.gallery .lightbox').hide();
-    //     }
-    // });
     /*-----------------------------------*/
     ////////////////多組Tab////////////////
     /*-----------------------------------*/
@@ -483,7 +429,7 @@ $(function() {
     /*-----------------------------------*/
     ///////////////置頂go to top////////////
     /*-----------------------------------*/
-    $(window).bind('scroll', function() {
+    $(window).on('scroll', function() {
         if ($(this).scrollTop() > 200) {
             $('.scrollToTop').fadeIn();
         } else {
@@ -493,14 +439,11 @@ $(function() {
     /*-----------------------------------*/
     /////click event to scroll to top//////
     /*-----------------------------------*/
-    $('.scrollToTop').click(function(e) {
-        $('html, body').animate({ scrollTop: 0 }, 400, 'easeOutQuint');
+    $('.scrollToTop').on('click', function(e) {
         e.preventDefault();
+        $('html, body').animate({ scrollTop: 0 }, 600 );
     });
-    $('.scrollToTop').keydown(function(e) {
-        _body.find('a:first').focus();
-        e.preventDefault();
-    });
+
     /*--------------------------------------------------------*/
     /////設定img 在IE9+ SAFARI FIREFOX CHROME 可以object-fit/////
     /*--------------------------------------------------------*/
@@ -545,13 +488,8 @@ $(function() {
         }
     });
     /*------------------------------------*/
-    /////gotoCenter on focus跳到 content/////
-    /*------------------------------------*/
-    // $('a.goCenter').keydown(function(e) {
-    //     if (e.which == 13) {
-    //         $('#aC').focus();
-    //     }
-    // });
+
+
     /*------------------------------------*/
     /////cp table 加上響應式table wrapper/////
     /*------------------------------------*/
@@ -571,23 +509,18 @@ $(function() {
     /////////// 無障礙快捷鍵盤組合  //////////
     /*-----------------------------------*/
     $(document).on('keydown', function(e) {
-        // alt+S 查詢
-        if (e.altKey && e.keyCode == 83) {
-            $('html, body').animate({ scrollTop: 0 }, 200, 'easeOutExpo');
-            $('.search').find('input[type="text"]').focus();
-        }
         // alt+U header
-        if (e.altKey && e.keyCode == 85) {
+        if (e.altKey && e.code == 'KeyU' ) {
             $('html, body').animate({ scrollTop: 0 }, 200, 'easeOutExpo');
             $('header').find('.accesskey').focus();
         }
         // alt+C 主要內容區
-        if (e.altKey && e.keyCode == 67) {
+        if (e.altKey && e.code == 'KeyC') {
             $('html, body').stop(true, true).animate({ scrollTop: $('.main').find('.accesskey').offset().top }, 800, 'easeOutExpo');
             $('.main').find('.accesskey').focus();
         }
         // alt+Z footer
-        if (e.altKey && e.keyCode == 90) {
+        if (e.altKey && e.code == 'KeyZ') {
             $('html, body').stop(true, true).animate({ scrollTop: $('footer').find('.accesskey').offset().top }, 800, 'easeOutExpo');
             $('footer').find('.accesskey').focus();
         }

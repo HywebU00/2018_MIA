@@ -23,75 +23,75 @@
     }
     // mobile btn
     %mobileCtrlBtn {
+        display: none;
         width: 55px !important;
         height: 55px !important;
         position: absolute;
         top: 0;
-        display: block;
+        // display: block;
         font-size: 0;
         padding: 15px;
         margin: 0;
         border-radius: 0;
         min-width: auto;
         min-height: auto;
-        background: transparent;
-        border: none;
+        border: none; outline: none;
+        background-color: #fff;
+        box-shadow: none;
         @include box-sizing;
         @include screen('mobile') {
-            display: block !important;
+            display: block;
         }
     }
-    >.container {
+    .sidebarCtrl {
+        @extend %mobileCtrlBtn;
+        left: 0;
+        span {
+            background: $color-blue-ok;
+            width: 100%;
+            height: 3px;
+            margin: 5px 0 5px;
+            display: block;
+            &+span {
+                margin: 2px 0 5px;
+            }
+        }
+        &:hover, &:focus {box-shadow: none;}
+        &:hover{background-color: #eee;}
+        &:focus{
+            background-color: $color-blue-ok;
+            span{background-color: #fff;}
+        }
+    }
+    // searchCtrl
+    .searchCtrl {
+        @extend %mobileCtrlBtn;
+        right: 0;
+        &::before {
+            content: "";
+            position: absolute;
+            top: 8px;
+            left: 10px;
+            width: 40px;
+            height: 40px;
+            background: url(../images/basic/icon_search.png) no-repeat center center;
+            background-size: 26px;
+            opacity: .6;
+        }
+        &:focus{
+            background-color: $color-blue-ok;
+            &::before {
+                opacity: 1;
+                filter: invert(100%);
+            }
+        }
+    }
+    &>.container {
         max-width: $container-max;
         overflow: visible;
         position: relative; // menu
         @include gutter(30px);
-        .sidebarCtrl {
-            display: none;
-            left: 0;
-            @extend %mobileCtrlBtn;
-            outline: none;
-            span {
-                background: $color-blue-ok;
-                width: 100%;
-                height: 3px;
-                margin: 5px 0 5px;
-                display: block;
-                &+span {
-                    margin: 2px 0 5px;
-                }
-            }
-            &:hover, &:focus {box-shadow: none;}
-            &:hover{background-color: #eee;}
-            &:focus{
-                background-color: $color-blue-ok;
-                span{background-color: #fff;}
-            }
-        }
-        // search
-        .searchCtrl {
-            display: none;
-            right: 0;
-            font-size: 0;
-            @extend %mobileCtrlBtn;
-            outline: none;
-            &::before {
-                width: 40px;
-                height: 40px;
-                background: url(../images/basic/icon_search.png) no-repeat center center;
-                background-size: 26px;
-                opacity: .6;
-                content: "";
-                position: absolute;
-                top: 8px;
-                left: 10px;
-                display: block;
-            }
-            &:focus{
-                outline: 2px solid $aHover;
-                outline-offset: -2px;
-            }
-        }
+
     }
     h1 {
         float: left;
@@ -185,23 +185,25 @@
             }
         }
     }
+
+    @media screen and (max-width: $screen-sm){
+        &>.container{
+            // .searchCtrl{ display: block;}
+        }
+
+    }
 }
 
 //search 查詢區
 .search {
     width: 30%;
     font-size: .92em;
+    float: right;
+    padding: 0 .3em 0;
     box-sizing: border-box;
+    *{ box-sizing: border-box;}
     @include screen('tablet') {
         width: 40%;
-    }
-    // max-width: 50%;
-    float: right;
-    // vertical-align: middle;
-    padding: 0 .3em 0;
-    @include box-sizing;
-    @include screen('mobile') {
-        display: none;
     }
     label {
         position: absolute;
@@ -213,7 +215,6 @@
         padding: 4px;
         overflow: hidden;
         display: flex; flex-flow: row nowrap;
-        // justify-content: space-between;
         align-items: flex-end; align-items: stretch;
     }
     input {
@@ -269,27 +270,16 @@
         }
     }
     .keywordHot {
-        display: block;
-        // vertical-align: middle;
         margin:0 auto;
         padding: .1em 0 .3em;
-        // width: 100%;
-        // @include clearfix;
         &:before {
             content: "";
             display: block;
             clear: both;
         }
         ul {
-            // display: inline-block;
             line-height: 1.5em;
             margin: 0 12px; padding: 0;
-            // &:before {
-            //     display: inline-block;
-            //     content: "";
-            //     color: #999;
-            //     float: left;
-            // }
             li {
                 margin: 0 .6em 0 0;
                 padding: 0;
@@ -302,18 +292,21 @@
         }
     }
 
-    // m_search 行動版查詢
-    &.m_search {
+
+    @media screen and (max-width: $screen-sm){
+        display: none;
         font-size: 1em;
         padding: 12px 0; width: auto;
         position: fixed;top: 55px;left: 0;right: 0;
         z-index: 98;
         background: rgb(0 0 0 / .85);
         .form_inline{
-            margin: 0 auto;
-            width: 96%;
+            margin: 0 auto; width: 96%;
+            display: flex; justify-content: space-between;
         }
         .s_form_grp {
+            flex: 1 1 80%;
+            margin: 0 10px 0 0;
             input[type="text"] {
                 background-color: #fff;border: none;
                 &:focus {
@@ -322,7 +315,9 @@
             }
         }
         .s_btn_grp {
-            input{
+            flex: 1 1 20%; margin: 0;
+            input, input[type="submit"]{
+                width: 100%;
                 &:focus {
                     box-shadow: #fff 0 0 0 1px inset, $color-orange 0 0 0 3px;
                 }
@@ -331,15 +326,17 @@
         .keywordHot {
             width: 96%;margin: 8px auto 5px; padding: 0;
             ul{ margin: 0 8px; width: auto;}
-            a {
-                color: #FFF;
-                &:hover {
-                    color: #fff; text-decoration: underline;
-                }
-                &:focus {
-                    color: #fff;
-                    box-shadow: $color-yellow 0 0 0 2px;
-                    text-decoration: none;
+            li{
+                a {
+                    color: #FFF;
+                    &:hover {
+                        color: #fff; text-decoration: underline;
+                    }
+                    &:focus {
+                        color: #fff;
+                        box-shadow: $color-yellow 0 0 0 2px;
+                        text-decoration: none;
+                    }
                 }
             }
         }
