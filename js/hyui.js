@@ -147,12 +147,15 @@ $(function() {
     // 行動版查詢
     var _search = $('.search');
     var _searchCtrl = $('.searchCtrl');
+    _searchCtrl.attr('aria-expanded', false);
     _searchCtrl.on('click', function() {
         if ( _search.is(':visible')) {
             _search.stop(true, false).slideUp(300);
+            _searchCtrl.attr('aria-expanded', false);
         } else {
             _search.stop(true, false).slideDown(300, function(){
                 _search.find('input[type="text"]').trigger('focus');
+                _searchCtrl.attr('aria-expanded', true);
             });
         }
     });

@@ -3,14 +3,14 @@
     padding:10px 0 2em;
     margin: 0 auto;
     position: relative;
-    background: rgb(22,140,2);
-    background: -moz-linear-gradient(90deg, rgba(22,140,2,1) 0%, rgba(0,111,128,1) 52%, rgba(2,112,209,1) 100%);
-    background: -webkit-linear-gradient(90deg, rgba(22,140,2,1) 0%, rgba(0,111,128,1) 52%, rgba(2,112,209,1) 100%);
-    background: linear-gradient(90deg, rgba(22,140,2,1) 0%, rgba(0,111,128,1) 52%, rgba(2,112,209,1) 100%);
+    background: #087f2b;
+    // background: -moz-linear-gradient(90deg, rgba(22,140,2,1) 0%, rgba(0,111,128,1) 52%, rgba(2,112,209,1) 100%);
+    // background: -webkit-linear-gradient(90deg, rgba(22,140,2,1) 0%, rgba(0,111,128,1) 52%, rgba(2,112,209,1) 100%);
+    background: linear-gradient(90deg, #087f2b 0%,  #0964a1 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#168c02",endColorstr="#0270d1",GradientType=1);
 
-box-sizing: border-box;
-*{box-sizing: border-box;}
+    box-sizing: border-box;
+    *{box-sizing: border-box;}
 
     &::before {
         position: absolute;
@@ -22,6 +22,7 @@ box-sizing: border-box;
         background-size: contain;
         left: 50%;
         margin-left: -50%;
+        opacity: .3;
     }
     @include screen('mobile') {
         display: none;
@@ -95,15 +96,15 @@ box-sizing: border-box;
                 &>a {
                     font-weight: bold; text-align: center;
                     padding: .5em 5px;
-                    color: lighten($color-yellow, 10);
-                    text-shadow: 1px 1px 2px rgb(0 0 0 / .25);
+                    color: #fcff55;
+                    text-shadow: 1px 1px 2px rgb(0 0 0 / .4);
                     border-bottom: 2px solid #DDD;
                     &:hover { box-shadow: none;}
                     &:hover, &:focus {
                         background: rgb(0 0 0 / .5);
                     }
                     &:focus{ 
-                        box-shadow: $color-yellow 0 0 0 2px;
+                        box-shadow: #fcff55 0 0 0 2px;
                         border-bottom-color: transparent;
                     }
                 }
@@ -119,7 +120,7 @@ box-sizing: border-box;
                             padding: .5em .5em .4em;
                             background: none;
                             &:hover, &:focus {
-                                background: rgb(0 0 0 / .5);
+                                background: rgb(0 0 0 / .4);
                             }
                             &:focus{ box-shadow: #fff 0 0 0 1px inset;}
         
