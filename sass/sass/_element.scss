@@ -10,7 +10,7 @@ br {
 }
 a:focus {
     outline: none;
-    box-shadow: 0 0 0 2px #008091;
+    box-shadow: 0 0 0 2px $aHover;
 }
 .lp,
 .cp,
@@ -22,7 +22,6 @@ a:focus {
             padding: .5em 1em;
             background: $color-green-ok;
             color: #FFF;
-            // max-width:15em;
         }
     }
 }
@@ -31,13 +30,25 @@ a:focus {
     position: absolute;
     top: 5px;
     left: 5px;
-    z-index: 9;
+    z-index: 99;
     color: #CCC;
     font-size: $font-size;
     @include screen("mobile") {
         display: none;
     }
 }
+.main{
+    .accesskey{
+        @media screen and (min-width: $container-max){
+            left : calc(50vw - $container-max*.5 + 5px)
+        }
+    }
+    &.innerpage .accesskey {
+        color: #dfd;
+        &:focus {box-shadow: #dfd 0 0 0 2px;}
+    }
+}
+
 // more按鈕
 a.more {
     display: block;
@@ -59,7 +70,7 @@ a.more {
     transition-property: color;
     -webkit-transition-duration: 0.3s;
     transition-duration: 0.3s;
-    &:after {
+    &::after {
         content: "";
         width: 12px;
         height: 12px;
@@ -72,7 +83,7 @@ a.more {
         border-bottom: none;
         transition: .3s ease-out;
     }
-    &:before {
+    &::before {
         content: "";
         position: absolute;
         z-index: -1;
@@ -81,7 +92,7 @@ a.more {
         right: 0;
         bottom: 0;
         // background: $color-orange;
-        background-color: #008091;
+        background-color: $aHover;
         -webkit-transform: scaleX(0);
         transform: scaleX(0);
         -webkit-transform-origin: 0 50%;
@@ -97,13 +108,12 @@ a.more {
     &:focus,
     &.active {
         color: white;
-        // border: 1px solid $color-orange;
-        border-color: #008091;
-        &:before {
+        border-color: $aHover;
+        &::before {
             -webkit-transform: scale(1);
             transform: scale(1);
         }
-        &:after {
+        &::after {
             right: 15px;
         }
     }
@@ -123,14 +133,12 @@ a.more {
     right: 10px;
     transition: .2s ease-out;
     display: none;
-    z-index: 99999999;
+    z-index: 99999;
     text-indent: -999999px;
     &:hover {
-        // background: url(../images/basic/top.png) no-repeat center top rgba(0, 0, 0, 0.8);
         background-color: rgb(0 0 0 / .8);
     }
     &:focus {
-        // background: url(../images/basic/top.png) no-repeat center top $color-orange;
         background-color: #000;
         box-shadow: #fff 0 0 0 1px, $color-orange 0 0 0 4px;
     }
@@ -198,7 +206,7 @@ img.img-responsive {
         clear: both;
         overflow: hidden;
         padding-bottom: 1em;
-        &:before {
+        &::before {
             position: absolute; // outline: 1px solid red;
             top: 12px;
             left: 0;
@@ -209,9 +217,6 @@ img.img-responsive {
             border-radius: 50%;
             background: $color-orange;
             content: "";
-            // counter-increment: counter;
-            // content: counters(counter, ".") " . ";
-            // display:none;
         }
         .update,
         .file_view {
@@ -278,7 +283,7 @@ img.img-responsive {
                 display: inline-block;
                 margin: 0 .5em;
             }
-            &:after {
+            &::after {
                 content: "";
                 background: url(../images/basic/icon_folder.png);
                 width: 21px;
@@ -289,51 +294,6 @@ img.img-responsive {
                 text-align: right;
                 display: none;
             }
-            // &[href$="doc"]:after {
-            //     background: url(../images/basic/icon_mia_word.jpg);
-            // }
-            // &[href$="docx"]:after {
-            //     background: url(../images/basic/icon_mia_word.jpg);
-            // }
-            // &[href$="odf"]:after {
-            //     background: url(../images/basic/icon_mia_odf.jpg);
-            // }
-            // &[href$="odt"]:after {
-            //     background: url(../images/basic/icon_mia_odt.jpg);
-            // }
-            // &[href$="ods"]:after {
-            //     background: url(../images/basic/icon_mia_ods.jpg);
-            // }
-            // &[href$="odp"]:after {
-            //     background: url(../images/basic/icon_mia_odp.jpg);
-            // }
-            // &[href$="pdf"]:after {
-            //     background: url(../images/basic/icon_mia_pdf.jpg);
-            // }
-            // &[href$="xls"]:after {
-            //     background: url(../images/basic/icon_mia_xls.jpg);
-            // }
-            // &[href$="ppt"]:after {
-            //     background: url(../images/basic/icon_mia_ppt.jpg);
-            // }
-            // &[href$="jpg"]:after {
-            //     background: url(../images/basic/icon_mia_jpg.jpg);
-            // }
-            // &[href$="mp3"]:after {
-            //     background: url(../images/basic/icon_mp3.jpg);
-            // }
-            // &[href$="mov"]:after {
-            //     background: url(../images/basic/icon_mov.jpg);
-            // }
-            // &[href$="txt"]:after {
-            //     background: url(../images/basic/icon_txt.jpg);
-            // }
-            // &[href$="dot"]:after {
-            //     background: url(../images/basic/icon_mia_word.jpg);
-            // }
-            // &[href$="zip"]:after {
-            //     background: url(../images/basic/icon_zip.jpg);
-            // }
             &[href$="doc"],
             &[href$="docx"],
             &[href$="odt"] {
@@ -428,7 +388,7 @@ img.img-responsive {
             &:focus {
                 border-bottom-color:transparent;
             }
-            &:before {
+            &::before {
                 position: absolute; // outline: 1px solid red;
                 top: 5px;
                 left: 0;
@@ -482,16 +442,6 @@ img.img-responsive {
                 }
             }
         }
-        // li{
-        //     button:focus::before{
-        //         box-shadow: $color-orange 0 0 0 2px, #fff 0 0 0 3px;
-        //         background-color: #fff;
-        //     }
-        //     &.slick-active button:focus::before{
-        //         box-shadow: $color-orange 0 0 0 2px, #fff 0 0 0 5px;
-        //         background-color:$color-orange;
-        //     }
-        // }
     }   
 }
 

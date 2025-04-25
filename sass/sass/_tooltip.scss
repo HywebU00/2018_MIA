@@ -89,7 +89,7 @@ $tooltop-font-size: $font-size;
   top: 50%;
   border-right-width: 0;
   border-left-color: #333;
-  left: calc(0em - 5px);
+  left: -5px;
   transform: translate(-0.5em, -50%);
 }
 
@@ -103,7 +103,7 @@ $tooltop-font-size: $font-size;
   top: 50%;
   border-left-width: 0;
   border-right-color: #333;
-  right: calc(0em - 5px);
+  right: -5px;
   transform: translate(0.5em, -50%);
 }
 

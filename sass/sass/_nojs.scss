@@ -1,29 +1,24 @@
 // 以下皆是設定 測試無障礙關閉js 的純css排版
 a.goCenter {
-	position: absolute;
-	top: -2.2em;
-	left: 50%;
-	margin-left: -480px;
+	position: absolute; left: 380px;
+	top: -2.2em; opacity: 0;
 	padding: 0 .5em;
 	height: 2em;
 	line-height: 2em;
-	background: $secondaryColor;
+	background: $color-blue-ok;
 	color: #fff;
 	text-decoration: none;
-	z-index: 999999999999;
-	opacity: 0;
-	transition: .5s;
-	@include border-radius(0px 0px 4px 4px);
+	
+	transition: top .3s;
+	border-radius: 0 0 4px 4px;
 	color: #FFF;
+	@media screen and (min-width: $container-max){
+		left:calc(50% - $container-max/2 + 380px)
+	}
 	@include screen("mobile") {
 		display: none;
 	}
-	&:hover,
-	&:focus {
-		outline: none;
-		top: 0;
-		opacity: 1;
-	}
+	&:focus {top: 0;opacity: 1;z-index: 9999;}
 }
 
 // no-js
@@ -33,11 +28,11 @@ a.goCenter {
     max-width: 50%;
     float: right;
     vertical-align: middle;
-    padding: 0em .3em 0em;
+    padding: 0 .3em 0;
     @include box-sizing;
 
     label {
-        font-size: 0em;
+        font-size: 0;
     }
 
     .form_grp {
@@ -50,7 +45,7 @@ a.goCenter {
             box-shadow: none;
 
             &[type="submit"] {
-                font-size: 0em;
+                font-size: 0;
                 width: 30px !important;
                 height: 30px;
                 // max-width:none;
@@ -62,7 +57,7 @@ a.goCenter {
                 margin-left: -40px !important;
                 margin-top: -2px !important;
                 opacity: .5;
-                min-width: 0em !important;
+                min-width: 0 !important;
                 @include box-sizing;
 
                 &:hover,
@@ -108,7 +103,7 @@ a.goCenter {
             margin: 0;
             padding: 0;
 
-            &:before {
+            &::before {
                 display: inline-block;
                 content: "";
                 color: #999;
@@ -142,7 +137,7 @@ a.goCenter {
         background: #333;
 
         label {
-            font-size: 0em;
+            font-size: 0;
             line-height: 0;
         }
 
@@ -163,7 +158,7 @@ a.goCenter {
                 padding: .5em 45px .4em .5em;
 
                 &[type="submit"] {
-                    font-size: 0em;
+                    font-size: 0;
                     width: 36px !important;
                     height: 36px;
                     padding: 0;
@@ -262,7 +257,7 @@ a.goCenter {
 				font-size: 1.5em;
 				color: #000;
 			}
-			&:before {
+			&::before {
 				display: none;
 			}
 			&.active {

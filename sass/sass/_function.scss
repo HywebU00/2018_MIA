@@ -11,7 +11,7 @@ $function_color:#595959;
     display: inline-block;
 }
 .function {
-    margin: 0px;
+    margin: 0;
     overflow: hidden;
     @include box-sizing();
     ul {
@@ -27,7 +27,6 @@ $function_color:#595959;
                 display: block;
                 padding: .2em 1em;
                 background: $function_color;
-                // border-color: $function_color;
                 color:#FFF;
                 @include border-radius(4px);
                 &:hover, &:focus {

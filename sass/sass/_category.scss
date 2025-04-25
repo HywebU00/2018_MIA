@@ -14,7 +14,6 @@
   }
   a {
     background-color: rgb(247, 247, 247); // Old browsers
-    // background-image: linear-gradient(top, rgba(247, 247, 247, 1) 0%, rgba(234, 234, 234, 1) 100%);
     border: #ccc solid 1px;
     padding: 0.4em 1em .34em;
     display: block;
@@ -24,9 +23,6 @@
     transition: .2s;
     &:hover,
     &:focus {
-      // box-shadow: none;
-      // background: $color-orange;
-      // border-color: $color-orange;
       background-color: $aHover;
       border-color: $aHover;
       color: #fff;
@@ -35,10 +31,6 @@
       box-shadow: $aHover 0 0 0 2px;
       border-color: #fff;
     }
-    // &.active {
-    //   border: 1px solid $color-orange;
-    //   background: $color-orange;
-    //   color: #fff;
-    // }
+
   }
 }

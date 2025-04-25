@@ -47,7 +47,7 @@
                 top: 1em;
                 left: .5em;
                 text-align: right;
-                &:after {
+                &::after {
                     content: ".";
                     display: inline-block;
                 }

@@ -11,7 +11,7 @@
             display: inline-block;
             margin: 0 .1em .1em 0;
             position: relative;
-            &:before {
+            &::before {
                 @extend %slash;
             }
             &:first-child{

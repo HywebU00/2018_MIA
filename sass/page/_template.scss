@@ -5,14 +5,15 @@ body {
   -webkit-overflow-scrolling: touch;
   /* Lets it scroll lazy */
   -webkit-overflow-scrolling: auto;
-  s
+  
     /* Stops scrolling immediately */
     &.noscroll {
     // position: fixed!important;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    overflow: hidden !important;
+    // width: 100%;
+    // height: 100%;
+    // position: absolute;
+    // overflow: hidden !important;
+    overflow: hidden; overflow-y:hidden;
   }
 }
 // 最外圍預設為100%

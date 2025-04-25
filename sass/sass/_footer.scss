@@ -12,7 +12,7 @@ footer {
     }
     .container {
         @include gutter(60px);
-        >div {
+        &>div {
             padding-bottom: 1em;
         }
         @include screen('mobile') {
@@ -50,9 +50,7 @@ footer {
         border-bottom: 1px solid #DDD;
         margin-bottom: 1em;
         display: block;
-        // @include screen('mobile') {
-        //     margin-bottom: 0;
-        // }
+
         ul {
             @include li-reset();
             @include clearfix();
@@ -61,18 +59,12 @@ footer {
         }
         li {
             float: left;
-            // display: block;
-            // margin: 0 5px 5px 0;
             margin: 0 1em .5em;
             a {
                 display: block;
-                // padding: .5em 1em;
                 padding: .4em 2px 2px;
-                // background: transparent;
                 color: #000;
                 position: relative;
-                // @include border-radius(3px);
-                // @include transition(all, .3s, ease-out);
                 &::after{
                     content: ''; 
                     position: absolute; left: 0; right: 0; bottom: 0;
@@ -84,13 +76,8 @@ footer {
                         background-color: $aHover;
                     }
                     box-shadow: none;
-                    // color: darken($aHover, 0);
-                    // background: RGBA(0, 0, 0, .05);
                 }
-                &:focus-visible{ box-shadow: $aHover 0 0 0 1px inset;}
-                // @include screen('mobile') {
-                //     background: RGBA(0, 0, 0, .03);
-                // }
+                &:focus-visible{ box-shadow: $aHover 0 0 0 2px inset;}
             }
         }
     }
@@ -99,12 +86,9 @@ footer {
     }
     .update,
     .counter {
-        // display: inline-block;
-        // margin-right: 5px;
         margin-bottom: 1em;
         em {
             font-style: normal; font-weight: bold;
-            // color: $secondaryColor;
             padding: 0 .5em;
         }
     }
@@ -119,26 +103,11 @@ footer {
             &:first-child {margin-right: 1.2em;}
         }
         a {
-            // display: inline-block;
-            // vertical-align: top;
-            // position:relative;
             transition: .15s;
             &>img{ display: block;}
             &:hover, &:focus{
                 box-shadow:#fff 0 0 0 1px, $aHover 0 0 0 3px;
             }
-            // &:focus {
-            //     // &:after {
-            //     //     content: "";
-            //     //     width: 100%;
-            //     //     height: 100%;
-            //     //     position: absolute;
-            //     //     top: 0;
-            //     //     left: 0;
-            //     //     box-shadow: 0 0 0 1px $color-orange inset;
-            //     //     z-index: 99;
-            //     // }
-            // }
         }
         img {
             max-width: 120px;

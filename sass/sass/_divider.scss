@@ -21,8 +21,8 @@
     display: table;
     line-height: 1;
     margin: 20px 0;
-    &:after,
-    &:before {
+    &::after,
+    &::before {
         content: '';
         display: table-cell;
         position: relative;
@@ -31,10 +31,10 @@
         background-repeat: no-repeat;
         background-image: url('../images/basic/divider.jpg')
     }
-    &:before {
+    &::before {
         background-position: right 1em top 50%
     }
-    &:after {
+    &::after {
         background-position: left 1em top 50%
     }
 }
@@ -49,8 +49,8 @@
     line-height: 0;
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
-    &:after,
-    &:before {
+    &::after,
+    &::before {
         content: '';
         position: absolute;
         left: 50%;
@@ -60,10 +60,10 @@
         border-left: 1px solid #cfcfcf;
         border-right: 1px solid rgba(255, 255, 255, .05)
     }
-    &:before {
+    &::before {
         top: -100%
     }
-    &:after {
+    &::after {
         bottom: 0
     }
 }

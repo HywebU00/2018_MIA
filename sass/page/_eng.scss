@@ -70,7 +70,7 @@
                         right: 5px;
                         opacity: .75;
                     }
-                    &:before {
+                    &::before {
                         content: "";
                         position: absolute;
                         width: 10px;
@@ -137,7 +137,7 @@
                 display: block;
                 position: relative;
                 &:focus {
-                    &:after {
+                    &::after {
                         content: "";
                         width: 100%;
                         height: 100%;
@@ -201,7 +201,7 @@
                     border: 1px solid #CCC;
                     position: relative;
                     &:focus {
-                        &:after {
+                        &::after {
                             content: "";
                             width: 100%;
                             height: 100%;

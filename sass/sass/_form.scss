@@ -293,10 +293,6 @@ input[disable] {
         top: 3px;
         right: 3px;
         padding: 0 1.2em; margin: 0;
-        // @extend %btn;
-        // @include btn_setting(lighten($color-word,20), #FFF);
-        // padding: .2em 1em !important;
-        // @include border-radius(4px);
         background-color: $color-orange-ok; color: #fff;
         border-radius: 4px;
         height: 2.1em; line-height: 2.1;
@@ -420,7 +416,6 @@ form {
     label{
         color:#333;
     }
-    // color:#999;
     input[type="text"] {
         display: inline-block;
         width: auto;
@@ -483,18 +478,11 @@ abbr[title] {
     border-radius: 50%;
     display: inline-block;
     vertical-align: middle;
-    &:hover,
-    &:focus {
-        // background: none;
-        // border: none;
-    }
+
     &::before {
         content: ""; display: block;
         width: 32px;
         height: 32px;
-        // margin: 0;
-        // text-indent: 999px;
-        // display: inline-block;
         background: url(../images/icon_calendar.png) no-repeat center center;
         background-size: cover;
     }
@@ -506,19 +494,8 @@ abbr[title] {
     font-size: 0; height: auto;
     padding: 5px;
     background-color: #fff;
-    // min-width:40px;
-    // vertical-align:middle;
-    // width: 2em !important;
-    // &:hover,
-    // &:focus {
-    //     background: none;
-    //     border: none;
-    // }
     &::before {
         content: ""; display: block;
-        // margin: 0;
-        // text-indent: 999px;
-        // display: inline-block;
         width: 24px;
         height: 24px;
         background: url(../images/icon_reload.png) no-repeat center center;

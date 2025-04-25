@@ -78,7 +78,6 @@
             margin: 0 auto;
             display: block;
             outline: none !important;box-shadow:none;
-            // &:focus {outline: none !important;box-shadow:none;}
             img {
                 display: block;
                 max-width: 100%;
@@ -221,7 +220,7 @@
     height: 45px;
     width: 45px;
     line-height: 0;
-    font-size: 0em;
+    font-size: 0;
     cursor: pointer;
     background: transparent;
     color: transparent;
@@ -237,7 +236,7 @@
     &:focus {
         outline: none;
     }
-    &:before {
+    &::before {
         content: "";
         height: 6px;
         width: 32px;
@@ -248,7 +247,7 @@
         left: 6px;
         transition: .3s all ease-out;
     }
-    &:after {
+    &::after {
         content: "";
         height: 6px;
         width: 32px;
@@ -264,8 +263,8 @@
         background: none;
         margin-top: 0;
         border: none;
-        &:before,
-        &:after {
+        &::before,
+        &::after {
             background: #FFF;
         }
     }

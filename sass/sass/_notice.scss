@@ -12,7 +12,7 @@
     border-left: .5em solid #f2f2f2;
     @include box-sizing(border-box);
     @include border-radius(4px);
-    &:before{
+    &::before{
     	position:absolute;
     	top:.7em;
     	left:.5em;
@@ -54,7 +54,7 @@
     color: #00529B;
     background-color: #BDE5F8;
     border-left: .5em solid #BDE5F8;
-    &:before{
+    &::before{
     	background:url(../images/basic/icon_info.svg) no-repeat center center;
     	background-size:15px;
     }
@@ -65,7 +65,7 @@
     color: #4F8A10;
     background-color: #DFF2BF;
     border-left: .5em solid #DFF2BF;
-    &:before{
+    &::before{
     	background:url(../images/basic/icon_success.svg) no-repeat center center;
     	background-size:15px;
     }
@@ -76,7 +76,7 @@
     color: #CE5605;
     background-color: #FEEFB3;
     border-left: .5em solid #FEEFB3;;
-    &:before{
+    &::before{
     	background:url(../images/basic/icon_warning.svg) no-repeat center center;
     	background-size:15px;
     }
@@ -87,7 +87,7 @@
     color: #D8000C;
     background-color: #FFD2D2;
     border-left: .5em solid #FFD2D2;
-    &:before{
+    &::before{
     	background:url(../images/basic/icon_error.svg) no-repeat center center;
     	background-size:15px;
     }

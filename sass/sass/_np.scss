@@ -35,7 +35,7 @@
             &:focus {
                 border: 2px solid $primaryColor;
             }
-            &:before {
+            &::before {
                 counter-increment: counter;
                 content: counters(counter, ".") " . ";
             }

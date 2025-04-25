@@ -1,7 +1,7 @@
 //header
 .header {
     position: relative;
-    z-index: 9999;
+    z-index: 9990;
     @include screen('mobile') {
         @include clearfix;
         position: fixed;
@@ -28,7 +28,6 @@
         height: 55px !important;
         position: absolute;
         top: 0;
-        // display: block;
         font-size: 0;
         padding: 15px;
         margin: 0;
@@ -150,7 +149,7 @@
             font-size: .938em;
             list-style: none;
             line-height: 1.1;
-            &.left_nav {
+            &:nth-last-child(2) {
                 float: left;
                 margin-left: 2em;
             }
@@ -186,12 +185,6 @@
         }
     }
 
-    @media screen and (max-width: $screen-sm){
-        &>.container{
-            // .searchCtrl{ display: block;}
-        }
-
-    }
 }
 
 //search 查詢區
@@ -210,7 +203,6 @@
         font-size: 0;
     }
 
-    // form class="form_inline"
     .form_inline{
         padding: 4px;
         overflow: hidden;
@@ -272,7 +264,7 @@
     .keywordHot {
         margin:0 auto;
         padding: .1em 0 .3em;
-        &:before {
+        &::before {
             content: "";
             display: block;
             clear: both;
@@ -350,7 +342,7 @@
     top: 0;
     box-shadow: rgba(0, 0, 0, .5) 0 0 25px;
     background: rgba(0, 0, 0, .75);
-    z-index: 99999999;
+    z-index: 99991;
     @include screen('mobile') {
         background: #FFF;
     }
@@ -358,14 +350,13 @@
         &>ul {
             &>li {
                 &>a {
+                    height: auto; padding: .15em .4em;margin:3px 0 0;
                     color: #FFF;
-                }
-                &:hover,
-                &:focus {
-                    // color: $lightColor;
-                    &>a {
-                        color: $color-orange;
+                    &:focus, &:hover {
+                        color: $color-yellow;
+                        background-color: #000;
                     }
+                    &:focus-visible { outline: 2px solid $color-yellow; outline-offset: -2px;}
                 }
             }
         }

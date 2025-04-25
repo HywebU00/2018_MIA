@@ -1305,7 +1305,7 @@ $_vr-border-color: #808080;
             position: relative;
             border: 0;
 
-            &:after {
+            &::after {
                 content: '';
                 position: absolute;
                 top: 50%;
