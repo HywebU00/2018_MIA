@@ -64,10 +64,12 @@ $vr-box-sizing: border-box !default;
 /// @see $vr-modular-scale-map
 $vr-breakpoints: (
     60em: ( // 960px
-        font-size: 16px
+        // font-size: 16px
+        font-size: 1em
     ),
     90em: ( // 1440px
-        font-size: 18px
+        // font-size: 18px
+        font-size: 1.125em
     )
 ) !default;
 
@@ -256,7 +258,8 @@ $vr-helpers: (
 /// the specified value when the `vr-reset` mixin is called.
 ///
 /// @type Number|Length(px|rem|%)
-$vr-font-size: 14px !default;
+// $vr-font-size: 14px !default;
+$vr-font-size: .875em !default;
 
 /// Default vertical rhythm grid color.
 ///
@@ -1099,8 +1102,10 @@ $_vr-border-color: #808080;
                     border-radius: 4px !important;
                     color: $grid-text-color !important;
                     font-family: "Lucida Console", "Consolas", Monaco, monospace !important;
-                    font-size: 12px !important;
-                    line-height: 20px !important;
+                    // font-size: 12px !important;
+                    // line-height: 20px !important;
+                    font-size: .75em !important;
+                    line-height: 1.67 !important;
                     white-space: pre !important;
                 }
             }
