@@ -534,6 +534,7 @@ $(function() {
     // 補暫停 button
     $('.mp_banner').find('.container').before('<button class="playPause" aria-label="停止輪播" data-altLabel="繼續輪播"></button>');
     $('.ad').find('.adSlider').before('<button class="playPause" aria-label="停止輪播" data-altLabel="繼續輪播"></button>');
+    $('.Syncing_slider').find('.Slider-for').before('<button class="playPause" aria-label="停止輪播" data-altLabel="繼續輪播"></button>');
 
     // 輪播暫停按鈕
     var _playPause = $('.playPause');

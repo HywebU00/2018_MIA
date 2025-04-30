@@ -442,7 +442,38 @@ img.img-responsive {
                 }
             }
         }
-    }   
+    }
+    
+    // 2025
+    .slick-arrow{
+        position: absolute; z-index: 999;
+        top: calc(50% - 30px);
+        width: 40px; height: 60px;
+        margin: 0;padding: 0;
+        font-size: 0;
+        background: none;
+        outline: none;
+        border: none;
+        &::before {
+            content: '';
+            position: absolute; top: calc(50% - 10px);
+            width: 14px; height: 14px;
+            border: 5px solid #000;
+            border-right: none; border-bottom: none;
+        }
+        &.slick-prev {
+            left: 0;
+            &::before { rotate: -45deg; left: 14px;}
+        }
+
+        &.slick-next {
+            right: 0;
+            &::before { rotate: 135deg; left: 7px;}
+        }
+        &:hover{background-color: rgb(255 255 255 / .7);}
+        &:focus{box-shadow: $aHover 0 0 0 3px; background-color: #fff; }
+    }
+
 }
 
 
